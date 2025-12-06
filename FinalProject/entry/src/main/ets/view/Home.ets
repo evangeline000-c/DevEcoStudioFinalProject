@@ -30,9 +30,9 @@ export default struct Home {
         Text('首页')
           .height('60vp')
           .width('100%')
-          .fontWeight(200)//字体粗细
+          .fontWeight(220)//字体粗细
           .fontSize('20fp')//字体大小
-          .backgroundColor('#f217ddae')
+          .backgroundColor('#d821deb4')
           .fontColor('#FFFFFF')
           .textAlign(TextAlign.Center)
 
@@ -54,11 +54,12 @@ export default struct Home {
             GridItem(){
               Column(){
                 Image(item.img)
-                  .width('40vp')
-                  .height('40vp')
+                  .width('65vp')
+                  .height('65vp')
+                  .margin({top:'10vp'})
                 Text(item.title)
-                  .fontSize('12fp')
-                  .margin({top:'4vp'})
+                  .fontSize('18fp')
+                  .margin({top:'10vp'})
               }
               .onClick(()=>{
                 if(index==0) this.Consultation(true);
@@ -68,12 +69,17 @@ export default struct Home {
               })
             }
           },(item:ItemData)=>JSON.stringify(item))
-        }
+        }.columnsTemplate('1fr 1fr 1fr 1fr')
+        .width('97%')
+        .backgroundColor('#FFFFFF')
+        .height('120vp')
+        .margin({top:'8vp'})
+        .borderRadius('10vp')
 
       }
       .width('100%')
       .height('100%')
-      .backgroundColor('#ffffffff')
+      .backgroundColor('#d821deb4')
     }.width('100%')
 
   }
