@@ -66,7 +66,7 @@ export struct MainPages {
 
           TabContent() {
             News()
-          }.padding({ left: '12vp', right: '12vp' })
+          }
           .backgroundColor('#F1F3F5')
           .tabBar(this.TabBuilder('资讯', 2, $r('sys.symbol.message')))
 
