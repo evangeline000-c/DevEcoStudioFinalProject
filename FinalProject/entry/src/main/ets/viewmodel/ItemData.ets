@@ -15,3 +15,24 @@ export default class ItemData {
     this.others = others;
   }
 }
+
+
+//健康宣教的数据
+export class HealthResourcesItemType {
+  ResourceName: string;
+  ResourcePhoto: Resource;
+
+
+  constructor(ResourceName: string, ResourcePhoto: Resource) {
+    this.ResourceName = ResourceName;
+    this.ResourcePhoto = ResourcePhoto;
+
+  }
+}
+
+export const HealthResourcesList: HealthResourcesItemType[] = [
+  new HealthResourcesItemType('高血压',$r('app.media.health_resource1')),
+  new HealthResourcesItemType('骨质增生',$r('app.media.health_resource4')),
+  new HealthResourcesItemType('老年痴呆', $r('app.media.health_resource3')),
+  new HealthResourcesItemType('帕金森', $r('app.media.health_resource2'))
+]
