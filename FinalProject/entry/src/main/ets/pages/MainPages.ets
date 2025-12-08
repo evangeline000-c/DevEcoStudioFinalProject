@@ -68,7 +68,7 @@ export struct MainPages {
             News()
           }
           .backgroundColor('#F1F3F5')
-          .tabBar(this.TabBuilder('资讯', 2, $r('sys.symbol.message')))
+          .tabBar(this.TabBuilder('资讯', 2, $r('sys.symbol.bookmark')))
 
           TabContent() {
             UserProfile()
