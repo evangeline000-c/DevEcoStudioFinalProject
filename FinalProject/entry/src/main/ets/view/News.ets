@@ -72,6 +72,13 @@ export default struct News {
           .margin({left:'12vp',top:'5vp'})
           .alignItems(HorizontalAlign.Start)
 
+          Row(){
+            Image($r('app.media.news_photo'))
+              .width('130vp')
+              .objectFit(ImageFit.Contain)
+
+          }.margin({left:'65vp'})
+          //.backgroundColor('#00FFFFFFF')
 
 
         }.margin({top:'12vp'})
@@ -85,7 +92,7 @@ export default struct News {
             HealthResourceList()
             Text('--到底了--').fontSize('12vp').fontColor(Color.Gray)
           }
-        }.margin({top:'12vp'})
+        }//.margin({top:'3vp'})
         .layoutWeight(1)
         .onTouch((event?: TouchEvent) => {
           this.putDownRefresh(event);
