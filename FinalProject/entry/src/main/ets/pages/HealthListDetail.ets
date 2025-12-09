@@ -1,5 +1,6 @@
 //健康资讯详情界面
 //HealthListDetail()的入口函数
+import { HealthResourcesItemType,HealthResourcesList } from '../viewmodel/MainViewModel';
 
 @Builder
 export function HealthListDetailBuilder() {
@@ -23,17 +24,19 @@ interface FullscreenObject {
 struct HealthListDetail{
   pathStack: NavPathStack = AppStorage.get("pathStack") as NavPathStack;//跳转页面相关 不要删
 
-  @State videoSrc: Resource = $rawfile('health_video1.mp4');
-  @State previewUri: Resource = $r('app.media.health_video_poster1');
+  pageParam: HealthResourcesItemType =HealthResourcesList[0]
+
+  //@State videoSrc: Resource = $rawfile('health_video1.mp4');
+  @State videoSrc: Resource = this.pageParam.ResourceVideo
+  @State previewUri: Resource = this.pageParam.ResourcePoster;
   @State curRate: PlaybackSpeed = PlaybackSpeed.Speed_Forward_1_00_X;
   @State isAutoPlay: boolean = false;
   @State showControls: boolean = true;
   @State isShortcutKeyEnabled: boolean = false;
   @State showFirstFrame: boolean = false;
   controller: VideoController = new VideoController();
-  @State health_title:string='老年痴呆';
-  @State health_introduction: string = "老年痴呆症是一种以进行性认知功能减退为核心的神经系统退行性疾病，主要表现为记忆衰退、思维障碍、行为改变，" +
-    "严重影响日常生活能力，其中阿尔茨海默病占比最高（60%-80%）。目前尚无根治手段，但早期干预可延缓病程。";
+  @State health_title:string=this.pageParam.ResourceName
+  @State health_introduction: string = this.pageParam.ResourceIntroduction;
 
 
 
@@ -167,6 +170,13 @@ struct HealthListDetail{
 
     }.hideTitleBar(true) //如果为true就没有返回的箭头
     .backgroundColor('#ff21deb4')
+    .onReady((context:NavDestinationContext)=>{
+      this.pageParam = context.pathInfo.param as HealthResourcesItemType
+      this.health_title=this.pageParam.ResourceName
+      this.videoSrc=this.pageParam.ResourceVideo
+      this.previewUri=this.pageParam.ResourcePoster
+      this.health_introduction=this.pageParam.ResourceIntroduction
+    })
 
 
   }

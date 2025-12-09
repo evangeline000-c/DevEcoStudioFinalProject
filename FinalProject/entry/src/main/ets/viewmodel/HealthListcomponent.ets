@@ -10,9 +10,12 @@ export default struct HealthResourceList {
   private endTouchOffsetY: number = 0;
 
   pathStack: NavPathStack = AppStorage.get("pathStack") as NavPathStack;//跳转页面相关 不要删
-  HealthListDetail(result: boolean): void {
-    //跳转页面相关 不要删
-    this.pathStack.pushPathByName('HealthListDetail', null);
+  // HealthListDetail(result: boolean): void {
+  //   //跳转页面相关 不要删
+  //   this.pathStack.pushPathByName('HealthListDetail', null);
+  // }
+  HealthListDetail(item:HealthResourcesItemType):void{
+    this.pathStack.pushPathByName('HealthListDetail',item)
   }
 
   build() {
@@ -53,7 +56,8 @@ export default struct HealthResourceList {
               .borderRadius('10vp')
               .margin({ left: '10vp' })
               .onClick(() => {
-                this.HealthListDetail(true)
+                //this.HealthListDetail(true)
+                this.HealthListDetail(item)
               })
 
             }
