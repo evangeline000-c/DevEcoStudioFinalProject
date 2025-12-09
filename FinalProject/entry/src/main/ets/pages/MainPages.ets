@@ -21,21 +21,22 @@ export struct MainPages {
   TabBuilder(title: ResourceStr, index: number, selectedImg: Resource) {
     Column() {
       SymbolGlyph(selectedImg)
-        .fontSize('24fp')
+        .fontSize('25fp')
         .renderingStrategy(SymbolRenderingStrategy.MULTIPLE_OPACITY)
         .symbolEffect(new BounceSymbolEffect(EffectScope.WHOLE, EffectDirection.UP),
           this.currentIndex === index ? true : false)
-        .fontColor(this.currentIndex === index ? ['#0a59f7'] : ['#66000000'])
+        .fontColor(this.currentIndex === index ? ['#d821deb4'] : ['#66000000'])
       Text(title)
         .margin({ top: '4vp' })
-        .fontSize(10)
+        .fontSize(15)
         .fontWeight(500)
-        .fontColor(this.currentIndex === index ? '#0a59f7' : '#66000000')
+        .fontColor(this.currentIndex === index ? '#d821deb4' : '#66000000')
     }
-    .backgroundColor('#F1F3F5')
+    .backgroundColor('#FFFFFF')
     .justifyContent(FlexAlign.Center)
-    .height('56vp')
+    .height('50vp')
     .width('100%')
+    //.margin({bottom:'5vp'})
     .onClick(() => {
       this.currentIndex = index;
       this.tabsController.changeIndex(this.currentIndex);
@@ -52,49 +53,50 @@ export struct MainPages {
         }) {
           TabContent() {
             Home()
-          }.padding({ left: '12vp', right: '12vp' })
+          }
           .backgroundColor('#F1F3F5')
           .tabBar(this.TabBuilder('首页', 0, $r('sys.symbol.house_fill')))
+          .width('100%')
 
           TabContent() {
             Health()
           }.padding({ left: '12vp', right: '12vp' })
           .backgroundColor('#F1F3F5')
-          .tabBar(this.TabBuilder('健康', 1, $r('sys.symbol.house_fill')))
+          .tabBar(this.TabBuilder('健康', 1, $r('sys.symbol.waveform_path_ecg_heart_fill')))
 
           TabContent() {
             News()
-          }.padding({ left: '12vp', right: '12vp' })
+          }
           .backgroundColor('#F1F3F5')
-          .tabBar(this.TabBuilder('资讯', 2, $r('sys.symbol.house_fill')))
+          .tabBar(this.TabBuilder('资讯', 2, $r('sys.symbol.bookmark')))
 
           TabContent() {
             UserProfile()
           }.padding({ left: '12vp', right: '12vp' })
           .backgroundColor('#F1F3F5')
-          .tabBar(this.TabBuilder('用户档案', 3, $r('sys.symbol.house_fill')))
+          .tabBar(this.TabBuilder('用户档案', 3, $r('sys.symbol.doc_plaintext_2')))
 
           TabContent() {
             My()
           }.padding({ left: '12vp', right: '12vp' })
           .backgroundColor('#F1F3F5')
-          .tabBar(this.TabBuilder('我的', 4, $r('sys.symbol.house_fill')))
+          .tabBar(this.TabBuilder('我的', 4, $r('sys.symbol.person_crop_circle_fill')))
         }
-        .margin({ bottom: '64vp' })
         .width('100%')
         .height('100%')
-        .barHeight('80vp')
+        .barHeight('68vp')
         .barMode(BarMode.Fixed)
         .onChange((index: number) => {
           this.currentIndex = index;
         })
       }
       .width('100%')
-      .height('100%')
-      .backgroundColor('#F1F3F5')
+      .height('800vp')
+      .backgroundColor('#FFFFFF')
     }
     .height('100%')
+    .width('100%')
     .hideTitleBar(true)
-    .backgroundColor('#F1F3F5')
+    .backgroundColor('#d821deb4')//整个页面最底部的颜色包括手机显示电量的地方
   }
 }

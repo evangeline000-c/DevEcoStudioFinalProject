@@ -39,6 +39,14 @@
       "data": {
         "description" : "this is ServiceProcurement"
       }
+    },
+    {
+      "name": "HealthListDetail",
+      "pageSourceFile": "src/main/ets/pages/HealthListDetail.ets",
+      "buildFunction": "HealthListDetailBuilder",
+      "data": {
+        "description" : "this is HealthListDetail"
+      }
     }
 
   ]
