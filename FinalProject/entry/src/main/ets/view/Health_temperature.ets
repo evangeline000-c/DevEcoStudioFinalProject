@@ -1,12 +1,7 @@
 //温度页面
 
-@Builder
-  export function Health_temperatureBuilder() {
-  Health_temperature()
-}
-
 @Component
-struct Health_temperature {
+export default struct Health_temperature {
   build() {
     NavDestination(){
       Column() {

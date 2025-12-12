@@ -2,7 +2,7 @@
 import { healthDataList, heartRateData, users, type HealthData, type userData } from '../viewmodel/HealthNumData';
 import { HealthCard} from './HealthCard'
 
-interface UserAndPart {
+export interface UserAndPart {
   id: number; // 用户id
   name: string; // 用户名
   part: "heartRate" | "oxygen" | "pressure" | "sleep" | "stress" | "sugar" |"temperature"; // 指标名

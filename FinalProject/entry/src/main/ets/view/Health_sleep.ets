@@ -1,16 +1,11 @@
-//血压页面
-
-@Builder
-  export function Health_pressureBuilder() {
-  Health_pressure()
-}
+//睡眠页面
 
 @Component
-struct Health_pressure {
+export default struct Health_sleep {
   build() {
     NavDestination(){
       Column() {
-        Text('血压')
+        Text('睡眠')
           .width('100%')
           .margin({
             top: '48vp',

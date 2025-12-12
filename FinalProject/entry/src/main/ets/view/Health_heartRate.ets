@@ -1,16 +1,11 @@
-//睡眠页面
-
-@Builder
-  export function Health_sleepBuilder() {
-  Health_sleep()
-}
+//心率页面
 
 @Component
-struct Health_sleep {
+export default struct Health_heartRate {
   build() {
     NavDestination(){
       Column() {
-        Text('睡眠')
+        Text('心率')
           .width('100%')
           .margin({
             top: '48vp',

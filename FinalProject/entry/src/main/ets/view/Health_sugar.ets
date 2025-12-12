@@ -1,16 +1,11 @@
-//压力页面
-
-@Builder
-  export function Health_stressBuilder() {
-  Health_stress()
-}
+//血糖页面
 
 @Component
-struct Health_stress {
+export default struct Health_sugar {
   build() {
     NavDestination(){
       Column() {
-        Text('压力')
+        Text('血糖')
           .width('100%')
           .margin({
             top: '48vp',

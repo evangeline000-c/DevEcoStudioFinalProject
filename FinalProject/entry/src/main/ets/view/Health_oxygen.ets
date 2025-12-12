@@ -1,16 +1,11 @@
-//心率页面
-
-@Builder
-  export function Health_heartRateBuilder() {
-  Health_heartRate()
-}
+//血氧页面
 
 @Component
-struct Health_heartRate {
+export default struct Health_oxygen {
   build() {
     NavDestination(){
       Column() {
-        Text('心率')
+        Text('血氧')
           .width('100%')
           .margin({
             top: '48vp',

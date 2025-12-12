@@ -1,16 +1,11 @@
-//血氧页面
-
-@Builder
-  export function Health_oxygenBuilder() {
-  Health_oxygen()
-}
+//血压页面
 
 @Component
-struct Health_oxygen {
+export default struct Health_pressure {
   build() {
     NavDestination(){
       Column() {
-        Text('血氧')
+        Text('血压')
           .width('100%')
           .margin({
             top: '48vp',

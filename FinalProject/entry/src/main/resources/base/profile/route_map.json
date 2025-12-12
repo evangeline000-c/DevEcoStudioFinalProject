@@ -49,62 +49,6 @@
       }
     },
     {
-      "name": "Health_heartRate",
-      "pageSourceFile": "src/main/ets/pages/Health_heartRate.ets",
-      "buildFunction": "Health_heartRateBuilder",
-      "data": {
-        "description": "this is Health_heartRate"
-      }
-    },
-    {
-      "name": "Health_oxygen",
-      "pageSourceFile": "src/main/ets/pages/Health_oxygen.ets",
-      "buildFunction": "Health_oxygenBuilder",
-      "data": {
-        "description": "this is Health_oxygen"
-      }
-    },
-    {
-      "name": "Health_pressure",
-      "pageSourceFile": "src/main/ets/pages/Health_pressure.ets",
-      "buildFunction": "Health_pressureBuilder",
-      "data": {
-        "description": "this is Health_pressure"
-      }
-    },
-    {
-      "name": "Health_sleep",
-      "pageSourceFile": "src/main/ets/pages/Health_sleep.ets",
-      "buildFunction": "Health_sleepBuilder",
-      "data": {
-        "description": "this is Health_sleep"
-      }
-    },
-    {
-      "name": "Health_stress",
-      "pageSourceFile": "src/main/ets/pages/Health_stress.ets",
-      "buildFunction": "Health_stressBuilder",
-      "data": {
-        "description": "this is Health_stress"
-      }
-    },
-    {
-      "name": "Health_sugar",
-      "pageSourceFile": "src/main/ets/pages/Health_sugar.ets",
-      "buildFunction": "Health_sugarBuilder",
-      "data": {
-        "description": "this is Health_sugar"
-      }
-    },
-    {
-      "name": "Health_temperature",
-      "pageSourceFile": "src/main/ets/pages/Health_temperature.ets",
-      "buildFunction": "Health_temperatureBuilder",
-      "data": {
-        "description": "this is Health_temperature"
-      }
-    },
-    {
       "name": "Health_sub",
       "pageSourceFile": "src/main/ets/pages/Health_sub.ets",
       "buildFunction": "Health_subBuilder",
