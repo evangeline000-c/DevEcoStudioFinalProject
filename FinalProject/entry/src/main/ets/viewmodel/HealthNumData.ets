@@ -12,6 +12,11 @@ export interface HealthData {
   sleepData?: SleepItem[]; // 可选：睡眠数据;
 }
 
+export interface UserAndPart {
+  user: string; // 用户名
+  part: "heartRate" | "oxygen" | "pressure" | "sleep" | "stress" | "sugar" |"temperature"; // 指标名
+}
+
 export const heartRateData: HealthData = {
   label: '心率',
   value: '72',
@@ -59,3 +64,5 @@ export const healthDataList: HealthData[] = [
     history: [30, 32, 28, 25, 32]
   }
 ];
+
+export const users: string[] = ["赵智晟", "王国栋"];

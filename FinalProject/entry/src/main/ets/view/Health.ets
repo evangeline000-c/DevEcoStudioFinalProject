@@ -1,5 +1,5 @@
 //健康宣教组件
-import { healthDataList, heartRateData, type HealthData } from '../viewmodel/HealthNumData';
+import { healthDataList, heartRateData, users, type HealthData, type UserAndPart } from '../viewmodel/HealthNumData';
 import { HealthCard} from './HealthCard'
 
 @Component
@@ -9,27 +9,34 @@ export default struct Health {
 
   pathStack: NavPathStack = AppStorage.get("pathStack") as NavPathStack;
 
-  Health_heartRate(result: boolean): void {
-    this.pathStack.pushPathByName('Health_heartRate', null);
+  Health_heartRate(item: UserAndPart): void {
+    this.pathStack.pushPathByName('Health_sub', item);
   }
-  Health_oxygen(result: boolean): void {
-    this.pathStack.pushPathByName('Health_oxygen', null);
+  Health_oxygen(item: UserAndPart): void {
+    this.pathStack.pushPathByName('Health_sub', item);
   }
-  Health_pressure(result: boolean): void {
-    this.pathStack.pushPathByName('Health_pressure', null);
+  Health_pressure(item: UserAndPart): void {
+    this.pathStack.pushPathByName('Health_sub', item);
   }
-  Health_sleep(result: boolean): void {
-    this.pathStack.pushPathByName('Health_sleep', null);
+  Health_sleep(item: UserAndPart): void {
+    this.pathStack.pushPathByName('Health_sub', item);
   }
-  Health_stress(result: boolean): void {
-    this.pathStack.pushPathByName('Health_stress', null);
+  Health_stress(item: UserAndPart): void {
+    this.pathStack.pushPathByName('Health_sub', item);
   }
-  Health_sugar(result: boolean): void {
-    this.pathStack.pushPathByName('Health_sugar', null);
+  Health_sugar(item: UserAndPart): void {
+    this.pathStack.pushPathByName('Health_sub', item);
   }
-  Health_temperature(result: boolean): void {
-    this.pathStack.pushPathByName('Health_temperature', null);
+  Health_temperature(item: UserAndPart): void {
+    this.pathStack.pushPathByName('Health_sub', item);
   }
+
+  @State
+  private selectedValue:string = "赵智晟";
+  private dataArray: string[] = users;
+
+  @State
+  userAndPart: UserAndPart = {user:this.selectedValue, part:"heartRate"};
 
   build() {
     Column(){
@@ -58,6 +65,28 @@ export default struct Health {
         .width('100%')
         .margin({left:'12vp',top:'24vp', bottom:'12vp'})
         .alignItems(HorizontalAlign.Start)
+
+        Select(this.dataArray.map(item => ({ value: item, text: item } as SelectOption ))) {
+        // 1. 设置默认选中项的文本
+        Text('赵智晟')
+      }
+      .selected(this.dataArray.indexOf(this.selectedValue)) // 2. 设置默认选中项的索引
+      
+      // 3. 监听选择变化事件
+      .onSelect((index: number, value: string) => {
+        // 更新状态变量
+        this.selectedValue = value;
+        this.userAndPart.user = this.selectedValue;
+        console.log(`用户选择了索引 ${index}, 值为 ${value}`);
+      })
+      
+      // 4. 设置选择器样式（可选）
+      .fontColor(Color.Black)
+      .backgroundColor(Color.White)
+      .width(200)
+      .height(40)
+      .borderRadius(8)
+      .border({ width: 1, color: Color.Gray })
         
         Scroll() {
           Column() {
@@ -65,7 +94,8 @@ export default struct Health {
             Grid() {
               GridItem() {
                 HealthCard({ data: heartRateData }).onClick(()=>{
-                  this.Health_heartRate(true);
+                  this.userAndPart.part = "heartRate";
+                  this.Health_heartRate(this.userAndPart);
                 });
               }
               .columnStart(0)
@@ -75,22 +105,28 @@ export default struct Health {
                 GridItem() {
                   HealthCard({ data: item }).onClick(() => {
                     if(item.label === '血氧饱和度'){
-                      this.Health_oxygen(true);
+                      this.userAndPart.part = "oxygen";
+                      this.Health_oxygen(this.userAndPart);
                     }
                     else if(item.label === '血压'){
-                      this.Health_pressure(true);
+                      this.userAndPart.part = "pressure";
+                      this.Health_pressure(this.userAndPart);
                     }
                     else if(item.label === '睡眠'){
-                      this.Health_sleep(true);
+                      this.userAndPart.part = "sleep";
+                      this.Health_sleep(this.userAndPart);
                     }
                     else if(item.label === '压力'){
-                      this.Health_stress(true);
+                      this.userAndPart.part = "stress";
+                      this.Health_stress(this.userAndPart);
                     }
                     else if(item.label === '血糖'){
-                      this.Health_sugar(true);
+                      this.userAndPart.part = "sugar";
+                      this.Health_sugar(this.userAndPart);
                     }
                     else if(item.label === '体温'){
-                      this.Health_temperature(true);
+                      this.userAndPart.part = "temperature";
+                      this.Health_temperature(this.userAndPart);
                     }
                 })
                 }

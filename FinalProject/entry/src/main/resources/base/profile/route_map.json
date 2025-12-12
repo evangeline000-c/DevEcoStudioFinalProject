@@ -103,6 +103,14 @@
       "data": {
         "description": "this is Health_temperature"
       }
+    },
+    {
+      "name": "Health_sub",
+      "pageSourceFile": "src/main/ets/pages/Health_sub.ets",
+      "buildFunction": "Health_subBuilder",
+      "data": {
+        "description": "this is Health_sub"
+      }
     }
   ]
 }
