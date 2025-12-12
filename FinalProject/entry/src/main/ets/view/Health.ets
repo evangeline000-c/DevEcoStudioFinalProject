@@ -1,6 +1,21 @@
 //健康宣教组件
-import { healthDataList, heartRateData, users, type HealthData, type UserAndPart } from '../viewmodel/HealthNumData';
+import { healthDataList, heartRateData, users, type HealthData, type userData } from '../viewmodel/HealthNumData';
 import { HealthCard} from './HealthCard'
+
+interface UserAndPart {
+  id: number; // 用户id
+  name: string; // 用户名
+  part: "heartRate" | "oxygen" | "pressure" | "sleep" | "stress" | "sugar" |"temperature"; // 指标名
+}
+interface SelectOption {
+  // 核心属性
+  value: string; // 必需：选中后返回的值
+  text: string;  // 必需：显示给用户的文本
+
+  // 可选属性
+  icon?: Resource | string;
+}
+
 
 @Component
 export default struct Health {
@@ -31,12 +46,16 @@ export default struct Health {
     this.pathStack.pushPathByName('Health_sub', item);
   }
 
+  // 用于选择器
   @State
-  private selectedValue:string = "赵智晟";
-  private dataArray: string[] = users;
+  private selectedValue:string = users[0].name;
+  private dataArray: SelectOption[] = users.map((user)=>{
+    return {text: user.name, value: user.name} as SelectOption;
+  });
 
+  // 传递给子页面的参数
   @State
-  userAndPart: UserAndPart = {user:this.selectedValue, part:"heartRate"};
+  userAndPart: UserAndPart = {id: 0, name: users[0].name, part:"heartRate"};
 
   build() {
     Column(){
@@ -66,34 +85,35 @@ export default struct Health {
         .margin({left:'12vp',top:'24vp', bottom:'12vp'})
         .alignItems(HorizontalAlign.Start)
 
-        Select(this.dataArray.map(item => ({ value: item, text: item } as SelectOption ))) {
-        // 1. 设置默认选中项的文本
-        Text('赵智晟')
+        Select(this.dataArray){
+          Text()
+          .width('100%') // 确保 Text 占据 Select 的全部宽度
+          .textAlign(TextAlign.Start) // 设置文本左对齐 (居左)
       }
-      .selected(this.dataArray.indexOf(this.selectedValue)) // 2. 设置默认选中项的索引
+      .selected(0) // 设置默认选中项的索引
       
-      // 3. 监听选择变化事件
+      // 监听选择变化事件
       .onSelect((index: number, value: string) => {
         // 更新状态变量
         this.selectedValue = value;
-        this.userAndPart.user = this.selectedValue;
+        this.userAndPart.id = index;
+        this.userAndPart.name = users[index].name;
         console.log(`用户选择了索引 ${index}, 值为 ${value}`);
       })
       
-      // 4. 设置选择器样式（可选）
+      // 设置选择器样式
       .fontColor(Color.Black)
       .backgroundColor(Color.White)
-      .width(200)
+      .width('90%')
       .height(40)
-      .borderRadius(8)
-      .border({ width: 1, color: Color.Gray })
+      .borderRadius(6)
         
         Scroll() {
           Column() {
             // 健康卡片网格
             Grid() {
               GridItem() {
-                HealthCard({ data: heartRateData }).onClick(()=>{
+                HealthCard({ data: heartRateData[this.userAndPart.id] }).onClick(()=>{
                   this.userAndPart.part = "heartRate";
                   this.Health_heartRate(this.userAndPart);
                 });
@@ -101,7 +121,7 @@ export default struct Health {
               .columnStart(0)
               .columnEnd(1)
 
-              ForEach(healthDataList, (item: HealthData) => {
+              ForEach(healthDataList[this.userAndPart.id], (item: HealthData) => {
                 GridItem() {
                   HealthCard({ data: item }).onClick(() => {
                     if(item.label === '血氧饱和度'){
