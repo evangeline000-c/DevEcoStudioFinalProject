@@ -100,11 +100,11 @@ export const healthDataList: Array<HealthData[]> = [
       label: '血糖',
       value: '5.2',
       unit: 'mmol/L',
-      history: [5.2, 5.3, 5.2, 5.1],
+      history: [5.2, 6.3, 7.5, 5.1],
       historyWithTime: [
         { value: 5.2, time: '2025-12-12 08:30:00' }, 
-        { value: 5.3, time: '2025-12-11 18:30:00' },
-        { value: 5.2, time: '2025-12-11 12:30:00' },
+        { value: 6.3, time: '2025-12-11 18:30:00' },
+        { value: 7.5, time: '2025-12-11 12:30:00' },
         { value: 5.1, time: '2025-12-11 08:30:00' }, 
       ],
     },
@@ -114,6 +114,9 @@ export const healthDataList: Array<HealthData[]> = [
       sleepData:[{value:2.5, name:'深度'},{value:5, name:'浅度'}],
       unit: '小时',
       type: 'pie',
+      historyWithTime: [
+        { value: 7.5, time: '2025-12-12 8:05:00' }, 
+      ],
     },
     {
       label: '压力',
@@ -175,12 +178,12 @@ export const healthDataList: Array<HealthData[]> = [
       label: '血糖',
       value: '5.1',
       unit: 'mmol/L',
-      history: [5.1, 5.0, 5.3, 5.2],
+      history: [5.1, 6.0, 8.0, 4.9],
       historyWithTime: [
         { value: 5.1, time: '2025-12-12 08:30:00' },
-        { value: 5.0, time: '2025-12-11 18:30:00' },
-        { value: 5.3, time: '2025-12-11 12:30:00' },
-        { value: 5.2, time: '2025-12-11 08:30:00' },
+        { value: 6.0, time: '2025-12-11 18:30:00' },
+        { value: 8.0, time: '2025-12-11 12:30:00' },
+        { value: 4.9, time: '2025-12-11 08:30:00' },
       ],
     },
     {
@@ -189,6 +192,9 @@ export const healthDataList: Array<HealthData[]> = [
       sleepData:[{value:3.5, name:'深度'},{value:6, name:'浅度'}],
       unit: '小时',
       type: 'pie',
+      historyWithTime: [
+        { value: 9.5, time: '2025-12-12 8:05:00' }, 
+      ],
     },
     {
       label: '压力',

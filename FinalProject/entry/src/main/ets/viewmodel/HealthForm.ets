@@ -52,7 +52,7 @@ export default struct HealthForm{
       }
     })
   }
-  .width('95%')
+  .width('100%')
   .divider({ strokeWidth: 1, color: '#CCCCCC' }) // List 分隔线
   }
 }

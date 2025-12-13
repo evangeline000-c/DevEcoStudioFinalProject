@@ -1,5 +1,5 @@
 //健康宣教组件
-import { healthDataList, heartRateData, users, type HealthData, type userData } from '../viewmodel/HealthNumData';
+import { healthDataList, heartRateData, users, type HealthData} from '../viewmodel/HealthNumData';
 import { HealthCard} from './HealthCard'
 
 export interface UserAndPart {

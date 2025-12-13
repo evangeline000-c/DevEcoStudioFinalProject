@@ -113,42 +113,42 @@ export struct Health_sub {
           index: $$this.currentIndex
         }) {
           TabContent() {
-            Health_heartRate()
-          }
+            Health_heartRate({userId:this.currentUserId})
+          }.padding({ top:'8vp', left: '8vp', right: '8vp' })
           .backgroundColor('#F1F3F5')
           .tabBar(this.TabBuilder('心率', 0))
 
           TabContent() {
-            Health_oxygen()
-          }
+            Health_oxygen({userId:this.currentUserId})
+          }.padding({ top:'8vp', left: '8vp', right: '8vp' })
           .backgroundColor('#F1F3F5')
           .tabBar(this.TabBuilder('血氧', 1))
 
           TabContent() {
-            Health_temperature()
-          }
+            Health_temperature({userId:this.currentUserId})
+          }.padding({ top:'8vp', left: '8vp', right: '8vp' })
           .backgroundColor('#F1F3F5')
           .tabBar(this.TabBuilder('体温', 2))
 
           TabContent() {
-            Health_sugar()
-          }.padding({ left: '12vp', right: '12vp' })
+            Health_sugar({userId:this.currentUserId})
+          }.padding({ top:'8vp', left: '8vp', right: '8vp' })
           .backgroundColor('#F1F3F5')
           .tabBar(this.TabBuilder('血糖', 3))
 
           TabContent() {
-            Health_pressure()
-          }.padding({ left: '12vp', right: '12vp' })
+            Health_pressure({userId:this.currentUserId})
+          }.padding({ top:'8vp', left: '8vp', right: '8vp' })
           .backgroundColor('#F1F3F5')
           .tabBar(this.TabBuilder('血压', 4))
           TabContent() {
-            Health_stress()
-          }.padding({ left: '12vp', right: '12vp' })
+            Health_stress({userId:this.currentUserId})
+          }.padding({ top:'8vp', left: '8vp', right: '8vp' })
           .backgroundColor('#F1F3F5')
           .tabBar(this.TabBuilder('压力', 5))
           TabContent() {
-            Health_sleep()
-          }.padding({ left: '12vp', right: '12vp' })
+            Health_sleep({userId:this.currentUserId})
+          }.padding({ top:'8vp', left: '8vp', right: '8vp' })
           .backgroundColor('#F1F3F5')
           .tabBar(this.TabBuilder('睡眠', 6))
         }
