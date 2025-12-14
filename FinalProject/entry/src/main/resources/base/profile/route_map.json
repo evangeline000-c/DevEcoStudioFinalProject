@@ -5,7 +5,7 @@
       "pageSourceFile": "src/main/ets/pages/MainPages.ets",
       "buildFunction": "MainPageBuilder",
       "data": {
-        "description" : "this is mainPage"
+        "description": "this is mainPage"
       }
     },
     {
@@ -13,7 +13,7 @@
       "pageSourceFile": "src/main/ets/pages/Admission.ets",
       "buildFunction": "AdmissionBuilder",
       "data": {
-        "description" : "this is Admission"
+        "description": "this is Admission"
       }
     },
     {
@@ -21,7 +21,7 @@
       "pageSourceFile": "src/main/ets/pages/ServiceOrders.ets",
       "buildFunction": "ServiceOrdersBuilder",
       "data": {
-        "description" : "this is ServiceOrders"
+        "description": "this is ServiceOrders"
       }
     },
     {
@@ -29,7 +29,7 @@
       "pageSourceFile": "src/main/ets/pages/Consultation.ets",
       "buildFunction": "ConsultationBuilder",
       "data": {
-        "description" : "this is Consultation"
+        "description": "this is Consultation"
       }
     },
     {
@@ -37,7 +37,7 @@
       "pageSourceFile": "src/main/ets/pages/ServiceProcurement.ets",
       "buildFunction": "ServiceProcurementBuilder",
       "data": {
-        "description" : "this is ServiceProcurement"
+        "description": "this is ServiceProcurement"
       }
     },
     {
@@ -45,9 +45,16 @@
       "pageSourceFile": "src/main/ets/pages/HealthListDetail.ets",
       "buildFunction": "HealthListDetailBuilder",
       "data": {
-        "description" : "this is HealthListDetail"
+        "description": "this is HealthListDetail"
+      }
+    },
+    {
+      "name": "Health_sub",
+      "pageSourceFile": "src/main/ets/pages/Health_sub.ets",
+      "buildFunction": "Health_subBuilder",
+      "data": {
+        "description": "this is Health_sub"
       }
     }
-
   ]
 }

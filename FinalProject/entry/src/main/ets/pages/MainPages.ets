@@ -60,7 +60,7 @@ export struct MainPages {
 
           TabContent() {
             Health()
-          }.padding({ left: '12vp', right: '12vp' })
+          }
           .backgroundColor('#F1F3F5')
           .tabBar(this.TabBuilder('健康', 1, $r('sys.symbol.waveform_path_ecg_heart_fill')))
 
