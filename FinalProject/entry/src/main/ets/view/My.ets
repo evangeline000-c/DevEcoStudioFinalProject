@@ -1,76 +1,94 @@
-//我的 组件
-
+import{ NavItem, UserHeader} from './MyComponents'
+interface CurrentUser { account?: string; phone?: string }
 
 @Component
 export default struct My {
   pathStack: NavPathStack = AppStorage.get("pathStack") as NavPathStack;//跳转页面相关 不要删
+  @State currentUser: CurrentUser | null = null;
+  @State userName: string = '';
+  @State userPhone: string = '';
+
+  aboutToAppear() {
+    const u = AppStorage.get('currentUser') as CurrentUser | null;
+    this.currentUser = u;
+    // 显示当前登录信息
+    if (u) {
+      this.userName = u.account ? u.account : '';
+      this.userPhone = u.phone ? u.phone : '';
+    } else {
+      this.userName = '';
+      this.userPhone = '';
+    }
+  }
   Consultation(result: boolean): void {
-    //跳转页面相关 不要删
     this.pathStack.pushPathByName('Consultation', null);
   }
   ServiceOrders(result: boolean): void {
-    //跳转页面相关 不要删
     this.pathStack.pushPathByName('ServiceOrders', null);
   }
   Admission(result: boolean): void {
-    //跳转页面相关 不要删
     this.pathStack.pushPathByName('Admission', null);
   }
 
   build() {
     NavDestination() {
-
       Column() {
         Text('我的')
+          .height('60vp')
           .width('100%')
-          .margin({
-            top: '48vp',
-            bottom: '12vp'
-          })
-          .fontWeight(700)
-          .fontSize('26fp')
+          .fontWeight(220)
+          .fontSize('20fp')
+          .fontColor('#FFFFFF')
+          .textAlign(TextAlign.Center)
 
-        Button('问诊记录')
-          .width('50%')
-          .height('80vp')
-          .fontSize('16fp')
-          .backgroundColor('#007DFF')
-          .onClick(() => {
-            this.Consultation(true);
-          })//这个onclick页面跳转逻辑不能删 最后可以不用Button实现这个键 但是用了其他组件也要补这个逻辑
+        UserHeader({
+          bgImage: 'app.media.background_My',
+          avatar: 'app.media.human',
+          userName: this.userName && this.userName.length > 0 ? this.userName : '未登录',
+          userPhone: this.userPhone && this.userPhone.length > 0 ? this.userPhone : ''
+        });
 
+        NavItem({
+          icon: 'app.media.record',
+          text: '问诊记录'
+        })
+        .onClick(() => {
+          this.Consultation(true);
+        })
 
-        Button('服务订单')
-          .width('50%')
-          .height('80vp')
-          .fontSize('16fp')
-          .backgroundColor('#007DFF')
-          .onClick(() => {
-            this.ServiceOrders(true);
-          })//这个onclick页面跳转逻辑不能删
+        NavItem({
+          icon: 'app.media.service',
+          text: '服务订单'
+        })
+        .onClick(() => {
+          this.ServiceOrders(true);
+        })
 
-        Button('入住申请')
-          .width('50%')
-          .height('80vp')
-          .fontSize('16fp')
-          .backgroundColor('#007DFF')
-          .onClick(() => {
-            this.Admission(true);
-          })//这个onclick页面跳转逻辑不能删
+        NavItem({
+          icon: 'app.media.bed',
+          text: '入住申请'
+        })
+        .onClick(() => {
+          this.Admission(true);
+        })
 
-        Button('退出登录')
-          .width('50%')
-          .height('80vp')
-          .fontSize('16fp')
-          .backgroundColor('#007DFF')
-          .onClick(() => {
-            this.pathStack.clear()
-          })//这个onclick页面跳转逻辑不能删
-
+        NavItem({
+          icon: 'app.media.out',
+          text: '退出登陆'
+        })
+        .onClick(() => {
+          this.pathStack.clear()
+        })
       }
-      .width('100%')
+      .width('150%')
       .height('100%')
-      .backgroundColor('#F1F3F5')
+      .linearGradient({
+        colors: [
+          ['#21deb4',0],
+          ['#1121deb4',0.3],
+          ['#F1F3F5',0.7]
+        ]
+      })
     }
   }
 }

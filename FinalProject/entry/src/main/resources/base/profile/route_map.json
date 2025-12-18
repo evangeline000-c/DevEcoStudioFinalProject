@@ -39,7 +39,30 @@
       "data": {
         "description" : "this is ServiceProcurement"
       }
+    },
+    {
+      "name": "AddUser",
+      "pageSourceFile": "src/main/ets/pages/AddUser.ets",
+      "buildFunction": "AddUserBuilder",
+      "data": {
+        "description": "this is ServiceProcurement"
+      }
+    },
+    {
+      "name": "ForgetPassword",
+      "pageSourceFile": "src/main/ets/pages/ForgetPassword.ets",
+      "buildFunction": "ForgetPasswordBuilder",
+      "data": {
+        "description": "this is ForgetPassword"
+      }
+    },
+    {
+      "name": "Register",
+      "pageSourceFile": "src/main/ets/pages/Register.ets",
+      "buildFunction": "RegisterBuilder",
+      "data": {
+        "description": "this is Register"
+      }
     }
-
   ]
 }
