@@ -29,7 +29,11 @@ struct AdmissionForm {
   pathStack: NavPathStack = AppStorage.get("pathStack") as NavPathStack;
 
   // 康养用户列表
-  @State patientList: PatientInfo[] = getPatientList();
+  @State patientList: PatientInfo[] = [];
+
+  aboutToAppear(): void {
+    this.patientList = getPatientList();
+  }
 
   // 机构列表
   @State organizationList: OrganizationInfo[] = OrganizationList;

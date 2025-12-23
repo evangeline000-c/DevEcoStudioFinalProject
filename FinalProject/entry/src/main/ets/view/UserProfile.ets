@@ -7,7 +7,7 @@ import { RefreshComponent, UserList } from './UserProfileBuilders';
 export default struct UserProfile {
   pathStack: NavPathStack = AppStorage.get("pathStack") as NavPathStack;
   // 数据源
-  private dataSource = new UserDataSource(INIT_USER_DATA);
+  private dataSource: UserDataSource = AppStorage.get<UserDataSource>('userDataSource') || new UserDataSource(INIT_USER_DATA);
   @State refreshStatus: boolean = false;
   @State refreshText: string = '下拉刷新';
   @State currentOffsetY: number = 0;

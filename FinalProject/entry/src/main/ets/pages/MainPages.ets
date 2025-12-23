@@ -5,6 +5,8 @@ import Health from "../view/Health"
 import My from "../view/My"
 import News from "../view/News"
 import UserProfile from "../view/UserProfile"
+import { UserDataSource } from "../view/UserModel"
+import { INIT_USER_DATA } from "../view/UserProfileConfig"
 
 //MainPage()的入口函数
 @Builder
@@ -16,6 +18,14 @@ export function MainPageBuilder() {
 export struct MainPages {
   @State currentIndex: number = 0;
   private tabsController: TabsController = new TabsController();
+
+  aboutToAppear(): void {
+    // 全局初始化 UserDataSource
+    if (!AppStorage.get<UserDataSource>('userDataSource')) {
+      const ds = new UserDataSource(INIT_USER_DATA);
+      AppStorage.setOrCreate('userDataSource', ds);
+    }
+  }
 
   @Builder
   TabBuilder(title: ResourceStr, index: number, selectedImg: Resource) {

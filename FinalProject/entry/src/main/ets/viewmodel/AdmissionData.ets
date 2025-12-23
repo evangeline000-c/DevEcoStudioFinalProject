@@ -148,34 +148,5 @@ export function getRoomsByDepartment(departmentId: string): RoomInfo[] {
   return RoomList.filter(room => room.departmentId === departmentId);
 }
 
-// 模拟的入住申请数据列表 (仅保留部分用于演示,其余用户可用于手动测试)
-export const AdmissionItemList: AdmissionItemType[] = [
-  new AdmissionItemType(
-    1,
-    '1',
-    '张三',
-    '1',
-    '阳光康养中心',
-    '1',
-    '普通康养区',
-    '101',
-    '101室（单人间）',
-    '2025-01-10 09:30',
-    '已通过',
-    '需要配备轮椅'
-  ),
-  new AdmissionItemType(
-    2,
-    '2',
-    '李四',
-    '2',
-    '和谐养老院',
-    '4',
-    '基础护理区',
-    '401',
-    '401室（双人间）',
-    '2025-01-15 14:20',
-    '待审核',
-    ''
-  )
-];
+// 入住申请数据列表，初始为空，手动添加
+export const AdmissionItemList: AdmissionItemType[] = [];

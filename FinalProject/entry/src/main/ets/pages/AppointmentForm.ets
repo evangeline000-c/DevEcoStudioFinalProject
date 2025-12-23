@@ -1,17 +1,12 @@
 // 预约信息填写页面
 import { ServiceItemType, AppointmentFormType, ServiceItemList } from '../viewmodel/ServiceProcurementData';
 import ServiceItemCard from '../view/ServiceItemCard';
+import { PatientInfo, getPatientList } from '../viewmodel/PatientData';
 import promptAction from '@ohos.promptAction';
 
 // Select组件选项类型
 interface SelectOption {
   value: string;
-}
-
-// 康养用户类型
-interface PatientInfo {
-  id: string;
-  name: string;
 }
 
 // AppointmentForm()的入口函数
@@ -26,12 +21,9 @@ struct AppointmentForm {
   @State formData: AppointmentFormType = new AppointmentFormType();
   pathStack: NavPathStack = AppStorage.get("pathStack") as NavPathStack;
 
-  // 模拟的康养用户列表
-  @State patientList: PatientInfo[] = [
-    { id: '1', name: '张三' },
-    { id: '2', name: '李四' },
-    { id: '3', name: '王五' }
-  ];
+  // 康养用户列表 (使用 getPatientList 初始化或在 aboutToAppear 更新)
+  @State patientList: PatientInfo[] = [];
+
 
   // 模拟的看护名称列表
   @State caregiverList: string[] = [
@@ -50,6 +42,9 @@ struct AppointmentForm {
   ];
 
   aboutToAppear(): void {
+    // 获取康养用户列表
+    this.patientList = getPatientList();
+
     // 从导航参数中获取服务ID
     const param: Object | undefined = this.pathStack.getParamByName('AppointmentForm');
     
