@@ -9,6 +9,22 @@
       }
     },
     {
+      "name": "ConsultationDetail",
+      "pageSourceFile": "src/main/ets/pages/ConsultationDetails.ets",
+      "buildFunction": "ConsultationDetailBuilder",
+      "data": {
+        "description" : "this is ConsultationDetail"
+      }
+    },
+    {
+      "name": "ServiceOrderDetail",
+      "pageSourceFile": "src/main/ets/pages/ServiceOrderDetail.ets",
+      "buildFunction": "ServiceOrderDetailBuilder",
+      "data": {
+        "description" : "this is ServiceOrderDetail"
+      }
+    },
+    {
       "name": "Admission",
       "pageSourceFile": "src/main/ets/pages/Admission.ets",
       "buildFunction": "AdmissionBuilder",
