@@ -158,7 +158,7 @@ struct AdmissionForm {
         }
         .width('100%')
         .height('50vp')
-        .backgroundColor('#00CEB8')
+        .backgroundColor('#21deb4')
 
         // 滚动容器
         Scroll() {
@@ -289,7 +289,7 @@ struct AdmissionForm {
             .height('48vp')
             .fontSize('18fp')
             .fontWeight(600)
-            .backgroundColor('#00CEB8')
+            .backgroundColor('#21deb4')
             .borderRadius('24vp')
             .onClick(() => {
               this.handleSubmit();
@@ -303,7 +303,9 @@ struct AdmissionForm {
       .width('100%')
       .height('100%')
       .backgroundColor('#F1F3F5')
+      .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.BOTTOM])
     }
     .hideTitleBar(true)
+    .backgroundColor('#d821deb4')
   }
 }

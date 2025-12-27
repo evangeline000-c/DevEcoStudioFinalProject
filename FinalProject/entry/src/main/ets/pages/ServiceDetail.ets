@@ -74,7 +74,7 @@ struct ServiceDetail {
         }
         .width('100%')
         .height('50vp')
-        .backgroundColor('#00CEB8')
+        .backgroundColor('#21deb4')
 
         // 滚动容器
         Scroll() {
@@ -191,7 +191,7 @@ struct ServiceDetail {
                     .vertical(true)
                     .strokeWidth(3)
                     .height('16vp')
-                    .color('#00CEB8')
+                    .color('#21deb4')
                     .margin({ right: '8vp' })
                   Text('费用')
                     .fontSize('14fp')
@@ -260,7 +260,7 @@ struct ServiceDetail {
             .height('48vp')
             .fontSize('18fp')
             .fontWeight(600)
-            .backgroundColor('#00CEB8')
+            .backgroundColor('#21deb4')
             .borderRadius('24vp')
             .onClick(() => {
               this.handleAppointment();
@@ -274,7 +274,9 @@ struct ServiceDetail {
       .width('100%')
       .height('100%')
       .backgroundColor('#F1F3F5')
+      .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.BOTTOM])
     }
     .hideTitleBar(true)
+    .backgroundColor('#d821deb4')
   }
 }

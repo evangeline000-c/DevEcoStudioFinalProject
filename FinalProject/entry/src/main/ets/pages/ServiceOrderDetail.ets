@@ -68,9 +68,9 @@ struct ServiceOrderDetail {
 
   // 获取状态颜色
   getStatusColor(status: string): string {
-    if (status === '待服务') return '#00CEB8';
+    if (status === '待服务') return '#21deb4';
     if (status === '待评价') return '#FF9800';
-    if (status === '已支付') return '#00CEB8';
+    if (status === '已支付') return '#21deb4';
     return '#999999';
   }
 
@@ -81,13 +81,13 @@ struct ServiceOrderDetail {
       ForEach(['服务介绍', '看护信息', '服务记录', '康复评估'], (tab: string, index: number) => {
         Text(tab)
           .fontSize('14fp')
-          .fontColor(this.currentTab === index ? '#00CEB8' : '#666666')
+          .fontColor(this.currentTab === index ? '#21deb4' : '#666666')
           .layoutWeight(1)
           .textAlign(TextAlign.Center)
           .padding({ top: '12vp', bottom: '12vp' })
           .border({
             width: { bottom: this.currentTab === index ? 2 : 0 },
-            color: '#00CEB8'
+            color: '#21deb4'
           })
           .onClick(() => {
             this.currentTab = index;
@@ -165,7 +165,7 @@ struct ServiceOrderDetail {
             .vertical(true)
             .strokeWidth(3)
             .height('16vp')
-            .color('#00CEB8')
+            .color('#21deb4')
             .margin({ right: '8vp' })
           Text('服务介绍')
             .fontSize('14fp')
@@ -195,7 +195,7 @@ struct ServiceOrderDetail {
             .vertical(true)
             .strokeWidth(3)
             .height('16vp')
-            .color('#00CEB8')
+            .color('#21deb4')
             .margin({ right: '8vp' })
           Text('预约须知')
             .fontSize('14fp')
@@ -224,7 +224,7 @@ struct ServiceOrderDetail {
             .vertical(true)
             .strokeWidth(3)
             .height('16vp')
-            .color('#00CEB8')
+            .color('#21deb4')
             .margin({ right: '8vp' })
           Text('费用须知')
             .fontSize('14fp')
@@ -253,7 +253,7 @@ struct ServiceOrderDetail {
             .vertical(true)
             .strokeWidth(3)
             .height('16vp')
-            .color('#00CEB8')
+            .color('#21deb4')
             .margin({ right: '8vp' })
           Text('费用')
             .fontSize('14fp')
@@ -399,7 +399,7 @@ struct ServiceOrderDetail {
         }
         .width('100%')
         .height('50vp')
-        .backgroundColor('#00CEB8')
+        .backgroundColor('#21deb4')
 
         // Tab切换
         this.TabBar()
@@ -428,7 +428,9 @@ struct ServiceOrderDetail {
       .width('100%')
       .height('100%')
       .backgroundColor('#F5F5F5')
+      .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.BOTTOM])
     }
     .hideTitleBar(true)
+    .backgroundColor('#d821deb4')
   }
 }

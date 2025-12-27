@@ -40,7 +40,7 @@ struct ServiceProcurement {
         }
         .width('100%')
         .height('50vp')
-        .backgroundColor('#00CEB8')
+        .backgroundColor('#21deb4')
 
         // 服务项目列表
         ServiceItemListView({
@@ -52,7 +52,9 @@ struct ServiceProcurement {
       .width('100%')
       .height('100%')
       .backgroundColor('#F1F3F5')
+      .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.BOTTOM])
     }
-    .hideTitleBar(true) //如果为true就没有返回的箭头
+    .hideTitleBar(true)
+    .backgroundColor('#d821deb4')
   }
 }

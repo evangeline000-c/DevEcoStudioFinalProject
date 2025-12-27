@@ -44,9 +44,9 @@ struct ServiceOrders {
 
   // 获取状态颜色
   getStatusColor(status: string): string {
-    if (status === '待服务') return '#00CEB8';
+    if (status === '待服务') return '#21deb4';
     if (status === '待评价') return '#FF9800';
-    if (status === '已支付') return '#00CEB8';
+    if (status === '已支付') return '#21deb4';
     return '#999999';
   }
 
@@ -168,7 +168,7 @@ struct ServiceOrders {
         }
         .width('100%')
         .height('50vp')
-        .backgroundColor('#00CEB8')
+        .backgroundColor('#21deb4')
 
         // 订单列表
         if (this.serviceOrders.length > 0) {
@@ -199,7 +199,9 @@ struct ServiceOrders {
       .width('100%')
       .height('100%')
       .backgroundColor('#F5F5F5')
+      .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.BOTTOM])
     }
     .hideTitleBar(true)
+    .backgroundColor('#d821deb4')
   }
 }

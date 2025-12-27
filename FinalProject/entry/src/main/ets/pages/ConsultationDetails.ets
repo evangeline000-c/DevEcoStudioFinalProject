@@ -116,10 +116,10 @@ struct ConsultationDetail {
 
   // 获取状态颜色
   getStatusColor(status: string): string {
-    if (status === '已支付') return '#00CEB8';
+    if (status === '已支付') return '#21deb4';
     if (status === '申请退款') return '#FF9800';
-    if (status === '未支付') return '#00CEB8';
-    return '#00CEB8';
+    if (status === '未支付') return '#21deb4';
+    return '#21deb4';
   }
 
   // 订单信息卡片
@@ -134,11 +134,11 @@ struct ConsultationDetail {
         Blank()
         Text(this.isPaymentView ? '未支付' : (this.orderData.status as string))
           .fontSize('12fp')
-          .fontColor(this.isPaymentView ? '#00CEB8' : this.getStatusColor(this.orderData.status as string))
+          .fontColor(this.isPaymentView ? '#21deb4' : this.getStatusColor(this.orderData.status as string))
           .padding({ left: '12vp', right: '12vp', top: '4vp', bottom: '4vp' })
           .border({
             width: 1,
-            color: this.isPaymentView ? '#00CEB8' : this.getStatusColor(this.orderData.status as string),
+            color: this.isPaymentView ? '#21deb4' : this.getStatusColor(this.orderData.status as string),
             radius: '4vp'
           })
       }
@@ -198,7 +198,7 @@ struct ConsultationDetail {
           .vertical(true)
           .strokeWidth(3)
           .height('16vp')
-          .color('#00CEB8')
+          .color('#21deb4')
           .margin({ right: '8vp' })
         Text('处方信息')
           .fontSize('16fp')
@@ -300,7 +300,7 @@ struct ConsultationDetail {
           .vertical(true)
           .strokeWidth(3)
           .height('16vp')
-          .color('#00CEB8')
+          .color('#21deb4')
           .margin({ right: '8vp' })
         Text('处方药信息')
           .fontSize('16fp')
@@ -448,7 +448,7 @@ struct ConsultationDetail {
           .vertical(true)
           .strokeWidth(3)
           .height('16vp')
-          .color('#00CEB8')
+          .color('#21deb4')
           .margin({ right: '8vp' })
         Text('收件信息')
           .fontSize('16fp')
@@ -577,7 +577,7 @@ struct ConsultationDetail {
         }
         .width('100%')
         .height('50vp')
-        .backgroundColor('#00CEB8')
+        .backgroundColor('#21deb4')
 
         // 内容区域
         Scroll() {
@@ -607,7 +607,7 @@ struct ConsultationDetail {
               .height('50vp')
               .fontSize('16fp')
               .fontColor(Color.White)
-              .backgroundColor('#00CEB8')
+              .backgroundColor('#21deb4')
               .borderRadius('25vp')
               .onClick(() => {
                 if (this.isPaymentView) {
@@ -625,7 +625,9 @@ struct ConsultationDetail {
       .width('100%')
       .height('100%')
       .backgroundColor('#F5F5F5')
+      .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.BOTTOM])
     }
     .hideTitleBar(true)
+    .backgroundColor('#d821deb4')
   }
 }
