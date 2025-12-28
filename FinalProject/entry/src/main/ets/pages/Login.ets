@@ -69,7 +69,7 @@ struct Login {
         Text($r('app.string.login'))
           .height($r('app.float.height_text'))
           .width(CommonConstants.FULL_PARENT)
-          .fontWeight($r('app.float.font_weight_220'))
+          .fontWeight($r('app.string.font_weight_220'))
           .fontSize($r('app.float.font_size'))
           .fontColor($r('app.color.white'))
           .textAlign(TextAlign.Center)

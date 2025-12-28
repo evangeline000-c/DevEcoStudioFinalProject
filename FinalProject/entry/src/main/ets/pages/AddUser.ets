@@ -57,7 +57,7 @@ export default struct AddUser {
         Text($r('app.string.AddUser'))
           .height($r('app.float.height_text'))
           .width(CommonConstants.FULL_PARENT)
-          .fontWeight($r('app.float.font_weight_220'))//字体粗细
+          .fontWeight($r('app.string.font_weight_220'))//字体粗细
           .fontSize($r('app.float.font_size'))//字体大小
           .fontColor($r('app.color.white'))
           .textAlign(TextAlign.Center)

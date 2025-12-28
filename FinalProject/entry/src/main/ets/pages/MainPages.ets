@@ -39,7 +39,7 @@ export struct MainPages {
       Text(title)
         .margin({ top: $r('app.float.layout_4') })
         .fontSize($r('app.float.font_size_15'))
-        .fontWeight($r('app.float.font_weight_500'))
+        .fontWeight($r('app.string.font_weight_500'))
         .fontColor(this.currentIndex === index ? $r('app.color.main_green') : $r('app.color.health_font_black2'))
     }
     .backgroundColor($r('app.color.white'))

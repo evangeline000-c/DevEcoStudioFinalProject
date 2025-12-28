@@ -63,7 +63,7 @@ export default struct Health {
       Text($r('app.string.tab_health'))
       .height($r('app.float.height_text'))
       .width(CommonConstants.FULL_PARENT)
-      .fontWeight($r('app.float.font_weight_220'))//字体粗细
+      .fontWeight($r('app.string.font_weight_220'))//字体粗细
       .fontSize($r('app.float.font_size'))//字体大小
       .fontColor($r('app.color.white'))
       .backgroundColor($r('app.color.green1'))
@@ -72,7 +72,7 @@ export default struct Health {
       Column(){
         Column(){
           Text($r('app.string.user_health'))
-            .fontWeight($r('app.float.font_weight_700'))
+            .fontWeight($r('app.string.font_weight_700'))
             .fontSize($r('app.float.font_size_30'))
 
             Divider()

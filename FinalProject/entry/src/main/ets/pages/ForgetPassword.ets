@@ -65,7 +65,7 @@ export default struct ForgetPassword {
           })
 
           Text($r('app.string.forget_password'))
-            .fontWeight($r('app.float.font_weight_220'))
+            .fontWeight($r('app.string.font_weight_220'))
             .fontSize($r('app.float.font_size'))
             .fontColor($r('app.color.white'))
             .margin({ left: $r('app.float.distance_110') })

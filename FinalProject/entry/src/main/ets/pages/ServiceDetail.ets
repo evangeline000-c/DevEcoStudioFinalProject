@@ -90,7 +90,7 @@ struct ServiceDetail {
               // 服务名称
               Text(this.serviceItem.serviceName)
                 .fontSize($r('app.float.font_size_24'))
-                .fontWeight($r('app.float.font_weight_700'))
+                .fontWeight($r('app.string.font_weight_700'))
                 .fontColor($r('app.color.font_color1'))
                 .width(CommonConstants.FULL_PARENT)
 

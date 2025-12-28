@@ -65,7 +65,7 @@ export default struct Home {
         Text($r('app.string.tab_home'))
           .height($r('app.float.height_text'))
           .width(CommonConstants.FULL_PARENT)
-          .fontWeight($r('app.float.font_weight_220'))//字体粗细
+          .fontWeight($r('app.string.font_weight_220'))//字体粗细
           .fontSize($r('app.float.font_size'))//字体大小
           .backgroundColor($r('app.color.green1'))
           .fontColor($r('app.color.white'))

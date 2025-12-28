@@ -62,7 +62,7 @@ struct Register {
           })
 
           Text($r('app.string.register'))
-            .fontWeight($r('app.float.font_weight_220'))//字体粗细
+            .fontWeight($r('app.string.font_weight_220'))//字体粗细
             .fontSize($r('app.float.font_size'))//字体大小
             .fontColor($r('app.color.white'))
             .margin({ left: $r('app.float.distance_130') })

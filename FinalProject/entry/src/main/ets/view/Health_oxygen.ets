@@ -34,7 +34,7 @@ export default struct Health_oxygen {
             Row({ space: 2 }) {
               Text(this.data.value)
                 .fontSize($r('app.float.font_size'))
-                .fontWeight($r('app.float.font_weight_700'))
+                .fontWeight($r('app.string.font_weight_700'))
                 .fontColor($r('app.color.health_font_black1'))
               Text(this.data.unit)
                 .fontSize($r('app.float.font_size_12'))

@@ -540,6 +540,18 @@
     { "name": "delete_user", "value": "删除用户" },
     { "name": "confirm_delete", "value": "确认删除" },
     { "name": "already_at_end", "value": "已经到底了" },
-    {"name": "consultation", "value": "问诊记录"}
+    {"name": "consultation", "value": "问诊记录"},
+    {
+      "name": "font_weight_220",
+      "value": "220"
+    },
+    {
+      "name": "font_weight_500",
+      "value": "500"
+    },
+    {
+      "name": "font_weight_700",
+      "value": "700"
+    }
   ]
 }

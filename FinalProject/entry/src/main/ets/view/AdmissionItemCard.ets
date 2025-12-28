@@ -29,7 +29,7 @@ export default struct AdmissionItemCard {
           .fontColor($r('app.color.font_color'))
         Text(this.admissionItem.patientName)
           .fontSize($r('app.float.font_size_16'))
-          .fontWeight($r('app.float.font_weight_700'))
+          .fontWeight($r('app.string.font_weight_700'))
           .fontColor($r('app.color.font_color1'))
           .layoutWeight(1)
       }

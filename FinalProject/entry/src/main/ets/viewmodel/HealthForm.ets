@@ -11,7 +11,7 @@ export default struct HealthForm{
   Cell(content: string, isHeader: boolean = false) {
     Text(content)
       .fontSize(isHeader ? 16 : $r('app.float.font_size_14'))
-      .fontWeight(isHeader ? $r('app.float.font_weight_500') : FontWeight.Normal)
+      .fontWeight(isHeader ? $r('app.string.font_weight_500') : FontWeight.Normal)
       .fontColor( Color.Black)
       .textAlign(TextAlign.Center)
       .width(CommonConstants.FULL_PARENT)

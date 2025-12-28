@@ -61,7 +61,7 @@ struct HealthListDetail{
           Row(){
             Text($r('app.string.health_detail_title'))
               .height($r('app.float.height_text'))
-              .fontWeight($r('app.float.font_weight_220'))//字体粗细
+              .fontWeight($r('app.string.font_weight_220'))//字体粗细
               .fontSize($r('app.float.font_size'))//字体大小
               .backgroundColor($r('app.color.black2'))
               .fontColor($r('app.color.white'))

@@ -43,7 +43,7 @@ export struct Health_sub {
       Text(title)
         .margin({ top: $r('app.float.layout_4') })
         .fontSize($r('app.float.font_size_15'))
-        .fontWeight($r('app.float.font_weight_500'))
+        .fontWeight($r('app.string.font_weight_500'))
         .fontColor(this.currentIndex === index ? $r('app.color.main_green') : $r('app.color.health_font_black2'))
     }
     .backgroundColor($r('app.color.white'))
@@ -77,7 +77,7 @@ export struct Health_sub {
             Row() {
               Text($r('app.string.health_info'))
                 .height($r('app.float.height_text'))
-                .fontWeight($r('app.float.font_weight_220'))//字体粗细
+                .fontWeight($r('app.string.font_weight_220'))//字体粗细
                 .fontSize($r('app.float.font_size'))//字体大小
                 .fontColor($r('app.color.white'))
                 .width(CommonConstants.FULL_PARENT)
@@ -91,7 +91,7 @@ export struct Health_sub {
 
           Column(){
             Text(this.currentUserName)
-              .fontWeight($r('app.float.font_weight_700'))
+              .fontWeight($r('app.string.font_weight_700'))
               .fontSize($r('app.float.font_size_25'))
 
             Divider()
