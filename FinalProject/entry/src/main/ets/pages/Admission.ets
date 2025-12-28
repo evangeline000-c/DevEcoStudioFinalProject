@@ -2,6 +2,7 @@
 import { AdmissionItemType, AdmissionItemList } from '../viewmodel/AdmissionData';
 import AdmissionListView from '../view/AdmissionListView';
 import { UserDataSource } from '../view/UserModel';
+import CommonConstants from '../common/CommonContants'
 
 //Admission()的入口函数
 @Builder
@@ -66,23 +67,23 @@ struct Admission {
         // 标题栏
         Row() {
           Image($r('app.media.ic_back'))
-            .width('24vp')
-            .height('24vp')
-            .margin({ left: '16vp' })
+            .width($r('app.float.distance_24'))
+            .height($r('app.float.distance_24'))
+            .margin({ left: $r('app.float.distance_16') })
             .onClick(() => {
               this.pathStack.pop();
             })
-          Text('入住申请')
-            .fontSize('18fp')
+          Text($r('app.string.admission_title'))
+            .fontSize($r('app.float.font_size_18'))
             .fontColor(Color.White)
             .fontWeight(FontWeight.Medium)
             .layoutWeight(1)
             .textAlign(TextAlign.Center)
-          Blank().width('40vp')
+          Blank().width($r('app.float.distance_40'))
         }
-        .width('100%')
-        .height('50vp')
-        .backgroundColor('#21deb4')
+        .width(CommonConstants.FULL_PARENT)
+        .height($r('app.float.distance_50'))
+        .backgroundColor($r('app.color.green1'))
 
         // 入住申请列表视图（不包含按钮）
         AdmissionListView({
@@ -96,28 +97,28 @@ struct Admission {
         
         // 底部申请入住按钮
         Column() {
-          Button('申请入住')
-            .width('100%')
-            .height('48vp')
-            .fontSize('18fp')
+          Button($r('app.string.admission_apply'))
+            .width(CommonConstants.FULL_PARENT)
+            .height($r('app.float.height_48'))
+            .fontSize($r('app.float.font_size_18'))
             .fontWeight(600)
-            .backgroundColor('#21deb4')
-            .borderRadius('24vp')
+            .backgroundColor($r('app.color.green1'))
+            .borderRadius($r('app.float.distance_24'))
             .onClick(() => {
               this.handleApplyClick();
             })
         }
-        .padding('12vp')
-        .width('100%')
-        .backgroundColor('#FFFFFF')
-        .shadow({ radius: 8, color: '#1F000000', offsetX: 0, offsetY: -2 })
+        .padding($r('app.float.distance_12'))
+        .width(CommonConstants.FULL_PARENT)
+        .backgroundColor($r('app.color.white'))
+        .shadow({ radius: $r('app.float.distance_8'), color: $r('app.color.black1'), offsetX: 0, offsetY: -2 })
       }
-      .width('100%')
-      .height('100%')
-      .backgroundColor('#F1F3F5')
+      .width(CommonConstants.FULL_PARENT)
+      .height(CommonConstants.FULL_PARENT)
+      .backgroundColor($r('app.color.background_color'))
       .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.BOTTOM])
     }
     .hideTitleBar(true)
-    .backgroundColor('#d821deb4')
+    .backgroundColor($r('app.color.main_green'))
   }
 }

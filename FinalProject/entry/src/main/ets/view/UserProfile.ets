@@ -1,7 +1,7 @@
 import { UserInfo, UserDataSource } from './UserModel';
 import { MAX_OFFSET_Y, REFRESH_TIME, NORMAL_FONT_SIZE, TOTAL_MAX_DATA, INIT_USER_DATA, addNewUserToList } from './UserProfileConfig';
 import { RefreshComponent, UserList } from './UserProfileBuilders';
-
+import CommonConstants from '../common/CommonContants'
 
 @Component
 export default struct UserProfile {
@@ -31,16 +31,16 @@ export default struct UserProfile {
   build() {
     Column() {
       Row() {
-        Text('康养用户列表')
+        Text($r('app.string.user_list_title'))
           .fontWeight(FontWeight.Bold)
-          .fontSize('20fp')
-          .fontColor('#FFFFFF')
+          .fontSize($r('app.float.font_size'))
+          .fontColor($r('app.color.white'))
           .textAlign(TextAlign.Center)
         Row() {
-          Text(this.selecting ? '确认删除' : '删除用户')
-            .fontSize('16fp')
-            .fontColor('#FFFFFF')
-            .margin({ right: '16vp' })
+          Text(this.selecting ? $r('app.string.confirm_delete') : $r('app.string.delete_user'))
+            .fontSize($r('app.float.font_size_16'))
+            .fontColor($r('app.color.white'))
+            .margin({ right: $r('app.float.distance_16') })
             .onClick(() => {
               if (!this.selecting) {
                 this.selected.clear();
@@ -56,19 +56,19 @@ export default struct UserProfile {
               this.selected.clear();
               this.selecting = false;
             });
-          Text('添加用户')
-            .fontColor('#FFFFFF')
+          Text($r('app.string.AddUser'))
+            .fontColor($r('app.color.white'))
             .onClick(() => {
               this.AddUser(true);
             });
         }
-        .margin({ left: '20vp' })
+        .margin({ left: $r('app.float.distance_20') })
         .alignItems(VerticalAlign.Center)
         .justifyContent(FlexAlign.Center)
-        .width('50%')
+        .width(CommonConstants.HALF_PARENT)
       }
-      .height('50vp').justifyContent(FlexAlign.Start)
-      .margin({ top: '0vp', bottom: '0vp' })
+      .height($r('app.float.distance_50')).justifyContent(FlexAlign.Start)
+      .margin({ top: $r('app.float.distance_0'), bottom: $r('app.float.distance_0') })
 
       Scroll(this.scroller) {
         Column() {
@@ -101,16 +101,16 @@ export default struct UserProfile {
               }, 1200);
             }
           });
-          Text('已经到底了')
+          Text($r('app.string.already_at_end'))
             .fontSize(NORMAL_FONT_SIZE)
-            .fontColor('#888888')
+            .fontColor($r('app.color.font_gray1'))
             .visibility(this.bottomReached ? Visibility.Visible : Visibility.Hidden)
-            .margin({ top: '10vp', bottom: '10vp' });
+            .margin({ top: $r('app.float.distance_10'), bottom: $r('app.float.distance_10') });
         }
-        .width('100%')
+        .width(CommonConstants.FULL_PARENT)
         .justifyContent(FlexAlign.Center)
       }
-      .height('630vp')
+      .height($r('app.float.height_630'))
       .scrollSnap({
         snapAlign: ScrollSnapAlign.START,
         snapPagination: 400,
@@ -119,18 +119,18 @@ export default struct UserProfile {
       })
       .scrollBar(BarState.Off)
       .edgeEffect(EdgeEffect.Spring)
-      .width('100%')
+      .width(CommonConstants.FULL_PARENT)
       .onTouch((event?: TouchEvent) => {
         this.putDownRefresh(event);
       });
     }
-    .width('100%')
-    .height('100%')
+    .width(CommonConstants.FULL_PARENT)
+    .height(CommonConstants.FULL_PARENT)
     .linearGradient({
       colors: [
-        ['#21deb4', 0],
-        ['#1121deb4', 0.2],
-        ['#F1F3F5', 0.3]
+        [$r('app.color.green1'), 0],
+        [$r('app.color.gray7'), 0.2],
+        [$r('app.color.background_color'), 0.3]
       ]
     })
 

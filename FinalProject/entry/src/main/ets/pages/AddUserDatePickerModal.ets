@@ -1,4 +1,5 @@
 import { formatDateFromDate } from './AddUserLogic';
+import CommonConstants from '../common/CommonContants'
 
 // 出生日期弹窗
 @Builder
@@ -10,10 +11,10 @@ export function DatePickerModal(
 ) {
   Column() {
     Column() {
-      Text('选择出生日期')
-        .fontSize(18)
+      Text($r('app.string.select_birthday'))
+        .fontSize($r('app.float.font_size_18'))
         .fontWeight(FontWeight.Medium)
-        .margin({ bottom: 12 });
+        .margin({ bottom: $r('app.float.distance_12') });
       DatePicker({
         start: new Date(1900, 0, 1),
         end: new Date(),
@@ -25,29 +26,29 @@ export function DatePickerModal(
         });
 
       Row() {
-        Button('取消')
-          .height('36vp')
-          .margin({ right: 12, top: 12 })
-          .backgroundColor('#d821deb4')
-          .fontColor('#FFFFFF')
+        Button($r('app.string.cancel'))
+          .height($r('app.float.height_36'))
+          .margin({ right: $r('app.float.distance_12'), top: $r('app.float.distance_12') })
+          .backgroundColor($r('app.color.main_green'))
+          .fontColor($r('app.color.white'))
           .onClick(() => onCancel());
-        Button('确定')
-          .height('36vp')
-          .backgroundColor('#d821deb4')
-          .fontColor('#FFFFFF')
-          .margin({ top: 12 })
+        Button($r('app.string.confirm'))
+          .height($r('app.float.height_36'))
+          .backgroundColor($r('app.color.main_green'))
+          .fontColor($r('app.color.white'))
+          .margin({ top: $r('app.float.distance_12') })
           .onClick(() => onConfirm());
       }
       .justifyContent(FlexAlign.End)
-      .width('100%');
+      .width(CommonConstants.FULL_PARENT);
     }
     .width('86%')
-    .backgroundColor('#FFFFFF')
-    .padding({ left: 18, right: 18, top: 18, bottom: 12 })
-    .borderRadius(12);
+    .backgroundColor($r('app.color.white'))
+    .padding({ left: $r('app.float.distance_18'), right: $r('app.float.distance_18'), top: $r('app.float.distance_18'), bottom: 12 })
+    .borderRadius($r('app.float.distance_12'));
   }
-  .width('100%')
-  .height('100%')
+  .width(CommonConstants.FULL_PARENT)
+  .height(CommonConstants.FULL_PARENT)
   .backgroundColor(Color.Transparent)
   .alignItems(HorizontalAlign.Center)
   .justifyContent(FlexAlign.Center);

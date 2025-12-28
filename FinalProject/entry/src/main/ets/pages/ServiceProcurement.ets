@@ -1,6 +1,7 @@
 //服务采购页面
 import { ServiceItemType, IServiceItemData } from '../viewmodel/ServiceProcurementData';
 import ServiceItemListView from '../view/ServiceItemListView';
+import CommonConstants from '../common/CommonContants'
 
 //ServiceProcurement()的入口函数
 @Builder
@@ -24,23 +25,23 @@ struct ServiceProcurement {
         // 标题栏
         Row() {
           Image($r('app.media.ic_back'))
-            .width('24vp')
-            .height('24vp')
-            .margin({ left: '16vp' })
+            .width($r('app.float.distance_24'))
+            .height($r('app.float.distance_24'))
+            .margin({ left: $r('app.float.distance_16') })
             .onClick(() => {
               this.pathStack.pop();
             })
-          Text('服务采购')
-            .fontSize('18fp')
+          Text($r('app.string.service_procurement_title'))
+            .fontSize($r('app.float.font_size_18'))
             .fontColor(Color.White)
             .fontWeight(FontWeight.Medium)
             .layoutWeight(1)
             .textAlign(TextAlign.Center)
-          Blank().width('40vp')
+          Blank().width($r('app.float.distance_40'))
         }
-        .width('100%')
-        .height('50vp')
-        .backgroundColor('#21deb4')
+        .width(CommonConstants.FULL_PARENT)
+        .height($r('app.float.distance_50'))
+        .backgroundColor($r('app.color.green1'))
 
         // 服务项目列表
         ServiceItemListView({
@@ -49,12 +50,12 @@ struct ServiceProcurement {
           }
         })
       }
-      .width('100%')
-      .height('100%')
-      .backgroundColor('#F1F3F5')
+      .width(CommonConstants.FULL_PARENT)
+      .height(CommonConstants.FULL_PARENT)
+      .backgroundColor($r('app.color.background_color'))
       .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.BOTTOM])
     }
     .hideTitleBar(true)
-    .backgroundColor('#d821deb4')
+    .backgroundColor($r('app.color.main_green'))
   }
 }

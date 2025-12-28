@@ -3,6 +3,7 @@ import ItemData from '../viewmodel/ItemData';
 import MainViewModel from '../viewmodel/MainViewModel';
 import HealthResourceList from '../viewmodel/HealthListcomponent';
 import PutDownRefresh from '../viewmodel/PutDownRefreshLayout';
+import CommonConstants from '../common/CommonContants'
 
 @Component
 export default struct Home {
@@ -61,20 +62,20 @@ export default struct Home {
     NavDestination(){
       Column() {
         //标题部分
-        Text('首页')
-          .height('60vp')
-          .width('100%')
-          .fontWeight(220)//字体粗细
-          .fontSize('20fp')//字体大小
-          .backgroundColor('#d821deb4')
-          .fontColor('#FFFFFF')
+        Text($r('app.string.tab_home'))
+          .height($r('app.float.height_text'))
+          .width(CommonConstants.FULL_PARENT)
+          .fontWeight($r('app.float.font_weight_220'))//字体粗细
+          .fontSize($r('app.float.font_size'))//字体大小
+          .backgroundColor($r('app.color.green1'))
+          .fontColor($r('app.color.white'))
           .textAlign(TextAlign.Center)
 
         //轮播图
         Swiper() {
           ForEach(MainViewModel.getSwiperImages(), (img: Resource) => {
             Image(img)
-              .width('100%')
+              .width(CommonConstants.FULL_PARENT)
           }, (img: Resource) => JSON.stringify(img.id))
         }.autoPlay(true)
         .indicator(
@@ -88,12 +89,12 @@ export default struct Home {
             GridItem(){
               Column(){
                 Image(item.img)
-                  .width('65vp')
-                  .height('65vp')
-                  .margin({top:'10vp'})
+                  .width($r('app.float.distance_65'))
+                  .height($r('app.float.distance_65'))
+                  .margin({top:$r('app.float.distance_10')})
                 Text(item.title)
-                  .fontSize('18fp')
-                  .margin({top:'10vp'})
+                  .fontSize($r('app.float.font_size_18'))
+                  .margin({top:$r('app.float.distance_10')})
               }
               .onClick(()=>{
                 if(index==0) this.Consultation(true);
@@ -104,11 +105,11 @@ export default struct Home {
             }
           },(item:ItemData)=>JSON.stringify(item))
         }.columnsTemplate('1fr 1fr 1fr 1fr')
-        .width('97%')
-        .backgroundColor('#FFFFFF')
-        .height('120vp')
-        .margin({top:'8vp'})
-        .borderRadius('10vp')
+        .width(CommonConstants.PARENT_NINETY_SEVEN)
+        .backgroundColor($r('app.color.white'))
+        .height($r('app.float.distance_120'))
+        .margin({top:$r('app.float.distance_8')})
+        .borderRadius($r('app.float.distance_10'))
 
         //纵向列表
         Column(){
@@ -117,14 +118,14 @@ export default struct Home {
             Divider()
               .vertical(true)
               .strokeWidth(4)          // 竖条宽度
-              .height(20)        // 竖条高度（根据文字调整）
-              .color('#d821deb4')  // 竖条颜色
-              .margin({ left: '8vp' ,right:'8vp'})
+              .height($r('app.float.distance_20'))        // 竖条高度（根据文字调整）
+              .color($r('app.color.main_green'))  // 竖条颜色
+              .margin({ left: $r('app.float.distance_8') ,right:$r('app.float.distance_8')})
 
-            Text("健康宣教")
-              .fontSize(18)
-          }.margin({top:'12vp'})
-          .width('100%')
+            Text($r('app.string.health_education'))
+              .fontSize($r('app.float.font_size_18'))
+          }.margin({top:$r('app.float.distance_12')})
+          .width(CommonConstants.FULL_PARENT)
 
           Scroll(){
             Column(){
@@ -132,27 +133,27 @@ export default struct Home {
                 PutDownRefresh({ refreshText: $refreshText })
               }
                 HealthResourceList()
-               Text('--到底了--').fontSize('12vp').fontColor(Color.Gray)
+               Text($r('app.string.end_of_list')).fontSize($r('app.float.distance_12')).fontColor(Color.Gray)
             }
-          }.margin({top:'12vp'})
+          }.margin({top:$r('app.float.distance_12')})
           .layoutWeight(1)
           .onTouch((event?: TouchEvent) => {
             this.putDownRefresh(event);
           })
 
 
-        }.backgroundColor('#fff1f0f0')
-         .margin({top:'8vp'})
-         .width('100%')
-         .height('318vp')
+        }.backgroundColor($r('app.color.gray'))
+         .margin({top:$r('app.float.distance_8')})
+         .width(CommonConstants.FULL_PARENT)
+         .height($r('app.float.height_318'))
 
 
 
       }
-      .width('100%')
-      .height('100%')
-      .backgroundColor('#0021deb4')
-    }.width('100%')
+      .width(CommonConstants.FULL_PARENT)
+      .height(CommonConstants.FULL_PARENT)
+      .backgroundColor($r('app.color.black2'))
+    }.width(CommonConstants.FULL_PARENT)
 
   }
 }

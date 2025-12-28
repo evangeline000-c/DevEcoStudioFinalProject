@@ -1,4 +1,5 @@
 import {type historyItem} from './HealthNumData'
+import CommonConstants from '../common/CommonContants'
 
 @Component
 export default struct HealthForm{
@@ -9,13 +10,13 @@ export default struct HealthForm{
   @Builder
   Cell(content: string, isHeader: boolean = false) {
     Text(content)
-      .fontSize(isHeader ? 16 : 14)
-      .fontWeight(isHeader ? '500' : FontWeight.Normal)
+      .fontSize(isHeader ? 16 : $r('app.float.font_size_14'))
+      .fontWeight(isHeader ? $r('app.float.font_weight_500') : FontWeight.Normal)
       .fontColor( Color.Black)
       .textAlign(TextAlign.Center)
-      .width('100%')
-      .height(40)
-      .padding(5)
+      .width(CommonConstants.FULL_PARENT)
+      .height($r('app.float.distance_40'))
+      .padding($r('app.float.distance_5'))
       .backgroundColor(isHeader ? '#D9D9D9' : Color.White)
   }
 
@@ -52,7 +53,7 @@ export default struct HealthForm{
       }
     })
   }
-  .width('100%')
+  .width(CommonConstants.FULL_PARENT)
   .divider({ strokeWidth: 1, color: '#CCCCCC' }) // List 分隔线
   }
 }

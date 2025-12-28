@@ -3,6 +3,7 @@
 //服务订单数据接口
 import { ServiceOrder } from '../viewmodel/ServiceProcurementData';
 import { getCaregiverById } from '../viewmodel/CaregiverData';
+import CommonConstants from '../common/CommonContants'
 
 //ServiceOrders()的入口函数
 @Builder
@@ -44,9 +45,9 @@ struct ServiceOrders {
 
   // 获取状态颜色
   getStatusColor(status: string): string {
-    if (status === '待服务') return '#21deb4';
+    if (status === '待服务') return '21deb4';
     if (status === '待评价') return '#FF9800';
-    if (status === '已支付') return '#21deb4';
+    if (status === '已支付') return '21deb4';
     return '#999999';
   }
 
@@ -57,90 +58,90 @@ struct ServiceOrders {
       // 服务类型和状态
       Row() {
         Text(order.serviceType)
-          .fontSize('16fp')
+          .fontSize($r('app.float.font_size_16'))
           .fontWeight(FontWeight.Bold)
-          .fontColor('#333333')
+          .fontColor($r('app.color.font_color1'))
         Blank()
         Text(order.status)
-          .fontSize('12fp')
+          .fontSize($r('app.float.font_size_12'))
           .fontColor(this.getStatusColor(order.status))
-          .padding({ left: '12vp', right: '12vp', top: '4vp', bottom: '4vp' })
-          .border({ width: 1, color: this.getStatusColor(order.status), radius: '4vp' })
+          .padding({ left: $r('app.float.distance_12'), right: $r('app.float.distance_12'), top: $r('app.float.layout_4'), bottom: $r('app.float.bottom_4')})
+          .border({ width: 1, color: this.getStatusColor(order.status), radius: $r('app.float.layout_4') })
       }
-      .width('100%')
-      .margin({ bottom: '12vp' })
+      .width(CommonConstants.FULL_PARENT)
+      .margin({ bottom: $r('app.float.distance_12') })
 
       // 被看护人
       Row() {
-        Text('被看护人')
-          .fontSize('14fp')
-          .fontColor('#999999')
+        Text($r('app.string.care_person'))
+          .fontSize($r('app.float.font_size_14'))
+          .fontColor($r('app.color.font_color'))
         Blank()
         Text(order.carePersonName)
-          .fontSize('14fp')
-          .fontColor('#333333')
+          .fontSize($r('app.float.font_size_14'))
+          .fontColor($r('app.color.font_color1'))
       }
-      .width('100%')
-      .margin({ bottom: '8vp' })
+      .width(CommonConstants.FULL_PARENT)
+      .margin({ bottom: $r('app.float.distance_8') })
 
       // 服务单号
       Row() {
-        Text('服务单号')
-          .fontSize('14fp')
-          .fontColor('#999999')
+        Text($r('app.string.service_number'))
+          .fontSize($r('app.float.font_size_14'))
+          .fontColor($r('app.color.font_color'))
         Blank()
         Text(order.serviceNumber)
-          .fontSize('14fp')
-          .fontColor('#333333')
+          .fontSize($r('app.float.font_size_14'))
+          .fontColor($r('app.color.font_color1'))
       }
-      .width('100%')
-      .margin({ bottom: '8vp' })
+      .width(CommonConstants.FULL_PARENT)
+      .margin({ bottom: $r('app.float.distance_8') })
 
       // 看护人员
       Row() {
-        Text('看护人员')
-          .fontSize('14fp')
-          .fontColor('#999999')
+        Text($r('app.string.caregiver'))
+          .fontSize($r('app.float.font_size_14'))
+          .fontColor($r('app.color.font_color'))
         Blank()
         Text(order.caregiverName || '-')
-          .fontSize('14fp')
-          .fontColor('#333333')
+          .fontSize($r('app.float.font_size_14'))
+          .fontColor($r('app.color.font_color1'))
       }
-      .width('100%')
-      .margin({ bottom: '8vp' })
+      .width(CommonConstants.FULL_PARENT)
+      .margin({ bottom: $r('app.float.distance_8') })
 
       // 预约时间
       Row() {
-        Text('预约时间')
-          .fontSize('14fp')
-          .fontColor('#999999')
+        Text($r('app.string.appointment_time'))
+          .fontSize($r('app.float.font_size_14'))
+          .fontColor($r('app.color.font_color'))
         Blank()
         Text(order.appointmentTime)
-          .fontSize('14fp')
-          .fontColor('#333333')
+          .fontSize($r('app.float.font_size_14'))
+          .fontColor($r('app.color.font_color1'))
       }
-      .width('100%')
-      .margin({ bottom: '8vp' })
+      .width(CommonConstants.FULL_PARENT)
+      .margin({ bottom: $r('app.float.distance_8') })
 
       // 服务价格
       Row() {
-        Text('服务价格')
-          .fontSize('14fp')
-          .fontColor('#999999')
+        Text($r('app.string.service_price'))
+          .fontSize($r('app.float.font_size_14'))
+          .fontColor($r('app.color.font_color'))
         Blank()
         Text(`¥ ${order.servicePrice}`)
-          .fontSize('16fp')
-          .fontColor('#FF6B00')
+          .fontSize($r('app.float.font_size_16'))
+          .fontColor($r('app.color.font_red2'))
           .fontWeight(FontWeight.Bold)
       }
-      .width('100%')
+      .width(CommonConstants.FULL_PARENT)
     }
-    .width('100%')
-    .padding('16vp')
+    .width(CommonConstants.FULL_PARENT)
+    .padding($r('app.float.distance_16'))
     .backgroundColor(Color.White)
-    .borderRadius('8vp')
-    .margin({ bottom: '12vp' })
-    .border({ width: 1, color: '#E8E8E8', radius: '8vp' })
+    .borderRadius($r('app.float.distance_8'))
+    .margin({ bottom: $r('app.float.distance_12') })
+    .border({ width: 1, color: $r('app.color.gray1'), radius: $r('app.float.distance_8') })
     .onClick(() => {
       this.navigateToDetail(order);
     })
@@ -152,23 +153,23 @@ struct ServiceOrders {
         // 标题栏
         Row() {
           Image($r('app.media.ic_back'))
-            .width('24vp')
-            .height('24vp')
-            .margin({ left: '16vp' })
+            .width($r('app.float.distance_24'))
+            .height($r('app.float.distance_24'))
+            .margin({ left: $r('app.float.distance_16') })
             .onClick(() => {
               this.pathStack.pop();
             })
-          Text('服务订单列表')
-            .fontSize('18fp')
+          Text($r('app.string.service_order_list_title'))
+            .fontSize($r('app.float.font_size_18'))
             .fontColor(Color.White)
             .fontWeight(FontWeight.Medium)
             .layoutWeight(1)
             .textAlign(TextAlign.Center)
-          Blank().width('40vp')
+          Blank().width($r('app.float.distance_40'))
         }
-        .width('100%')
-        .height('50vp')
-        .backgroundColor('#21deb4')
+        .width(CommonConstants.FULL_PARENT)
+        .height($r('app.float.distance_50'))
+        .backgroundColor($r('app.color.green1'))
 
         // 订单列表
         if (this.serviceOrders.length > 0) {
@@ -178,30 +179,30 @@ struct ServiceOrders {
                 this.OrderCard(order)
               })
             }
-            .width('100%')
-            .padding({ left: '12vp', right: '12vp', top: '12vp' })
+            .width(CommonConstants.FULL_PARENT)
+            .padding({ left: $r('app.float.distance_12'), right: $r('app.float.distance_12'), top: $r('app.float.distance_12') })
             .alignItems(HorizontalAlign.Center)
           }
           .layoutWeight(1)
-          .width('100%')
+          .width(CommonConstants.FULL_PARENT)
           .align(Alignment.Top)
         } else {
           Column() {
-            Text('暂无服务订单')
-              .fontSize('14fp')
-              .fontColor('#999999')
-              .margin({ top: '100vp' })
+            Text($r('app.string.no_service_orders'))
+              .fontSize($r('app.float.font_size_14'))
+              .fontColor($r('app.color.font_color'))
+              .margin({ top: $r('app.float.health_height') })
           }
-          .width('100%')
+          .width(CommonConstants.FULL_PARENT)
           .layoutWeight(1)
         }
       }
-      .width('100%')
-      .height('100%')
-      .backgroundColor('#F5F5F5')
+      .width(CommonConstants.FULL_PARENT)
+      .height(CommonConstants.FULL_PARENT)
+      .backgroundColor($r('app.color.gray5'))
       .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.BOTTOM])
     }
     .hideTitleBar(true)
-    .backgroundColor('#d821deb4')
+    .backgroundColor($r('app.color.main_green'))
   }
 }

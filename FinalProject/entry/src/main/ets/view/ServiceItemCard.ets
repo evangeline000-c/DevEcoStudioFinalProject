@@ -1,5 +1,6 @@
 // 服务项目卡片组件
 import { ServiceItemType } from '../viewmodel/ServiceProcurementData';
+import CommonConstants from '../common/CommonContants'
 
 @Component
 export default struct ServiceItemCard {
@@ -10,80 +11,80 @@ export default struct ServiceItemCard {
     Column() {
       // 顶部图片
       Image(this.serviceItem.servicePhoto)
-        .width('100%')
-        .height('140vp')
+        .width(CommonConstants.FULL_PARENT)
+        .height($r('app.float.service_picture_height'))
         .objectFit(ImageFit.Cover)
-        .borderRadius({ topLeft: '12vp', topRight: '12vp' })
+        .borderRadius({ topLeft: $r('app.float.distance_12'), topRight: $r('app.float.distance_12') })
 
       // 下方信息区域
       Column() {
         // 第1行：服务名称
         Text(this.serviceItem.serviceName)
-          .fontSize('16fp')
-          .fontWeight(700)
-          .fontColor('#333333')
-          .width('100%')
+          .fontSize($r('app.float.font_size_16'))
+          .fontWeight($r('app.float.font_weight_700'))
+          .fontColor($r('app.color.font_color1'))
+          .width(CommonConstants.FULL_PARENT)
           .maxLines(1)
           .textOverflow({ overflow: TextOverflow.Ellipsis })
 
         // 第2行：服务机构
         Row() {
-          Text('机构：')
-            .fontSize('13fp')
-            .fontColor('#999999')
+          Text($r('app.string.organization_label'))
+            .fontSize($r('app.float.font_size_13'))
+            .fontColor($r('app.color.font_color'))
           Text(this.serviceItem.serviceOrganization)
-            .fontSize('13fp')
-            .fontColor('#666666')
+            .fontSize($r('app.float.font_size_13'))
+            .fontColor($r('app.color.font_gray'))
             .layoutWeight(1)
             .maxLines(1)
             .textOverflow({ overflow: TextOverflow.Ellipsis })
         }
-        .width('100%')
-        .margin({ top: '8vp' })
+        .width(CommonConstants.FULL_PARENT)
+        .margin({ top: $r('app.float.distance_8') })
 
         // 第3行：服务类型
         Row() {
-          Text('类型：')
-            .fontSize('13fp')
-            .fontColor('#999999')
+          Text($r('app.string.service_type'))
+            .fontSize($r('app.float.font_size_13'))
+            .fontColor($r('app.color.font_color'))
           Text(this.serviceItem.serviceType)
-            .fontSize('13fp')
-            .fontColor('#666666')
+            .fontSize($r('app.float.font_size_13'))
+            .fontColor($r('app.color.font_gray'))
         }
-        .width('100%')
-        .margin({ top: '6vp' })
+        .width(CommonConstants.FULL_PARENT)
+        .margin({ top: $r('app.float.distance_6') })
 
         // 第4行：服务价格
         Row() {
-          Text('价格：')
-            .fontSize('13fp')
-            .fontColor('#999999')
+          Text($r('app.string.service_price'))
+            .fontSize($r('app.float.font_size_13'))
+            .fontColor($r('app.color.font_color'))
           Row() {
-            Text('¥')
-              .fontSize('12fp')
-              .fontColor('#FF6B6B')
-              .fontWeight(500)
+            Text($r('app.string.price_yuan_unit'))
+              .fontSize($r('app.float.font_size_12'))
+              .fontColor($r('app.color.font_red'))
+              .fontWeight($r('app.float.font_weight_500'))
             Text(this.serviceItem.servicePrice.toString())
-              .fontSize('18fp')
-              .fontColor('#FF6B6B')
-              .fontWeight(700)
+              .fontSize($r('app.float.font_size_18'))
+              .fontColor($r('app.color.font_red'))
+              .fontWeight($r('app.float.font_weight_700'))
             Text(`/${this.serviceItem.serviceUnit}`)
-              .fontSize('12fp')
-              .fontColor('#999999')
-              .margin({ left: '2vp' })
+              .fontSize($r('app.float.font_size_12'))
+              .fontColor($r('app.color.font_color'))
+              .margin({ left: $r('app.float.distance_2') })
           }
         }
-        .width('100%')
-        .margin({ top: '6vp' })
+        .width(CommonConstants.FULL_PARENT)
+        .margin({ top: $r('app.float.distance_6') })
       }
-      .padding('12vp')
-      .width('100%')
+      .padding($r('app.float.distance_12'))
+      .width(CommonConstants.FULL_PARENT)
       .alignItems(HorizontalAlign.Start)
     }
-    .width('100%')
-    .backgroundColor('#FFFFFF')
-    .borderRadius('12vp')
-    .shadow({ radius: 8, color: '#1F000000', offsetX: 0, offsetY: 2 })
+    .width(CommonConstants.FULL_PARENT)
+    .backgroundColor($r('app.color.white'))
+    .borderRadius($r('app.float.distance_12'))
+    .shadow({ radius: $r('app.float.distance_8'), color: $r('app.color.black1'), offsetX: 0, offsetY: 2 })
     .onClick(() => {
       if (this.onItemClick) {
         this.onItemClick(this.serviceItem);

@@ -11,6 +11,7 @@ import {
 } from '../viewmodel/AdmissionData';
 import { PatientInfo, getPatientList } from '../viewmodel/PatientData';
 import promptAction from '@ohos.promptAction';
+import CommonConstants from '../common/CommonContants'
 
 // Select组件选项类型
 interface SelectOption {
@@ -80,19 +81,19 @@ struct AdmissionForm {
     try {
       // 验证必填字段
       if (!this.formData.patientName) {
-        promptAction.showToast({ message: '请选择康养用户' });
+        promptAction.showToast({ message: $r('app.string.select_patient') });
         return;
       }
       if (!this.formData.organizationName) {
-        promptAction.showToast({ message: '请选择机构名称' });
+        promptAction.showToast({ message: $r('app.string.select_organization') });
         return;
       }
       if (!this.formData.departmentName) {
-        promptAction.showToast({ message: '请选择部门名称' });
+        promptAction.showToast({ message: $r('app.string.select_department') });
         return;
       }
       if (!this.formData.roomName) {
-        promptAction.showToast({ message: '请选择房间名称' });
+        promptAction.showToast({ message: $r('app.string.select_room') });
         return;
       }
 
@@ -124,7 +125,7 @@ struct AdmissionForm {
       AppStorage.setOrCreate('admissionList', updatedList);
 
       // 提交成功提示
-      promptAction.showToast({ message: '申请成功!' });
+      promptAction.showToast({ message: $r('app.string.apply_success') });
 
       // 返回到入住申请列表页面
       setTimeout(() => {
@@ -142,23 +143,23 @@ struct AdmissionForm {
         // 标题栏
         Row() {
           Image($r('app.media.ic_back'))
-            .width('24vp')
-            .height('24vp')
-            .margin({ left: '16vp' })
+            .width($r('app.float.distance_24'))
+            .height($r('app.float.distance_24'))
+            .margin({ left: $r('app.float.distance_16') })
             .onClick(() => {
               this.pathStack.pop();
             })
-          Text('入住申请填写')
-            .fontSize('18fp')
+          Text($r('app.string.admission_form_title'))
+            .fontSize($r('app.float.font_size_18'))
             .fontColor(Color.White)
             .fontWeight(FontWeight.Medium)
             .layoutWeight(1)
             .textAlign(TextAlign.Center)
-          Blank().width('40vp')
+          Blank().width($r('app.float.distance_40'))
         }
-        .width('100%')
-        .height('50vp')
-        .backgroundColor('#21deb4')
+        .width(CommonConstants.FULL_PARENT)
+        .height($r('app.float.distance_50'))
+        .backgroundColor($r('app.color.green1'))
 
         // 滚动容器
         Scroll() {
@@ -167,145 +168,145 @@ struct AdmissionForm {
             Column() {
               // 康养用户选择
               Column() {
-                Text('康养用户')
-                  .fontSize('15fp')
-                  .fontColor('#333333')
-                  .width('100%')
-                  .margin({ bottom: '8vp' })
+                Text($r('app.string.patient'))
+                  .fontSize($r('app.float.font_size_15'))
+                  .fontColor($r('app.color.font_color1'))
+                  .width(CommonConstants.FULL_PARENT)
+                  .margin({ bottom: $r('app.float.distance_8') })
 
                 Select(this.patientList.map((p: PatientInfo): SelectOption => ({ value: p.name })))
                   .selected(-1)
-                  .value(this.formData.patientName || '请选择康养用户')
-                  .font({ size: '16fp' })
-                  .optionFont({ size: '16fp' })
+                  .value(this.formData.patientName || $r('app.string.select_patient'))
+                  .font({ size: $r('app.float.font_size_16') })
+                  .optionFont({ size: $r('app.float.font_size_16') })
                   .onSelect((index: number) => {
                     this.formData.patientId = this.patientList[index].id;
                     this.formData.patientName = this.patientList[index].name;
                   })
-                  .width('100%')
+                  .width(CommonConstants.FULL_PARENT)
               }
-              .width('100%')
-              .margin({ bottom: '16vp' })
+              .width(CommonConstants.FULL_PARENT)
+              .margin({ bottom: $r('app.float.distance_16') })
 
               // 机构名称选择
               Column() {
-                Text('机构名称')
-                  .fontSize('15fp')
-                  .fontColor('#333333')
-                  .width('100%')
-                  .margin({ bottom: '8vp' })
+                Text($r('app.string.organization'))
+                  .fontSize($r('app.float.font_size_15'))
+                  .fontColor($r('app.color.font_color1'))
+                  .width(CommonConstants.FULL_PARENT)
+                  .margin({ bottom: $r('app.float.distance_8') })
 
                 Select(this.organizationList.map((org: OrganizationInfo): SelectOption => ({ value: org.name })))
                   .selected(-1)
-                  .value(this.formData.organizationName || '请选择机构名称')
-                  .font({ size: '16fp' })
-                  .optionFont({ size: '16fp' })
+                  .value(this.formData.organizationName || $r('app.string.select_organization'))
+                  .font({ size: $r('app.float.font_size_16') })
+                  .optionFont({ size: $r('app.float.font_size_16') })
                   .onSelect((index: number) => {
                     this.handleOrganizationSelect(index);
                   })
-                  .width('100%')
+                  .width(CommonConstants.FULL_PARENT)
               }
-              .width('100%')
-              .margin({ bottom: '16vp' })
+              .width(CommonConstants.FULL_PARENT)
+              .margin({ bottom: $r('app.float.distance_16') })
 
               // 部门名称选择
               Column() {
-                Text('部门名称')
-                  .fontSize('15fp')
-                  .fontColor('#333333')
-                  .width('100%')
-                  .margin({ bottom: '8vp' })
+                Text($r('app.string.department'))
+                  .fontSize($r('app.float.font_size_15'))
+                  .fontColor($r('app.color.font_color1'))
+                  .width(CommonConstants.FULL_PARENT)
+                  .margin({ bottom: $r('app.float.distance_8') })
 
                 Select(this.departmentList.map((dept: DepartmentInfo): SelectOption => ({ value: dept.name })))
                   .selected(-1)
-                  .value(this.formData.departmentName || '请选择部门名称')
-                  .font({ size: '16fp' })
-                  .optionFont({ size: '16fp' })
+                  .value(this.formData.departmentName || $r('app.string.select_department'))
+                  .font({ size: $r('app.float.font_size_16') })
+                  .optionFont({ size: $r('app.float.font_size_16') })
                   .enabled(this.departmentList.length > 0)
                   .onSelect((index: number) => {
                     this.handleDepartmentSelect(index);
                   })
-                  .width('100%')
+                  .width(CommonConstants.FULL_PARENT)
               }
-              .width('100%')
-              .margin({ bottom: '16vp' })
+              .width(CommonConstants.FULL_PARENT)
+              .margin({ bottom: $r('app.float.distance_16') })
 
               // 房间名称选择
               Column() {
-                Text('房间名称')
-                  .fontSize('15fp')
-                  .fontColor('#333333')
-                  .width('100%')
-                  .margin({ bottom: '8vp' })
+                Text($r('app.string.room'))
+                  .fontSize($r('app.float.font_size_15'))
+                  .fontColor($r('app.color.font_color1'))
+                  .width(CommonConstants.FULL_PARENT)
+                  .margin({ bottom: $r('app.float.distance_8') })
 
                 Select(this.roomList.map((room: RoomInfo): SelectOption => ({ value: room.name })))
                   .selected(-1)
-                  .value(this.formData.roomName || '请选择房间名称')
-                  .font({ size: '16fp' })
-                  .optionFont({ size: '16fp' })
+                  .value(this.formData.roomName || $r('app.string.select_room'))
+                  .font({ size: $r('app.float.font_size_16') })
+                  .optionFont({ size: $r('app.float.font_size_16') })
                   .enabled(this.roomList.length > 0)
                   .onSelect((index: number) => {
                     this.formData.roomId = this.roomList[index].id;
                     this.formData.roomName = this.roomList[index].name;
                   })
-                  .width('100%')
+                  .width(CommonConstants.FULL_PARENT)
               }
-              .width('100%')
-              .margin({ bottom: '16vp' })
+              .width(CommonConstants.FULL_PARENT)
+              .margin({ bottom: $r('app.float.distance_16') })
 
               // 备注输入
               Column() {
-                Text('备注')
-                  .fontSize('15fp')
-                  .fontColor('#333333')
-                  .width('100%')
-                  .margin({ bottom: '8vp' })
+                Text($r('app.string.remarks'))
+                  .fontSize($r('app.float.font_size_15'))
+                  .fontColor($r('app.color.font_color1'))
+                  .width(CommonConstants.FULL_PARENT)
+                  .margin({ bottom: $r('app.float.distance_8') })
 
-                TextArea({ placeholder: '请输入备注(选填)' })
-                  .fontSize('16fp')
-                  .height('80vp')
+                TextArea({ placeholder: $r('app.string.input_remarks') })
+                  .fontSize($r('app.float.font_size_16'))
+                  .height($r('app.float.distance_80'))
                   .onChange((value: string) => {
                     this.formData.remarks = value;
                   })
-                  .width('100%')
+                  .width(CommonConstants.FULL_PARENT)
               }
-              .width('100%')
+              .width(CommonConstants.FULL_PARENT)
             }
-            .padding('16vp')
-            .width('100%')
-            .backgroundColor('#FFFFFF')
-            .borderRadius('12vp')
-            .margin({ top: '12vp' })
+            .padding($r('app.float.distance_16'))
+            .width(CommonConstants.FULL_PARENT)
+            .backgroundColor($r('app.color.white'))
+            .borderRadius($r('app.float.distance_12'))
+            .margin({ top: $r('app.float.distance_12') })
           }
-          .padding({ left: '12vp', right: '12vp', bottom: '12vp' })
+          .padding({ left: $r('app.float.distance_12'), right: $r('app.float.distance_12'), bottom: $r('app.float.distance_12') })
         }
         .layoutWeight(1)
-        .width('100%')
+        .width(CommonConstants.FULL_PARENT)
 
         // 底部提交按钮
         Column() {
-          Button('提交申请')
-            .width('100%')
-            .height('48vp')
-            .fontSize('18fp')
+          Button($r('app.string.submit_apply'))
+            .width(CommonConstants.FULL_PARENT)
+            .height($r('app.float.height_48'))
+            .fontSize($r('app.float.font_size_18'))
             .fontWeight(600)
-            .backgroundColor('#21deb4')
-            .borderRadius('24vp')
+            .backgroundColor($r('app.color.green1'))
+            .borderRadius($r('app.float.distance_24'))
             .onClick(() => {
               this.handleSubmit();
             })
         }
-        .padding('12vp')
-        .width('100%')
-        .backgroundColor('#FFFFFF')
-        .shadow({ radius: 8, color: '#1F000000', offsetX: 0, offsetY: -2 })
+        .padding($r('app.float.distance_12'))
+        .width(CommonConstants.FULL_PARENT)
+        .backgroundColor($r('app.color.white'))
+        .shadow({ radius: $r('app.float.distance_8'), color: $r('app.color.black1'), offsetX: 0, offsetY: -2 })
       }
-      .width('100%')
-      .height('100%')
-      .backgroundColor('#F1F3F5')
+      .width(CommonConstants.FULL_PARENT)
+      .height(CommonConstants.FULL_PARENT)
+      .backgroundColor($r('app.color.background_color'))
       .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.BOTTOM])
     }
     .hideTitleBar(true)
-    .backgroundColor('#d821deb4')
+    .backgroundColor($r('app.color.main_green'))
   }
 }

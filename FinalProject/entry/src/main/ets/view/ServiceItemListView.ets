@@ -1,6 +1,7 @@
 // 服务项目列表组件
 import { ServiceItemType, ServiceItemList } from '../viewmodel/ServiceProcurementData';
 import ServiceItemCard from './ServiceItemCard';
+import CommonConstants from '../common/CommonContants'
 
 @Component
 export default struct ServiceItemListView {
@@ -22,11 +23,11 @@ export default struct ServiceItemListView {
           }
         }, (item: ServiceItemType) => item.id.toString())
       }
-      .width('100%')
-      .height('100%')
-      .padding({ left: '12vp', right: '12vp', top: '12vp', bottom: '12vp' })
+      .width(CommonConstants.FULL_PARENT)
+      .height(CommonConstants.FULL_PARENT)
+      .padding({ left: $r('app.float.distance_12'), right: $r('app.float.distance_12'), top: $r('app.float.distance_12'), bottom: $r('app.float.distance_12') })
     }
-    .width('100%')
-    .height('100%')
+    .width(CommonConstants.FULL_PARENT)
+    .height(CommonConstants.FULL_PARENT)
   }
 }

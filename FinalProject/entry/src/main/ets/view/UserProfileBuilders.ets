@@ -1,5 +1,6 @@
 import { UserInfo, UserDataSource } from './UserModel';
 import { LIST_ITEM_SPACE, NORMAL_FONT_SIZE } from './UserProfileConfig';
+import CommonConstants from '../common/CommonContants'
 
 interface UserListProps {
   dataSource: UserDataSource;
@@ -23,12 +24,12 @@ export function RefreshComponent(refreshText: string) {
   Column() {
     Text(refreshText)
       .fontSize(NORMAL_FONT_SIZE)
-      .fontColor('#888888');
+      .fontColor($r('app.color.font_gray1'));
   }
-  .width('100%')
+  .width(CommonConstants.FULL_PARENT)
   .justifyContent(FlexAlign.Center)
   .alignSelf(ItemAlign.Center)
-  .padding({ top: '10vp', bottom: '10vp' });
+  .padding({ top: $r('app.float.distance_10'), bottom: $r('app.float.distance_10') });
 }
 
 // 用户列表
@@ -50,10 +51,10 @@ export function UserList(props: UserListProps) {
     }, (user: UserInfo) => user.uid ?? '');
   }
   .scrollBar(BarState.Off)
-  .height('90%')
-  .width('100%')
+  .height(CommonConstants.NINETY_PARENT)
+  .width(CommonConstants.NINETY_PARENT)
   .alignSelf(ItemAlign.Center)
-  .padding({ left: '3vp', top: '0vp', bottom: '12vp' })
+  .padding({ left: $r('app.float.distance_3'), top: $r('app.float.distance_0'), bottom: $r('app.float.distance_12') })
   .onReachEnd(() => {
     props.onReachEnd?.();
   });
@@ -70,44 +71,44 @@ export function UserItem(props: UserItemProps) {
           .onChange((checked: boolean) => {
             props.onCheckboxChange(props.user.uid ?? '', checked);
           })
-          .margin({ right: '8vp' });
+          .margin({ right: $r('app.float.distance_8') });
       }
       Text(props.user.name)
-        .fontSize('18fp')
+        .fontSize($r('app.float.font_size_18'))
         .fontWeight(FontWeight.Medium);
       Text(props.user.gender)
-        .fontSize('12fp')
-        .backgroundColor(props.user.gender === '男性' ? '#40E0D0' : '#FF80AB')
-        .fontColor('#FFFFFF')
-        .padding({ left: '6vp', right: '6vp', top: '2vp', bottom: '2vp' })
-        .borderRadius('4vp');
+        .fontSize($r('app.float.font_size_12'))
+        .backgroundColor(props.user.gender === '男性' ? $r('app.color.background_green1') : $r('app.color.pick'))
+        .fontColor($r('app.color.white'))
+        .padding({ left: $r('app.float.distance_6'), right: $r('app.float.distance_6'), top: $r('app.float.distance_2'), bottom: $r('app.float.distance_2') })
+        .borderRadius($r('app.float.layout_4'));
     }
-    .width('90%')
+    .width(CommonConstants.NINETY_PARENT)
     .justifyContent(FlexAlign.SpaceBetween)
-    .margin({ top: '8vp', bottom: '8vp' });
+    .margin({ top: $r('app.float.distance_8'), bottom: $r('app.float.distance_8') });
 
-    InfoRow('关系', props.user.relation);
-    InfoRow('生日', props.user.birthday);
-    InfoRow('身份证', props.user.idCard);
-    InfoRow('地址', props.user.address);
-    InfoRow('职业', props.user.job);
+    InfoRow($r('app.string.relation'), props.user.relation);
+    InfoRow($r('app.string.birthday'), props.user.birthday);
+    InfoRow($r('app.string.id_card'), props.user.idCard);
+    InfoRow($r('app.string.address'), props.user.address);
+    InfoRow($r('app.string.job'), props.user.job);
   }
-  .width('100%')
-  .backgroundColor('#FFFFFF')
-  .borderRadius('8vp')
+  .width(CommonConstants.FULL_PARENT)
+  .backgroundColor($r('app.color.white'))
+  .borderRadius($r('app.float.distance_8'))
   .alignSelf(ItemAlign.Center);
 }
 
 // 信息行
 @Builder
-export function InfoRow(label: string, value?: string) {
+export function InfoRow(label: Resource|string, value?: string) {
   if (value) {
     Row() {
-      Text(label).fontSize(NORMAL_FONT_SIZE).fontColor('#888888');
-      Text(value).fontSize(NORMAL_FONT_SIZE).fontColor('#333333');
+      Text(label).fontSize(NORMAL_FONT_SIZE).fontColor($r('app.color.font_gray1'));
+      Text(value).fontSize(NORMAL_FONT_SIZE).fontColor($r('app.color.font_color1'));
     }
-    .width('90%')
+    .width(CommonConstants.NINETY_PARENT)
     .justifyContent(FlexAlign.SpaceBetween)
-    .margin({ left: '15vp', bottom: '20vp', right: '15vp' });
+    .margin({ left: $r('app.float.layout_15'), bottom: $r('app.float.distance_20'), right: $r('app.float.layout_15') });
   }
 }

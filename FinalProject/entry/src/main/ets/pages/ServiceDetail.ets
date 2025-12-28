@@ -1,6 +1,6 @@
 // 服务详情页面
 import { ServiceItemType, ServiceItemList, FeeItem as SimpleFeeItem } from '../viewmodel/ServiceProcurementData';
-
+import CommonConstants from '../common/CommonContants'
 // ServiceDetail()的入口函数
 @Builder
 export function ServiceDetailBuilder() {
@@ -58,130 +58,130 @@ struct ServiceDetail {
         // 标题栏
         Row() {
           Image($r('app.media.ic_back'))
-            .width('24vp')
-            .height('24vp')
-            .margin({ left: '16vp' })
+            .width($r('app.float.distance_24'))
+            .height($r('app.float.distance_24'))
+            .margin({ left: $r('app.float.distance_16') })
             .onClick(() => {
               this.pathStack.pop();
             })
-          Text('服务详情')
-            .fontSize('18fp')
+          Text($r('app.string.service_detail_title'))
+            .fontSize($r('app.float.font_size_18'))
             .fontColor(Color.White)
             .fontWeight(FontWeight.Medium)
             .layoutWeight(1)
             .textAlign(TextAlign.Center)
-          Blank().width('40vp')
+          Blank().width($r('app.float.distance_40'))
         }
-        .width('100%')
-        .height('50vp')
-        .backgroundColor('#21deb4')
+        .width(CommonConstants.FULL_PARENT)
+        .height($r('app.float.distance_50'))
+        .backgroundColor($r('app.color.green1'))
 
         // 滚动容器
         Scroll() {
           Column() {
             // 服务图片
             Image(this.serviceItem.servicePhoto)
-              .width('100%')
-              .height('240vp')
+              .width(CommonConstants.FULL_PARENT)
+              .height($r('app.float.height_240'))
               .objectFit(ImageFit.Cover)
 
             // 服务信息区域
             Column() {
               // 服务名称
               Text(this.serviceItem.serviceName)
-                .fontSize('24fp')
-                .fontWeight(700)
-                .fontColor('#333333')
-                .width('100%')
+                .fontSize($r('app.float.font_size_24'))
+                .fontWeight($r('app.float.font_weight_700'))
+                .fontColor($r('app.color.font_color1'))
+                .width(CommonConstants.FULL_PARENT)
 
               // 服务机构
               Row() {
-                Text('服务机构：')
-                  .fontSize('15fp')
-                  .fontColor('#999999')
+                Text($r('app.string.service_organization'))
+                  .fontSize($r('app.float.font_size_15'))
+                  .fontColor($r('app.color.font_color'))
                 Text(this.serviceItem.serviceOrganization)
-                  .fontSize('15fp')
-                  .fontColor('#666666')
+                  .fontSize($r('app.float.font_size_15'))
+                  .fontColor($r('app.color.font_gray'))
               }
-              .width('100%')
-              .margin({ top: '12vp' })
+              .width(CommonConstants.FULL_PARENT)
+              .margin({ top: $r('app.float.distance_12') })
 
               // 服务类型
               Row() {
-                Text('服务类型：')
-                  .fontSize('15fp')
-                  .fontColor('#999999')
+                Text($r('app.string.service_type'))
+                  .fontSize($r('app.float.font_size_15'))
+                  .fontColor($r('app.color.font_color'))
                 Text(this.serviceItem.serviceType)
-                  .fontSize('15fp')
-                  .fontColor('#666666')
+                  .fontSize($r('app.float.font_size_15'))
+                  .fontColor($r('app.color.font_gray'))
               }
-              .width('100%')
-              .margin({ top: '8vp' })
+              .width(CommonConstants.FULL_PARENT)
+              .margin({ top: $r('app.float.distance_8') })
 
               // 分割线
               Divider()
-                .color('#E5E5E5')
-                .margin({ top: '16vp', bottom: '16vp' })
+                .color($r('app.color.gray4'))
+                .margin({ top: $r('app.float.distance_16'), bottom: $r('app.float.distance_16') })
 
               // 服务介绍标题
-              Text('服务介绍')
-                .fontSize('18fp')
+              Text($r('app.string.service_introduction'))
+                .fontSize($r('app.float.font_size_18'))
                 .fontWeight(600)
-                .fontColor('#333333')
-                .width('100%')
+                .fontColor($r('app.color.font_color1'))
+                .width(CommonConstants.FULL_PARENT)
 
               // 服务介绍内容
               Text(this.serviceItem.serviceDescription)
-                .fontSize('15fp')
-                .fontColor('#666666')
-                .lineHeight('22fp')
-                .width('100%')
-                .margin({ top: '8vp' })
+                .fontSize($r('app.float.font_size_15'))
+                .fontColor($r('app.color.font_gray'))
+                .lineHeight($r('app.float.line_height_22'))
+                .width(CommonConstants.FULL_PARENT)
+                .margin({ top: $r('app.float.distance_8') })
 
               // 分割线
               Divider()
-                .color('#E5E5E5')
-                .margin({ top: '16vp', bottom: '16vp' })
+                .color($r('app.color.gray4'))
+                .margin({ top: $r('app.float.distance_16'), bottom: $r('app.float.distance_16') })
 
               // 预约须知标题
-              Text('预约须知')
-                .fontSize('18fp')
+              Text($r('app.string.service_appointment_notice'))
+                .fontSize($r('app.float.font_size_18'))
                 .fontWeight(600)
-                .fontColor('#333333')
-                .width('100%')
+                .fontColor($r('app.color.font_color1'))
+                .width(CommonConstants.FULL_PARENT)
 
               // 预约须知内容
               Text(this.serviceItem.serviceAppointmentNotice)
-                .fontSize('15fp')
-                .fontColor('#666666')
-                .lineHeight('22fp')
-                .width('100%')
-                .margin({ top: '8vp' })
+                .fontSize($r('app.float.font_size_15'))
+                .fontColor($r('app.color.font_gray'))
+                .lineHeight($r('app.float.line_height_22'))
+                .width(CommonConstants.FULL_PARENT)
+                .margin({ top: $r('app.float.distance_8') })
 
               // 分割线
               Divider()
-                .color('#E5E5E5')
-                .margin({ top: '16vp', bottom: '16vp' })
+                .color($r('app.color.gray4'))
+                .margin({ top: $r('app.float.distance_16'), bottom: $r('app.float.distance_16') })
 
               // 费用须知标题
-              Text('费用须知')
-                .fontSize('18fp')
+              Text($r('app.string.service_fee_notice'))
+                .fontSize($r('app.float.font_size_18'))
                 .fontWeight(600)
-                .fontColor('#333333')
-                .width('100%')
+                .fontColor($r('app.color.font_color1'))
+                .width(CommonConstants.FULL_PARENT)
 
               // 费用须知内容
               Text(this.serviceItem.serviceFeeNotice)
-                .fontSize('15fp')
-                .fontColor('#666666')
-                .lineHeight('22fp')
-                .width('100%')
-                .margin({ top: '8vp' })
+                .fontSize($r('app.float.font_size_15'))
+                .fontColor($r('app.color.font_gray'))
+                .lineHeight($r('app.float.line_height_22'))
+                .width(CommonConstants.FULL_PARENT)
+                .margin({ top: $r('app.float.distance_8') })
 
               // 分割线
               Divider()
-                .color('#E5E5E5')
-                .margin({ top: '16vp', bottom: '16vp' })
+                .color($r('app.color.gray4'))
+                .margin({ top: $r('app.float.distance_16'), bottom: $r('app.float.distance_16') })
 
               // 费用区域容器
               Column() {
@@ -190,93 +190,93 @@ struct ServiceDetail {
                   Divider()
                     .vertical(true)
                     .strokeWidth(3)
-                    .height('16vp')
-                    .color('#21deb4')
-                    .margin({ right: '8vp' })
-                  Text('费用')
-                    .fontSize('14fp')
+                    .height($r('app.float.distance_16'))
+                    .color($r('app.color.green1'))
+                    .margin({ right: $r('app.float.distance_8') })
+                  Text($r('app.string.fee'))
+                    .fontSize($r('app.float.font_size_14'))
                     .fontWeight(FontWeight.Bold)
-                    .fontColor('#333333')
+                    .fontColor($r('app.color.font_color1'))
                 }
-                .width('100%')
-                .margin({ bottom: '12vp' })
+                .width(CommonConstants.FULL_PARENT)
+                .margin({ bottom: $r('app.float.distance_12') })
 
                 // 费用明细内容
                 if (this.serviceItem.feeBreakdown && this.serviceItem.feeBreakdown.length > 0) {
                   ForEach(this.serviceItem.feeBreakdown, (item: SimpleFeeItem) => {
                     Row() {
                       Text(item.name)
-                        .fontSize('14fp')
-                        .fontColor('#999999')
+                        .fontSize($r('app.float.font_size_14'))
+                        .fontColor($r('app.color.font_color'))
                       Text(' ------------------------------------ ')
-                        .fontSize('12fp')
-                        .fontColor('#E8E8E8')
+                        .fontSize($r('app.float.font_size_12'))
+                        .fontColor($r('app.color.gray1'))
                         .layoutWeight(1)
                         .maxLines(1)
                         .textOverflow({ overflow: TextOverflow.Clip })
                       Text(`¥ ${item.price}`)
-                        .fontSize('14fp')
-                        .fontColor('#333333')
+                        .fontSize($r('app.float.font_size_14'))
+                        .fontColor($r('app.color.font_color1'))
                     }
-                    .width('100%')
-                    .margin({ bottom: '8vp' })
+                    .width(CommonConstants.FULL_PARENT)
+                    .margin({ bottom: $r('app.float.distance_8') })
                   })
                 }
 
                 // 总金额
                 Row() {
-                  Text('总金额')
-                    .fontSize('14fp')
-                    .fontColor('#333333')
+                  Text($r('app.string.total_amount'))
+                    .fontSize($r('app.float.font_size_14'))
+                    .fontColor($r('app.color.font_color1'))
                   Blank()
                   Text(`¥${this.serviceItem.servicePrice}`)
-                    .fontSize('18fp')
-                    .fontColor('#FF6B00')
+                    .fontSize($r('app.float.font_size_18'))
+                    .fontColor($r('app.color.font_red2'))
                     .fontWeight(FontWeight.Bold)
                 }
-                .width('100%')
-                .margin({ top: '8vp' })
+                .width(CommonConstants.FULL_PARENT)
+                .margin({ top: $r('app.float.distance_8') })
               }
-              .width('100%')
-              .padding('16vp')
+              .width(CommonConstants.FULL_PARENT)
+              .padding($r('app.float.distance_16'))
               .backgroundColor(Color.White)
-              .borderRadius('8vp')
-              .border({ width: 1, color: '#E8E8E8', radius: '8vp' })
-              .margin({ top: '12vp' })
+              .borderRadius($r('app.float.distance_8'))
+              .border({ width: 1, color: $r('app.color.gray1'), radius: $r('app.float.distance_8') })
+              .margin({ top: $r('app.float.distance_12') })
             }
-            .padding('16vp')
-            .width('100%')
-            // .backgroundColor('#FFFFFF') // Removed duplicated background color if needed, or keep it. Using the one from line 215 originally.
-            .backgroundColor('#FFFFFF')
+            .padding($r('app.float.distance_16'))
+            .width(CommonConstants.FULL_PARENT)
+            // .backgroundColor($r('app.color.white')) // Removed duplicated background color if needed, or keep it. Using the one from line 215 originally.
+            .backgroundColor($r('app.color.white'))
           }
         }
         .layoutWeight(1)
-        .width('100%')
+        .width(CommonConstants.FULL_PARENT)
 
         // 底部预约按钮
         Column() {
-          Button('预约服务')
-            .width('100%')
-            .height('48vp')
-            .fontSize('18fp')
+          Button($r('app.string.appointment_service'))
+            .width(CommonConstants.FULL_PARENT)
+            .height($r('app.float.height_48'))
+            .fontSize($r('app.float.font_size_18'))
             .fontWeight(600)
-            .backgroundColor('#21deb4')
-            .borderRadius('24vp')
+            .backgroundColor($r('app.color.green1'))
+            .borderRadius($r('app.float.distance_24'))
             .onClick(() => {
               this.handleAppointment();
             })
         }
-        .padding('12vp')
-        .width('100%')
-        .backgroundColor('#FFFFFF')
-        .shadow({ radius: 8, color: '#1F000000', offsetX: 0, offsetY: -2 })
+        .padding($r('app.float.distance_12'))
+        .width(CommonConstants.FULL_PARENT)
+        .backgroundColor($r('app.color.white'))
+        .shadow({ radius: 8, color: $r('app.color.black1'), offsetX: 0, offsetY: -2 })
       }
-      .width('100%')
-      .height('100%')
-      .backgroundColor('#F1F3F5')
+      .width(CommonConstants.FULL_PARENT)
+      .height(CommonConstants.FULL_PARENT)
+      .backgroundColor($r('app.color.background_color'))
       .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.BOTTOM])
     }
     .hideTitleBar(true)
-    .backgroundColor('#d821deb4')
+    .backgroundColor($r('app.color.main_green'))
   }
 }

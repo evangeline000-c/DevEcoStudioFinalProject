@@ -1,5 +1,5 @@
 //问诊订单详情页面
-
+import CommonConstants from '../common/CommonContants'
 import { promptAction } from '@kit.ArkUI';
 
 // 处方药品信息接口
@@ -96,19 +96,19 @@ struct ConsultationDetail {
   // 支付
   handlePayment(): void {
     if (!this.deliveryInfo.recipient) {
-      promptAction.showToast({ message: '请输入收件人姓名', duration: 2000 });
+      promptAction.showToast({ message: $r('app.string.input_recipient'), duration: 2000 });
       return;
     }
     if (!this.deliveryInfo.phone) {
-      promptAction.showToast({ message: '请输入联系电话', duration: 2000 });
+      promptAction.showToast({ message: $r('app.string.input_contact_phone'), duration: 2000 });
       return;
     }
     if (!this.validatePhone(this.deliveryInfo.phone)) {
-      promptAction.showToast({ message: '请输入正确的11位手机号码', duration: 2000 });
+      promptAction.showToast({ message: $r('app.string.input_valid_phone'), duration: 2000 });
       return;
     }
 
-    promptAction.showToast({ message: '支付成功', duration: 2000 });
+    promptAction.showToast({ message: $r('app.string.pay_success'), duration: 2000 });
     setTimeout(() => {
       this.pathStack.pop();
     }, 1000);
@@ -128,64 +128,64 @@ struct ConsultationDetail {
     Column() {
       Row() {
         Text(this.orderData.patientName as string)
-          .fontSize('16fp')
+          .fontSize($r('app.float.font_size_16'))
           .fontWeight(FontWeight.Bold)
-          .fontColor('#333333')
+          .fontColor($r('app.color.font_color1'))
         Blank()
-        Text(this.isPaymentView ? '未支付' : (this.orderData.status as string))
-          .fontSize('12fp')
-          .fontColor(this.isPaymentView ? '#21deb4' : this.getStatusColor(this.orderData.status as string))
-          .padding({ left: '12vp', right: '12vp', top: '4vp', bottom: '4vp' })
+        Text(this.isPaymentView ? $r('app.string.unpaid') : (this.orderData.status as string))
+          .fontSize($r('app.float.font_size_12'))
+          .fontColor(this.isPaymentView ? $r('app.color.green1') : this.getStatusColor(this.orderData.status as string))
+          .padding({ left: $r('app.float.distance_12'), right: $r('app.float.distance_12'), top: $r('app.float.layout_4'), bottom: $r('app.float.bottom_4')})
           .border({
             width: 1,
-            color: this.isPaymentView ? '#21deb4' : this.getStatusColor(this.orderData.status as string),
-            radius: '4vp'
+            color: this.isPaymentView ? $r('app.color.green1') : this.getStatusColor(this.orderData.status as string),
+            radius: $r('app.float.layout_4')
           })
       }
-      .width('100%')
-      .margin({ bottom: '12vp' })
+      .width(CommonConstants.FULL_PARENT)
+      .margin({ bottom: $r('app.float.distance_12') })
 
       Row() {
-        Text('医护名称')
-          .fontSize('14fp')
-          .fontColor('#999999')
+        Text($r('app.string.doctor_name'))
+          .fontSize($r('app.float.font_size_14'))
+          .fontColor($r('app.color.font_color'))
         Blank()
         Text(this.orderData.doctorName as string)
-          .fontSize('14fp')
-          .fontColor('#333333')
+          .fontSize($r('app.float.font_size_14'))
+          .fontColor($r('app.color.font_color1'))
       }
-      .width('100%')
-      .margin({ bottom: '8vp' })
+      .width(CommonConstants.FULL_PARENT)
+      .margin({ bottom: $r('app.float.distance_8') })
 
       Row() {
-        Text('问诊时间')
-          .fontSize('14fp')
-          .fontColor('#999999')
+        Text($r('app.string.consultation_time'))
+          .fontSize($r('app.float.font_size_14'))
+          .fontColor($r('app.color.font_color'))
         Blank()
         Text(this.orderData.consultationTime as string)
-          .fontSize('14fp')
-          .fontColor('#333333')
+          .fontSize($r('app.float.font_size_14'))
+          .fontColor($r('app.color.font_color1'))
       }
-      .width('100%')
-      .margin({ bottom: '8vp' })
+      .width(CommonConstants.FULL_PARENT)
+      .margin({ bottom: $r('app.float.distance_8') })
 
       Row() {
-        Text('金额')
-          .fontSize('14fp')
-          .fontColor('#999999')
+        Text($r('app.string.amount'))
+          .fontSize($r('app.float.font_size_14'))
+          .fontColor($r('app.color.font_color'))
         Blank()
         Text(`¥ ${this.orderData.amount}`)
-          .fontSize('16fp')
-          .fontColor('#FF6B00')
+          .fontSize($r('app.float.font_size_16'))
+          .fontColor($r('app.color.font_red2'))
           .fontWeight(FontWeight.Bold)
       }
-      .width('100%')
+      .width(CommonConstants.FULL_PARENT)
     }
-    .width('100%')
-    .padding('16vp')
+    .width(CommonConstants.FULL_PARENT)
+    .padding($r('app.float.distance_16'))
     .backgroundColor(Color.White)
-    .borderRadius('8vp')
-    .border({ width: 1, color: '#E8E8E8', radius: '8vp' })
+    .borderRadius($r('app.float.distance_8'))
+    .border({ width: 1, color: $r('app.color.gray1'), radius: $r('app.float.distance_8') })
   }
 
   // 处方信息卡片
@@ -197,97 +197,97 @@ struct ConsultationDetail {
         Divider()
           .vertical(true)
           .strokeWidth(3)
-          .height('16vp')
-          .color('#21deb4')
-          .margin({ right: '8vp' })
-        Text('处方信息')
-          .fontSize('16fp')
+          .height($r('app.float.distance_16'))
+          .color($r('app.color.green1'))
+          .margin({ right: $r('app.float.distance_8') })
+        Text($r('app.string.prescription_info'))
+          .fontSize($r('app.float.font_size_16'))
           .fontWeight(FontWeight.Bold)
-          .fontColor('#333333')
+          .fontColor($r('app.color.font_color1'))
       }
-      .width('100%')
-      .margin({ bottom: '16vp' })
+      .width(CommonConstants.FULL_PARENT)
+      .margin({ bottom: $r('app.float.distance_16') })
 
       // 主诉
       Row() {
-        Text('主诉')
-          .fontSize('14fp')
-          .fontColor('#999999')
-          .width('60vp')
+        Text($r('app.string.chief_complaint'))
+          .fontSize($r('app.float.font_size_14'))
+          .fontColor($r('app.color.font_color'))
+          .width($r('app.float.width_60'))
         Text(this.prescriptionInfo.chiefComplaint)
-          .fontSize('14fp')
-          .fontColor('#333333')
+          .fontSize($r('app.float.font_size_14'))
+          .fontColor($r('app.color.font_color1'))
           .layoutWeight(1)
           .textAlign(TextAlign.End)
       }
-      .width('100%')
-      .margin({ bottom: '8vp' })
+      .width(CommonConstants.FULL_PARENT)
+      .margin({ bottom: $r('app.float.distance_8') })
 
       // 病史
       Row() {
-        Text('病史')
-          .fontSize('14fp')
-          .fontColor('#999999')
-          .width('60vp')
+        Text($r('app.string.medical_history'))
+          .fontSize($r('app.float.font_size_14'))
+          .fontColor($r('app.color.font_color'))
+          .width($r('app.float.width_60'))
         Text(this.prescriptionInfo.medicalHistory)
-          .fontSize('14fp')
-          .fontColor('#333333')
+          .fontSize($r('app.float.font_size_14'))
+          .fontColor($r('app.color.font_color1'))
           .layoutWeight(1)
           .textAlign(TextAlign.End)
       }
-      .width('100%')
-      .margin({ bottom: '8vp' })
+      .width(CommonConstants.FULL_PARENT)
+      .margin({ bottom: $r('app.float.distance_8') })
 
       // 过敏史
       Row() {
-        Text('过敏史')
-          .fontSize('14fp')
-          .fontColor('#999999')
-          .width('60vp')
+        Text($r('app.string.allergy_history'))
+          .fontSize($r('app.float.font_size_14'))
+          .fontColor($r('app.color.font_color'))
+          .width($r('app.float.width_60'))
         Text(this.prescriptionInfo.allergyHistory)
-          .fontSize('14fp')
-          .fontColor('#333333')
+          .fontSize($r('app.float.font_size_14'))
+          .fontColor($r('app.color.font_color1'))
           .layoutWeight(1)
           .textAlign(TextAlign.End)
       }
-      .width('100%')
-      .margin({ bottom: '8vp' })
+      .width(CommonConstants.FULL_PARENT)
+      .margin({ bottom: $r('app.float.distance_8') })
 
       // 诊断
       Row() {
-        Text('诊断')
-          .fontSize('14fp')
-          .fontColor('#999999')
-          .width('60vp')
+        Text($r('app.string.diagnosis'))
+          .fontSize($r('app.float.font_size_14'))
+          .fontColor($r('app.color.font_color'))
+          .width($r('app.float.width_60'))
         Text(this.prescriptionInfo.diagnosis)
-          .fontSize('14fp')
-          .fontColor('#333333')
+          .fontSize($r('app.float.font_size_14'))
+          .fontColor($r('app.color.font_color1'))
           .layoutWeight(1)
           .textAlign(TextAlign.End)
       }
-      .width('100%')
-      .margin({ bottom: '8vp' })
+      .width(CommonConstants.FULL_PARENT)
+      .margin({ bottom: $r('app.float.distance_8') })
 
       // 用药天数
       Row() {
-        Text('用药天数')
-          .fontSize('14fp')
-          .fontColor('#999999')
-          .width('80vp')
+        Text($r('app.string.medication_days'))
+          .fontSize($r('app.float.font_size_14'))
+          .fontColor($r('app.color.font_color'))
+          .width($r('app.float.distance_80'))
         Text(this.prescriptionInfo.medicationDays || '-')
-          .fontSize('14fp')
-          .fontColor('#333333')
+          .fontSize($r('app.float.font_size_14'))
+          .fontColor($r('app.color.font_color1'))
           .layoutWeight(1)
           .textAlign(TextAlign.End)
       }
-      .width('100%')
+      .width(CommonConstants.FULL_PARENT)
     }
-    .width('100%')
-    .padding('16vp')
+    .width(CommonConstants.FULL_PARENT)
+    .padding($r('app.float.distance_16'))
     .backgroundColor(Color.White)
-    .borderRadius('8vp')
-    .border({ width: 1, color: '#E8E8E8', radius: '8vp' })
-    .margin({ top: '12vp' })
+    .borderRadius($r('app.float.distance_8'))
+    .border({ width: 1, color: $r('app.color.gray1'), radius: $r('app.float.distance_8') })
+    .margin({ top: $r('app.float.distance_12') })
   }
 
   // 处方药信息卡片
@@ -299,143 +299,143 @@ struct ConsultationDetail {
         Divider()
           .vertical(true)
           .strokeWidth(3)
-          .height('16vp')
-          .color('#21deb4')
-          .margin({ right: '8vp' })
-        Text('处方药信息')
-          .fontSize('16fp')
+          .height($r('app.float.distance_16'))
+          .color($r('app.color.green1'))
+          .margin({ right: $r('app.float.distance_8') })
+        Text($r('app.string.medicine_info'))
+          .fontSize($r('app.float.font_size_16'))
           .fontWeight(FontWeight.Bold)
-          .fontColor('#333333')
+          .fontColor($r('app.color.font_color1'))
       }
-      .width('100%')
-      .margin({ bottom: '16vp' })
+      .width(CommonConstants.FULL_PARENT)
+      .margin({ bottom: $r('app.float.distance_16') })
 
       ForEach(this.medicines, (medicine: Medicine) => {
         Column() {
           // 药品名称
           Row() {
             Text(`# ${medicine.index}.`)
-              .fontSize('14fp')
-              .fontColor('#999999')
+              .fontSize($r('app.float.font_size_14'))
+              .fontColor($r('app.color.font_color'))
             Blank()
             Text(medicine.name)
-              .fontSize('14fp')
-              .fontColor('#333333')
+              .fontSize($r('app.float.font_size_14'))
+              .fontColor($r('app.color.font_color1'))
           }
-          .width('100%')
-          .margin({ bottom: '8vp' })
+          .width(CommonConstants.FULL_PARENT)
+          .margin({ bottom: $r('app.float.distance_8') })
 
           // 类型
           Row() {
-            Text('类型')
-              .fontSize('14fp')
-              .fontColor('#999999')
+            Text($r('app.string.medicine_type'))
+              .fontSize($r('app.float.font_size_14'))
+              .fontColor($r('app.color.font_color'))
             Blank()
             Text(medicine.type)
-              .fontSize('14fp')
-              .fontColor('#333333')
+              .fontSize($r('app.float.font_size_14'))
+              .fontColor($r('app.color.font_color1'))
           }
-          .width('100%')
-          .margin({ bottom: '8vp' })
+          .width(CommonConstants.FULL_PARENT)
+          .margin({ bottom: $r('app.float.distance_8') })
 
           // 规格
           Row() {
-            Text('规格')
-              .fontSize('14fp')
-              .fontColor('#999999')
+            Text($r('app.string.medicine_spec'))
+              .fontSize($r('app.float.font_size_14'))
+              .fontColor($r('app.color.font_color'))
             Blank()
             Text(medicine.spec)
-              .fontSize('14fp')
-              .fontColor('#333333')
+              .fontSize($r('app.float.font_size_14'))
+              .fontColor($r('app.color.font_color1'))
           }
-          .width('100%')
-          .margin({ bottom: '8vp' })
+          .width(CommonConstants.FULL_PARENT)
+          .margin({ bottom: $r('app.float.distance_8') })
 
           // 剂量
           Row() {
-            Text('剂量')
-              .fontSize('14fp')
-              .fontColor('#999999')
+            Text($r('app.string.medicine_dosage'))
+              .fontSize($r('app.float.font_size_14'))
+              .fontColor($r('app.color.font_color'))
             Blank()
             Text(`${medicine.dosage}`)
-              .fontSize('14fp')
-              .fontColor('#333333')
+              .fontSize($r('app.float.font_size_14'))
+              .fontColor($r('app.color.font_color1'))
           }
-          .width('100%')
-          .margin({ bottom: '8vp' })
+          .width(CommonConstants.FULL_PARENT)
+          .margin({ bottom: $r('app.float.distance_8') })
 
           // 频次
           Row() {
-            Text('频次')
-              .fontSize('14fp')
-              .fontColor('#999999')
+            Text($r('app.string.medicine_frequency'))
+              .fontSize($r('app.float.font_size_14'))
+              .fontColor($r('app.color.font_color'))
             Blank()
             Text(`${medicine.frequency}`)
-              .fontSize('14fp')
-              .fontColor('#333333')
+              .fontSize($r('app.float.font_size_14'))
+              .fontColor($r('app.color.font_color1'))
           }
-          .width('100%')
-          .margin({ bottom: '8vp' })
+          .width(CommonConstants.FULL_PARENT)
+          .margin({ bottom: $r('app.float.distance_8') })
 
           // 数量
           Row() {
-            Text('数量')
-              .fontSize('14fp')
-              .fontColor('#999999')
+            Text($r('app.string.medicine_quantity'))
+              .fontSize($r('app.float.font_size_14'))
+              .fontColor($r('app.color.font_color'))
             Blank()
             Text(`${medicine.quantity}`)
-              .fontSize('14fp')
-              .fontColor('#333333')
+              .fontSize($r('app.float.font_size_14'))
+              .fontColor($r('app.color.font_color1'))
           }
-          .width('100%')
-          .margin({ bottom: '8vp' })
+          .width(CommonConstants.FULL_PARENT)
+          .margin({ bottom: $r('app.float.distance_8') })
 
           // 单价
           Row() {
-            Text('单价')
-              .fontSize('14fp')
-              .fontColor('#999999')
+            Text($r('app.string.medicine_unit_price'))
+              .fontSize($r('app.float.font_size_14'))
+              .fontColor($r('app.color.font_color'))
             Blank()
             Text(`${medicine.unitPrice}`)
-              .fontSize('14fp')
-              .fontColor('#333333')
+              .fontSize($r('app.float.font_size_14'))
+              .fontColor($r('app.color.font_color1'))
           }
-          .width('100%')
-          .margin({ bottom: '8vp' })
+          .width(CommonConstants.FULL_PARENT)
+          .margin({ bottom: $r('app.float.distance_8') })
 
           // 总价
           Row() {
-            Text('总价')
-              .fontSize('14fp')
-              .fontColor('#999999')
+            Text($r('app.string.medicine_total_price'))
+              .fontSize($r('app.float.font_size_14'))
+              .fontColor($r('app.color.font_color'))
             Blank()
             Text(`${medicine.totalPrice}`)
-              .fontSize('14fp')
-              .fontColor('#333333')
+              .fontSize($r('app.float.font_size_14'))
+              .fontColor($r('app.color.font_color1'))
           }
-          .width('100%')
-          .margin({ bottom: '8vp' })
+          .width(CommonConstants.FULL_PARENT)
+          .margin({ bottom: $r('app.float.distance_8') })
 
           // 用法
           Row() {
-            Text('用法')
-              .fontSize('14fp')
-              .fontColor('#999999')
+            Text($r('app.string.medicine_usage'))
+              .fontSize($r('app.float.font_size_14'))
+              .fontColor($r('app.color.font_color'))
             Blank()
             Text(medicine.usage)
-              .fontSize('14fp')
-              .fontColor('#333333')
+              .fontSize($r('app.float.font_size_14'))
+              .fontColor($r('app.color.font_color1'))
           }
-          .width('100%')
+          .width(CommonConstants.FULL_PARENT)
         }
       })
     }
-    .width('100%')
-    .padding('16vp')
+    .width(CommonConstants.FULL_PARENT)
+    .padding($r('app.float.distance_16'))
     .backgroundColor(Color.White)
-    .borderRadius('8vp')
-    .border({ width: 1, color: '#E8E8E8', radius: '8vp' })
-    .margin({ top: '12vp' })
+    .borderRadius($r('app.float.distance_8'))
+    .border({ width: 1, color: $r('app.color.gray1'), radius: $r('app.float.distance_8') })
+    .margin({ top: $r('app.float.distance_12') })
   }
 
   // 收件信息卡片
@@ -447,56 +447,56 @@ struct ConsultationDetail {
         Divider()
           .vertical(true)
           .strokeWidth(3)
-          .height('16vp')
-          .color('#21deb4')
-          .margin({ right: '8vp' })
-        Text('收件信息')
-          .fontSize('16fp')
+          .height($r('app.float.distance_16'))
+          .color($r('app.color.green1'))
+          .margin({ right: $r('app.float.distance_8') })
+        Text($r('app.string.delivery_info'))
+          .fontSize($r('app.float.font_size_16'))
           .fontWeight(FontWeight.Bold)
-          .fontColor('#333333')
+          .fontColor($r('app.color.font_color1'))
       }
-      .width('100%')
-      .margin({ bottom: '16vp' })
+      .width(CommonConstants.FULL_PARENT)
+      .margin({ bottom: $r('app.float.distance_16') })
 
       // 收件人
       Row() {
         Row() {
-          Text('收件人')
-            .fontSize('14fp')
-            .fontColor('#333333')
+          Text($r('app.string.recipient'))
+            .fontSize($r('app.float.font_size_14'))
+            .fontColor($r('app.color.font_color1'))
           Text('*')
-            .fontSize('14fp')
-            .fontColor('#FF0000')
+            .fontSize($r('app.float.font_size_14'))
+            .fontColor($r('app.color.red'))
         }
-        .width('80vp')
+        .width($r('app.float.distance_80'))
 
-        TextInput({ placeholder: '请输入收件人名称' })
+        TextInput({ placeholder: $r('app.string.input_recipient') })
           .layoutWeight(1)
-          .fontSize('14fp')
+          .fontSize($r('app.float.font_size_14'))
           .backgroundColor(Color.Transparent)
           .textAlign(TextAlign.End)
           .onChange((value: string) => {
             this.deliveryInfo.recipient = value;
           })
       }
-      .width('100%')
-      .margin({ bottom: '16vp' })
+      .width(CommonConstants.FULL_PARENT)
+      .margin({ bottom: $r('app.float.distance_16') })
 
       // 手机号码
       Row() {
         Row() {
-          Text('手机号码')
-            .fontSize('14fp')
-            .fontColor('#333333')
+          Text($r('app.string.phone'))
+            .fontSize($r('app.float.font_size_14'))
+            .fontColor($r('app.color.font_color1'))
           Text('*')
-            .fontSize('14fp')
-            .fontColor('#FF0000')
+            .fontSize($r('app.float.font_size_14'))
+            .fontColor($r('app.color.red'))
         }
-        .width('80vp')
+        .width($r('app.float.distance_80'))
 
-        TextInput({ placeholder: '请输入联系人手机号码' })
+        TextInput({ placeholder: $r('app.string.input_contact_phone') })
           .layoutWeight(1)
-          .fontSize('14fp')
+          .fontSize($r('app.float.font_size_14'))
           .backgroundColor(Color.Transparent)
           .textAlign(TextAlign.End)
           .type(InputType.Number)
@@ -505,50 +505,50 @@ struct ConsultationDetail {
             this.deliveryInfo.phone = value;
           })
       }
-      .width('100%')
-      .margin({ bottom: '16vp' })
+      .width(CommonConstants.FULL_PARENT)
+      .margin({ bottom: $r('app.float.distance_16') })
 
       // 地址
       Row() {
-        Text('地址')
-          .fontSize('14fp')
-          .fontColor('#333333')
-          .width('80vp')
-        TextInput({ placeholder: '请输入地址' })
+        Text($r('app.string.address'))
+          .fontSize($r('app.float.font_size_14'))
+          .fontColor($r('app.color.font_color1'))
+          .width($r('app.float.distance_80'))
+        TextInput({ placeholder: $r('app.string.input_address') })
           .layoutWeight(1)
-          .fontSize('14fp')
+          .fontSize($r('app.float.font_size_14'))
           .backgroundColor(Color.Transparent)
           .textAlign(TextAlign.End)
           .onChange((value: string) => {
             this.deliveryInfo.address = value;
           })
       }
-      .width('100%')
-      .margin({ bottom: '16vp' })
+      .width(CommonConstants.FULL_PARENT)
+      .margin({ bottom: $r('app.float.distance_16') })
 
       // 备注
       Row() {
-        Text('备注')
-          .fontSize('14fp')
-          .fontColor('#333333')
-          .width('80vp')
-        TextInput({ placeholder: '请输入备注' })
+        Text($r('app.string.remarks'))
+          .fontSize($r('app.float.font_size_14'))
+          .fontColor($r('app.color.font_color1'))
+          .width($r('app.float.distance_80'))
+        TextInput({ placeholder: $r('app.string.input_remarks') })
           .layoutWeight(1)
-          .fontSize('14fp')
+          .fontSize($r('app.float.font_size_14'))
           .backgroundColor(Color.Transparent)
           .textAlign(TextAlign.End)
           .onChange((value: string) => {
             this.deliveryInfo.note = value;
           })
       }
-      .width('100%')
+      .width(CommonConstants.FULL_PARENT)
     }
-    .width('100%')
-    .padding('16vp')
+    .width(CommonConstants.FULL_PARENT)
+    .padding($r('app.float.distance_16'))
     .backgroundColor(Color.White)
-    .borderRadius('8vp')
-    .border({ width: 1, color: '#E8E8E8', radius: '8vp' })
-    .margin({ top: '12vp' })
+    .borderRadius($r('app.float.distance_8'))
+    .border({ width: 1, color: $r('app.color.gray1'), radius: $r('app.float.distance_8') })
+    .margin({ top: $r('app.float.distance_12') })
   }
 
   build() {
@@ -557,9 +557,9 @@ struct ConsultationDetail {
         // 标题栏
         Row() {
           Image($r('app.media.ic_back'))
-            .width('24vp')
-            .height('24vp')
-            .margin({ left: '16vp' })
+            .width($r('app.float.distance_24'))
+            .height($r('app.float.distance_24'))
+            .margin({ left: $r('app.float.distance_16') })
             .onClick(() => {
               if (this.isPaymentView) {
                 this.isPaymentView = false;
@@ -567,17 +567,17 @@ struct ConsultationDetail {
                 this.pathStack.pop();
               }
             })
-          Text(this.isPaymentView ? '问诊订单支付' : '问诊订单信息')
-            .fontSize('18fp')
+          Text(this.isPaymentView ? $r('app.string.consultation_pay_title') : $r('app.string.consultation_detail_title'))
+            .fontSize($r('app.float.font_size_18'))
             .fontColor(Color.White)
             .fontWeight(FontWeight.Medium)
             .layoutWeight(1)
             .textAlign(TextAlign.Center)
-          Blank().width('40vp')
+          Blank().width($r('app.float.distance_40'))
         }
-        .width('100%')
-        .height('50vp')
-        .backgroundColor('#21deb4')
+        .width(CommonConstants.FULL_PARENT)
+        .height($r('app.float.distance_50'))
+        .backgroundColor($r('app.color.green1'))
 
         // 内容区域
         Scroll() {
@@ -591,24 +591,24 @@ struct ConsultationDetail {
               this.MedicineCard()
             }
           }
-          .width('100%')
-          .padding({ left: '12vp', right: '12vp', top: '12vp', bottom: '80vp' })
+          .width(CommonConstants.FULL_PARENT)
+          .padding({ left: $r('app.float.distance_12'), right: $r('app.float.distance_12'), top: $r('app.float.distance_12'), bottom: $r('app.float.distance_80') })
           .alignItems(HorizontalAlign.Start)
         }
         .layoutWeight(1)
-        .width('100%')
+        .width(CommonConstants.FULL_PARENT)
         .align(Alignment.Top)
 
         // 底部按钮
         if (this.orderData.status !== '已支付') {
           Column() {
-            Button(this.isPaymentView ? '支付' : '去支付')
-              .width('90%')
-              .height('50vp')
-              .fontSize('16fp')
+            Button(this.isPaymentView ? $r('app.string.pay') : $r('app.string.go_pay'))
+              .width(CommonConstants.NINETY_PARENT)
+              .height($r('app.float.distance_50'))
+              .fontSize($r('app.float.font_size_16'))
               .fontColor(Color.White)
-              .backgroundColor('#21deb4')
-              .borderRadius('25vp')
+              .backgroundColor($r('app.color.green1'))
+              .borderRadius($r('app.float.layout_25'))
               .onClick(() => {
                 if (this.isPaymentView) {
                   this.handlePayment();
@@ -617,17 +617,17 @@ struct ConsultationDetail {
                 }
               })
           }
-          .width('100%')
-          .padding({ top: '12vp', bottom: '12vp' })
+          .width(CommonConstants.FULL_PARENT)
+          .padding({ top: $r('app.float.distance_12'), bottom: $r('app.float.distance_12')})
           .backgroundColor(Color.White)
         }
       }
-      .width('100%')
-      .height('100%')
-      .backgroundColor('#F5F5F5')
+      .width(CommonConstants.FULL_PARENT)
+      .height(CommonConstants.FULL_PARENT)
+      .backgroundColor($r('app.color.gray5'))
       .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.BOTTOM])
     }
     .hideTitleBar(true)
-    .backgroundColor('#d821deb4')
+    .backgroundColor($r('app.color.main_green'))
   }
 }

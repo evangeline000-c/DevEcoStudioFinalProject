@@ -1,4 +1,6 @@
 import{ NavItem, UserHeader} from './MyComponents'
+import CommonConstants from '../common/CommonContants'
+
 interface CurrentUser { account?: string; phone?: string }
 
 @Component
@@ -33,12 +35,12 @@ export default struct My {
   build() {
     NavDestination() {
       Column() {
-        Text('我的')
-          .height('60vp')
-          .width('100%')
-          .fontWeight(220)
-          .fontSize('20fp')
-          .fontColor('#FFFFFF')
+        Text($r('app.string.tab_my'))
+          .height($r('app.float.height_text'))
+          .width(CommonConstants.FULL_PARENT)
+          .fontWeight($r('app.float.font_weight_220'))
+          .fontSize($r('app.float.font_size'))
+          .fontColor($r('app.color.white'))
           .textAlign(TextAlign.Center)
 
         UserHeader({
@@ -50,7 +52,7 @@ export default struct My {
 
         NavItem({
           icon: 'app.media.record',
-          text: '问诊记录'
+          text: $r('app.string.consultation')
         })
         .onClick(() => {
           this.Consultation(true);
@@ -58,7 +60,7 @@ export default struct My {
 
         NavItem({
           icon: 'app.media.service',
-          text: '服务订单'
+          text: $r('app.string.service_order')
         })
         .onClick(() => {
           this.ServiceOrders(true);
@@ -66,7 +68,7 @@ export default struct My {
 
         NavItem({
           icon: 'app.media.bed',
-          text: '入住申请'
+          text: $r('app.string.admission_title')
         })
         .onClick(() => {
           this.Admission(true);
@@ -74,19 +76,19 @@ export default struct My {
 
         NavItem({
           icon: 'app.media.out',
-          text: '退出登陆'
+          text: $r('app.string.logout')
         })
         .onClick(() => {
           this.pathStack.clear()
         })
       }
-      .width('150%')
-      .height('100%')
+      .width(CommonConstants.FULL_PARENT)
+      .height(CommonConstants.FULL_PARENT)
       .linearGradient({
         colors: [
-          ['#21deb4',0],
-          ['#1121deb4',0.3],
-          ['#F1F3F5',0.7]
+          [$r('app.color.green1'),0],
+          [$r('app.color.gray7'),0.3],
+          [$r('app.color.background_color'),0.7]
         ]
       })
     }

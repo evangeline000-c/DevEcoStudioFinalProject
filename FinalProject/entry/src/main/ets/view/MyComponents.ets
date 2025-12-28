@@ -1,35 +1,36 @@
 // 导航项组件
+import CommonConstants from '../common/CommonContants'
 @Component
 export struct NavItem {
   @Prop icon: string ;
-  @Prop text: string ;
+  @Prop text: Resource|string ;
 
   build() {
     Column() {
       Row() {
         // 左侧图标
         Image($r(this.icon))
-          .height(20)
-          .margin({ right: 12 })
+          .height($r('app.float.distance_20'))
+          .margin({ right: $r('app.float.distance_12') })
 
         // 中间文字
         Text(this.text)
-          .fontSize(16)
-          .fontColor('#333')
+          .fontSize($r('app.float.font_size_15'))
+          .fontColor($r('app.color.font_color1'))
           .layoutWeight(1) 
           .textAlign(TextAlign.Start)
 
         // 右侧箭头
         Image($r('app.media.arrow_My'))
-          .height(20)
-          .margin({ left: 8 })
+          .height($r('app.float.distance_20'))
+          .margin({ left: $r('app.float.distance_8') })
       }
-      .padding(12)
-      .width('60%')
-      .height(40)
+      .padding($r('app.float.distance_12'))
+      .width(CommonConstants.NINETY_PARENT)
+      .height($r('app.float.distance_50'))
       .margin({ top: 15 })
-      .borderRadius(5)
-      .backgroundColor('#FFFFFF')
+      .borderRadius($r('app.float.distance_5'))
+      .backgroundColor($r('app.color.white'))
       .alignItems(VerticalAlign.Center)
       .justifyContent(FlexAlign.Center)
     }
@@ -48,32 +49,32 @@ export struct UserHeader {
     Column() {
       // 头像
       Image($r(this.avatar))
-        .width(80)
-        .height(80)
-        .borderRadius(40)
+        .width($r('app.float.distance_80'))
+        .height($r('app.float.distance_80'))
+        .borderRadius($r('app.float.distance_40'))
         .objectFit(ImageFit.Cover)
-        .margin({ bottom: 12 });
+        .margin({ bottom: $r('app.float.distance_12') });
 
       // 用户名
       Text(this.userName)
-        .fontSize(20)
-        .fontColor('#FFFFFF')
+        .fontSize($r('app.float.font_size_20'))
+        .fontColor($r('app.color.white'))
         .fontWeight(FontWeight.Medium)
-        .margin({ bottom: 12 });
+        .margin({ bottom: $r('app.float.distance_12') });
 
       // 用户电话
       Text(this.userPhone)
-        .fontSize(14)
-        .fontColor('#FFFFFF')
+        .fontSize($r('app.float.font_size_14'))
+        .fontColor($r('app.color.white'))
     }
     //.alignItems(ItemAlign.Center)
     .justifyContent(FlexAlign.Center)
-    .width('100%')
-    .height(200)
+    .width(CommonConstants.FULL_PARENT)
+    .height($r('app.float.height_200'))
     .backgroundImage($r(this.bgImage))
     .backgroundImageSize(ImageSize.Cover)
     .backgroundImagePosition(Alignment.Center)
-    .margin({ bottom: 20 })
-    .backgroundColor('#40E0D0')
+    .margin({ bottom: $r('app.float.distance_20') })
+    .backgroundColor($r('app.color.main_green'))
   }
 }

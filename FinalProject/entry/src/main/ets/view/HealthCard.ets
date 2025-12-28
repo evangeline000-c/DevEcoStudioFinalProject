@@ -2,6 +2,7 @@
 import { McLineChart, McBarChart,  McPieChart,Options } from '@mcui/mccharts';
 import {type HealthData } from '../viewmodel/HealthNumData';
 import {getLineChartOptions, getBarChartOptions, getPieChartOptions} from '../viewmodel/Charts'
+import CommonConstants from '../common/CommonContants'
 
 @Component
 export struct HealthCard {
@@ -13,8 +14,8 @@ export struct HealthCard {
       McLineChart({
         options: getLineChartOptions(this.data)
       })
-      .width('90%')
-      .height('100vp')
+      .width(CommonConstants.NINETY_PARENT)
+      .height($r('app.float.health_height'))
     }
   }
 
@@ -24,8 +25,8 @@ export struct HealthCard {
       McBarChart({
         options: getBarChartOptions(this.data)
       })
-      .width('90%')
-      .height('100vp')
+      .width(CommonConstants.NINETY_PARENT)
+      .height($r('app.float.health_height'))
     }
   }
 
@@ -35,8 +36,8 @@ export struct HealthCard {
       McPieChart({
         options: getPieChartOptions(this.data)
       })
-      .width('90%')
-      .height('100vp')
+      .width(CommonConstants.NINETY_PARENT)
+      .height($r('app.float.health_height'))
     }
   }
 
@@ -46,25 +47,25 @@ export struct HealthCard {
       Column() {
         // 标签
         Text(this.data.label)
-          .width('100%')
-          .fontSize('16fp')
-          .fontColor('#99000000')
-          .margin({ bottom: '4vp' })
+          .width(CommonConstants.FULL_PARENT)
+          .fontSize($r('app.float.font_size_16'))
+          .fontColor($r('app.color.health_font_black'))
+          .margin({ bottom: $r('app.float.bottom_4') })
 
         // 数值和单位
         Row({ space: 2 }) {
           Text(this.data.value)
-            .fontSize('20fp')
-            .fontWeight(700)
-            .fontColor('#000000')
+            .fontSize($r('app.float.font_size'))
+            .fontWeight($r('app.float.font_weight_700'))
+            .fontColor($r('app.color.health_font_black1'))
           Text(this.data.unit)
-            .fontSize('12fp')
-            .fontColor('#66000000')
+            .fontSize($r('app.float.font_size_12'))
+            .fontColor($r('app.color.health_font_black2'))
         }
-        .width('100%')
+        .width(CommonConstants.FULL_PARENT)
         .alignItems(VerticalAlign.Bottom)
       }
-      .width('100%')
+      .width(CommonConstants.FULL_PARENT)
       .padding('12vp 0 12vp 12vp')
 
       // 下半部分 - 图表区域
@@ -78,27 +79,27 @@ export struct HealthCard {
         } else {
             if (this.data.label === '体温') {
               Image($r('app.media.temp_icon'))
-                .width('100vp')
-                .height('100vp')
+                .width($r('app.float.health_height'))
+                .height($r('app.float.health_height'))
             } else if (this.data.label === '血糖') {
               Image($r('app.media.sugar_icon'))
-                .width('100vp')
-                .height('100vp')
+                .width($r('app.float.health_height'))
+                .height($r('app.float.health_height'))
             } else if (this.data.label === '血压') {
               Image($r('app.media.pressure_icon'))
-                .width('100vp')
-                .height('100vp')
+                .width($r('app.float.health_height'))
+                .height($r('app.float.health_height'))
             } else {
-              Blank().width('100%').height('100vp')
+              Blank().width(CommonConstants.FULL_PARENT).height($r('app.float.health_height'))
             }
         }
       }
-      .width('100%')
+      .width(CommonConstants.FULL_PARENT)
     }
-    .width('100%')
+    .width(CommonConstants.FULL_PARENT)
     .shadow({
       radius: 4,
-      color: '#000000bc',
+      color: $r('app.color.black3'),
       offsetX: 0,
       offsetY: 2
     })
@@ -107,7 +108,7 @@ export struct HealthCard {
       repeating: true, // 渐变颜色是否重复
       colors: [[0xffffff, 0.0], [(this.data.label === '压力' ? 0xE0FFFF : (this.data.label === '血氧饱和度' || this.data.label === '睡眠' ? 0xF0FFF0: 0xFFF0F5)), 1.0]] // 数组末尾元素占比小于1时满足重复着色效果
     })
-    .borderRadius(12)
+    .borderRadius($r('app.float.distance_12'))
     .clip(true)
   }
 }

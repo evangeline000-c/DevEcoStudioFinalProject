@@ -7,7 +7,7 @@ import Health_sleep from "../view/Health_sleep"
 import Health_stress from "../view/Health_stress"
 import Health_sugar from "../view/Health_sugar"
 import Health_temperature from "../view/Health_temperature"
-
+import CommonConstants from '../common/CommonContants'
 import { healthDataList, heartRateData, users, type HealthData, type userData } from '../viewmodel/HealthNumData';
 import {type UserAndPart} from "../view/Health"
 
@@ -41,16 +41,16 @@ export struct Health_sub {
   TabBuilder(title: ResourceStr, index: number) {
     Column() {
       Text(title)
-        .margin({ top: '4vp' })
-        .fontSize(15)
-        .fontWeight(500)
-        .fontColor(this.currentIndex === index ? '#d821deb4' : '#66000000')
+        .margin({ top: $r('app.float.layout_4') })
+        .fontSize($r('app.float.font_size_15'))
+        .fontWeight($r('app.float.font_weight_500'))
+        .fontColor(this.currentIndex === index ? $r('app.color.main_green') : $r('app.color.health_font_black2'))
     }
-    .backgroundColor('#FFFFFF')
+    .backgroundColor($r('app.color.white'))
     .justifyContent(FlexAlign.Center)
-    .height('50vp')
-    .width('100%')
-    //.margin({bottom:'5vp'})
+    .height($r('app.float.distance_50'))
+    .width(CommonConstants.FULL_PARENT)
+    //.margin({bottom:$r('app.float.distance_5')})
     .onClick(() => {
       this.currentIndex = index;
       this.tabsController.changeIndex(this.currentIndex);
@@ -65,45 +65,44 @@ export struct Health_sub {
           Row() {
             Button() {
               Image($r('app.media.arrow_health'))
-                .width(30)
-                .height(30)
+                .width($r('app.float.distance_30'))
+                .height($r('app.float.distance_30'))
 
-            }.backgroundColor('#41E3BF')
-            .margin({ left: '5vp' })
+            }.backgroundColor($r('app.color.main_green'))
+            .margin({ left: $r('app.float.distance_5') })
             .onClick(() => {
               this.pathStack.pop()
             })
 
             Row() {
-              Text('体征信息')
-                .height('60vp')
-                .fontWeight(220)//字体粗细
-                .fontSize('20fp')//字体大小
-                //.backgroundColor('#ffd41c1c')
-                .fontColor('#FFFFFF')
-                .width('100%')
+              Text($r('app.string.health_info'))
+                .height($r('app.float.height_text'))
+                .fontWeight($r('app.float.font_weight_220'))//字体粗细
+                .fontSize($r('app.float.font_size'))//字体大小
+                .fontColor($r('app.color.white'))
+                .width(CommonConstants.FULL_PARENT)
             }
-            .margin({ left: '110vp' })
-            .width('100%')
+            .margin({ left: $r('app.float.distance_110') })
+            .width(CommonConstants.FULL_PARENT)
 
           }
-          .width('100%')
+          .width(CommonConstants.FULL_PARENT)
 
 
           Column(){
             Text(this.currentUserName)
-              .fontWeight(700)
-              .fontSize('25fp')
+              .fontWeight($r('app.float.font_weight_700'))
+              .fontSize($r('app.float.font_size_25'))
 
             Divider()
               .vertical(false)
               .strokeWidth(3)
-              .height(5)
-              .color('#ff000000')  // 横条颜色
-              .width('20vp')
+              .height($r('app.float.distance_5'))
+              .color($r('app.color.black'))  // 横条颜色
+              .width($r('app.float.distance_20'))
           }
-          .width('100%')
-          .margin({left:'12vp',top:'12vp', bottom:'12vp'})
+          .width(CommonConstants.FULL_PARENT)
+          .margin({left:$r('app.float.distance_12'),top:$r('app.float.distance_12'), bottom:$r('app.float.distance_12')})
           .alignItems(HorizontalAlign.Start)
         }
 
@@ -114,60 +113,60 @@ export struct Health_sub {
         }) {
           TabContent() {
             Health_heartRate({userId:this.currentUserId})
-          }.padding({ top:'8vp', left: '8vp', right: '8vp' })
-          .backgroundColor('#F1F3F5')
-          .tabBar(this.TabBuilder('心率', 0))
+          }.padding({ top:$r('app.float.distance_8'), left: $r('app.float.distance_8'), right: $r('app.float.distance_8') })
+          .backgroundColor($r('app.color.background_color'))
+          .tabBar(this.TabBuilder($r('app.string.heart_rate'), 0))
 
           TabContent() {
             Health_oxygen({userId:this.currentUserId})
-          }.padding({ top:'8vp', left: '8vp', right: '8vp' })
-          .backgroundColor('#F1F3F5')
-          .tabBar(this.TabBuilder('血氧', 1))
+          }.padding({ top:$r('app.float.distance_8'), left: $r('app.float.distance_8'), right: $r('app.float.distance_8') })
+          .backgroundColor($r('app.color.background_color'))
+          .tabBar(this.TabBuilder($r('app.string.blood_oxygen'), 1))
 
           TabContent() {
             Health_temperature({userId:this.currentUserId})
-          }.padding({ top:'8vp', left: '8vp', right: '8vp' })
-          .backgroundColor('#F1F3F5')
-          .tabBar(this.TabBuilder('体温', 2))
+          }.padding({ top:$r('app.float.distance_8'), left: $r('app.float.distance_8'), right: $r('app.float.distance_8') })
+          .backgroundColor($r('app.color.background_color'))
+          .tabBar(this.TabBuilder($r('app.string.temperature'), 2))
 
           TabContent() {
             Health_sugar({userId:this.currentUserId})
-          }.padding({ top:'8vp', left: '8vp', right: '8vp' })
-          .backgroundColor('#F1F3F5')
-          .tabBar(this.TabBuilder('血糖', 3))
+          }.padding({ top:$r('app.float.distance_8'), left: $r('app.float.distance_8'), right: $r('app.float.distance_8') })
+          .backgroundColor($r('app.color.background_color'))
+          .tabBar(this.TabBuilder($r('app.string.sugar'), 3))
 
           TabContent() {
             Health_pressure({userId:this.currentUserId})
-          }.padding({ top:'8vp', left: '8vp', right: '8vp' })
-          .backgroundColor('#F1F3F5')
-          .tabBar(this.TabBuilder('血压', 4))
+          }.padding({ top:$r('app.float.distance_8'), left: $r('app.float.distance_8'), right: $r('app.float.distance_8') })
+          .backgroundColor($r('app.color.background_color'))
+          .tabBar(this.TabBuilder($r('app.string.pressure'), 4))
           TabContent() {
             Health_stress({userId:this.currentUserId})
-          }.padding({ top:'8vp', left: '8vp', right: '8vp' })
-          .backgroundColor('#F1F3F5')
-          .tabBar(this.TabBuilder('压力', 5))
+          }.padding({ top:$r('app.float.distance_8'), left: $r('app.float.distance_8'), right: $r('app.float.distance_8') })
+          .backgroundColor($r('app.color.background_color'))
+          .tabBar(this.TabBuilder($r('app.string.stress'), 5))
           TabContent() {
             Health_sleep({userId:this.currentUserId})
-          }.padding({ top:'8vp', left: '8vp', right: '8vp' })
-          .backgroundColor('#F1F3F5')
-          .tabBar(this.TabBuilder('睡眠', 6))
+          }.padding({ top:$r('app.float.distance_8'), left: $r('app.float.distance_8'), right: $r('app.float.distance_8') })
+          .backgroundColor($r('app.color.background_color'))
+          .tabBar(this.TabBuilder($r('app.string.sleep'), 6))
         }
-        .width('100%')
-        .height('100%')
-        .barHeight('68vp')
+        .width(CommonConstants.FULL_PARENT)
+        .height(CommonConstants.FULL_PARENT)
+        .barHeight($r('app.float.height_68'))
         .barMode(BarMode.Fixed)
         .onChange((index: number) => {
           this.currentIndex = index;
         })
       }
-      .width('100%')
-      .height('800vp')
-      .backgroundColor('#41E3BF')
+      .width(CommonConstants.FULL_PARENT)
+      .height($r('app.float.height_800'))
+      .backgroundColor($r('app.color.main_green'))
     }
-    .width('100%')
-    .height('100%')
+    .width(CommonConstants.FULL_PARENT)
+    .height(CommonConstants.FULL_PARENT)
     .hideTitleBar(true)
-    .backgroundColor('#41E3BF')
+    .backgroundColor($r('app.color.main_green'))
     .onReady((context: NavDestinationContext)=>{
       this.pageParam = context.pathInfo.param as UserAndPart
       this.currentIndex = IndexRecord[this.pageParam.part];

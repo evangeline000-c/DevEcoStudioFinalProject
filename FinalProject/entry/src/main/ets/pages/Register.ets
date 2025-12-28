@@ -1,9 +1,10 @@
 import { Prompt } from '@kit.ArkUI';
 import { AuthUser, upsertUser, setCurrentUser } from '../view/UserStore';
-import { CaptchaState, requestCaptchaCore } from '../common/captcha';
-import { validateRegister } from '../common/authLogin';
-import { RegisterFormState, newRegisterFormState, newCaptchaState } from '../common/authState';
-import { InputRow } from '../common/InputRow';
+import { CaptchaState, requestCaptchaCore } from '../viewmodel/captcha';
+import { validateRegister } from '../viewmodel/authLogin';
+import { RegisterFormState, newRegisterFormState, newCaptchaState } from '../viewmodel/authState';
+import { InputRow } from '../viewmodel/InputRow';
+import CommonConstants from '../common/CommonContants'
 
 @Builder
 export function RegisterBuilder() {
@@ -42,7 +43,7 @@ struct Register {
     const user: AuthUser = { account: this.form.account.trim(), phone: this.form.phone.trim(), password: this.form.password.trim() };
     upsertUser(user);
     setCurrentUser(user);
-    Prompt.showToast({ message: '注册成功，请使用账号或手机号登录' });
+    Prompt.showToast({ message: String($r('app.string.register_success')) });
     this.pathStack.clear();
   }
 
@@ -52,55 +53,55 @@ struct Register {
         Row() {
           Button() {
             Image($r('app.media.arrow_login'))
-              .width(30)
-              .height(30)
+              .width($r('app.float.distance_30'))
+              .height($r('app.float.distance_30'))
           }.backgroundColor(Color.Transparent)
-          .margin({ left: '5vp' })
+          .margin({ left: $r('app.float.distance_5') })
           .onClick(() => {
             this.pathStack.clear()
           })
 
-          Text('注册')
-            .fontWeight(220)//字体粗细
-            .fontSize('20fp')//字体大小
-            .fontColor('#FFFFFF')
-            .margin({ left: '130vp' })
+          Text($r('app.string.register'))
+            .fontWeight($r('app.float.font_weight_220'))//字体粗细
+            .fontSize($r('app.float.font_size'))//字体大小
+            .fontColor($r('app.color.white'))
+            .margin({ left: $r('app.float.distance_130') })
             .textAlign(TextAlign.Center)
         }
-        .height('60vp')
-        .width('100%')
+        .height($r('app.float.height_text'))
+        .width(CommonConstants.FULL_PARENT)
 
         Column() {
-          Text('用户注册')
-            .fontColor('#1F2328')
-            .fontSize('24fp')
+          Text($r('app.string.user_register'))
+            .fontColor($r('app.color.font_black'))
+            .fontSize($r('app.float.font_size_24'))
             .fontWeight(FontWeight.Bold)
-            .margin({ top: '80vp', bottom: '40vp'})
+            .margin({ top: $r('app.float.distance_80'), bottom: $r('app.float.distance_40')})
             .textAlign(TextAlign.Start)
-            .width('90%');
+            .width(CommonConstants.NINETY_PARENT);
 
           InputRow({
-            placeholder: '请输入账号',
+            placeholder: $r('app.string.input_account'),
             icon: $r('app.media.human'),
             onChange: (v: string) => {
               this.form.account = v
             }
           })
-            .margin({ bottom: '12vp' })
+            .margin({ bottom: $r('app.float.distance_12') })
 
           InputRow({
-            placeholder: '请输入手机号',
+            placeholder: $r('app.string.input_phone'),
             icon: $r('app.media.human'),
             inputType: InputType.Number,
             onChange: (v: string) => {
               this.form.phone = v
             }
           })
-            .margin({ bottom: '12vp' })
+            .margin({ bottom: $r('app.float.distance_12') })
 
           Row() {
             InputRow({
-              placeholder: '请输入验证码',
+              placeholder: $r('app.string.input_captcha'),
               icon: $r('app.media.phone'),
               inputType: InputType.Number,
               onChange: (v: string) => {
@@ -109,62 +110,62 @@ struct Register {
             })
               .layoutWeight(1)
 
-            Text('获取验证码')
-              .fontColor('#00C8A2')
-              .fontSize('15fp')
+            Text($r('app.string.get_captcha'))
+              .fontColor($r('app.color.green'))
+              .fontSize($r('app.float.font_size_15'))
               .onClick(() => this.requestCaptcha())
-              .margin({ left: '12vp' });
-          }.width('90%').alignSelf(ItemAlign.Center).margin({ bottom: '12vp' })
+              .margin({ left: $r('app.float.distance_12') });
+          }.width(CommonConstants.NINETY_PARENT).alignSelf(ItemAlign.Center).margin({ bottom: $r('app.float.distance_12') })
 
           InputRow({
-            placeholder: '请输入密码',
+            placeholder: $r('app.string.input_password'),
             icon: $r('app.media.lock'),
             inputType: InputType.Password,
             onChange: (v: string) => {
               this.form.password = v
             }
           })
-            .margin({ bottom: '12vp' })
+            .margin({ bottom: $r('app.float.distance_12') })
 
           InputRow({
-            placeholder: '请再次确认密码',
+            placeholder: $r('app.string.input_confirm_password'),
             icon: $r('app.media.lock'),
             inputType: InputType.Password,
             onChange: (v: string) => {
               this.form.confirmPwd = v
             }
           })
-            .margin({ bottom: '20vp' })
+            .margin({ bottom: $r('app.float.distance_20') })
 
           if (this.errorMsg) {
             Text(this.errorMsg)
-              .fontColor('#D92D20')
-              .fontSize('14fp')
+              .fontColor($r('app.color.login_red'))
+              .fontSize($r('app.float.font_size_14'))
               .alignSelf(ItemAlign.Center)
-              .margin({ bottom: '12vp' });
+              .margin({ bottom: $r('app.float.distance_12') });
           }
 
-          Button('注册')
-            .width('90%')
-            .height('40vp')
-            .fontSize('16fp')
-            .backgroundColor('#00C8A2')
+          Button($r('app.string.register'))
+            .width(CommonConstants.NINETY_PARENT)
+            .height($r('app.float.distance_40'))
+            .fontSize($r('app.float.font_size_16'))
+            .backgroundColor($r('app.color.green'))
             .onClick(() => {
               this.submit()
             })
         }
-        .backgroundColor('#fff1f0f0')
-        .width('100%')
-        .height('150%')
+        .backgroundColor($r('app.color.gray'))
+        .width(CommonConstants.FULL_PARENT)
+        .height(CommonConstants.FULL_PARENT_HALF)
         .layoutWeight(1)
       }
-      .width('100%')
-      .height('200%')
+      .width(CommonConstants.FULL_PARENT)
+      .height(CommonConstants.DOUBLE_PARENT)
       .backgroundColor(Color.Transparent)
     }
-    .backgroundColor('#d821deb4')
-    .width('100%')
-    .height('100%')
+    .backgroundColor($r('app.color.main_green'))
+    .width(CommonConstants.FULL_PARENT)
+    .height(CommonConstants.FULL_PARENT)
     .hideTitleBar(true)
   }
 }

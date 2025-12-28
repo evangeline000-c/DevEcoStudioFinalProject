@@ -1,6 +1,7 @@
 //健康宣教组件
 import { healthDataList, heartRateData, users, type HealthData} from '../viewmodel/HealthNumData';
 import { HealthCard} from './HealthCard'
+import CommonConstants from '../common/CommonContants'
 
 export interface UserAndPart {
   id: number; // 用户id
@@ -59,35 +60,35 @@ export default struct Health {
 
   build() {
     Column(){
-      Text('健康')
-      .height('60vp')
-      .width('100%')
-      .fontWeight(220)//字体粗细
-      .fontSize('20fp')//字体大小
-      .fontColor('#FFFFFF')
-      .backgroundColor('#41E3BF')
+      Text($r('app.string.tab_health'))
+      .height($r('app.float.height_text'))
+      .width(CommonConstants.FULL_PARENT)
+      .fontWeight($r('app.float.font_weight_220'))//字体粗细
+      .fontSize($r('app.float.font_size'))//字体大小
+      .fontColor($r('app.color.white'))
+      .backgroundColor($r('app.color.green1'))
       .textAlign(TextAlign.Center)
 
       Column(){
         Column(){
-          Text('用户健康')
-            .fontWeight(700)
-            .fontSize('30fp')
+          Text($r('app.string.user_health'))
+            .fontWeight($r('app.float.font_weight_700'))
+            .fontSize($r('app.float.font_size_30'))
 
             Divider()
             .vertical(false)
             .strokeWidth(3)
-            .height(5)
-            .color('#ff000000')  // 横条颜色
-            .width('30vp')
+            .height($r('app.float.distance_5'))
+            .color($r('app.color.black'))  // 横条颜色
+            .width($r('app.float.distance_30'))
         }
-        .width('100%')
-        .margin({left:'12vp',top:'24vp', bottom:'12vp'})
+        .width(CommonConstants.FULL_PARENT)
+        .margin({left:$r('app.float.distance_12'),top:$r('app.float.distance_24'), bottom:$r('app.float.distance_12')})
         .alignItems(HorizontalAlign.Start)
 
         Select(this.dataArray){
           Text()
-          .width('100%') // 确保 Text 占据 Select 的全部宽度
+          .width(CommonConstants.FULL_PARENT) // 确保 Text 占据 Select 的全部宽度
           .textAlign(TextAlign.Start) // 设置文本左对齐 (居左)
       }
       .selected(0) // 设置默认选中项的索引
@@ -104,9 +105,9 @@ export default struct Health {
       // 设置选择器样式
       .fontColor(Color.Black)
       .backgroundColor(Color.White)
-      .width('90%')
-      .height(40)
-      .borderRadius(6)
+      .width(CommonConstants.NINETY_PARENT)
+      .height($r('app.float.distance_40'))
+      .borderRadius($r('app.float.distance_6'))
         
         Scroll() {
           Column() {
@@ -153,27 +154,27 @@ export default struct Health {
               }, (item: HealthData) => JSON.stringify(item))
             }
             .columnsTemplate('1fr 1fr')
-            .columnsGap('12vp')
-            .rowsGap('12vp')
-            .width('100%')
+            .columnsGap($r('app.float.distance_12'))
+            .rowsGap($r('app.float.distance_12'))
+            .width(CommonConstants.FULL_PARENT)
             .height('auto')
-            .padding('12vp')
+            .padding($r('app.float.distance_12'))
 
             Blank()
           }
-          .width('100%')
+          .width(CommonConstants.FULL_PARENT)
           .padding({
-            left: '6vp',
-            right: '6vp',
-            bottom: '64vp'
+            left: $r('app.float.distance_6'),
+            right: $r('app.float.distance_6'),
+            bottom: $r('app.float.distance_64')
           })
         }
-        .width('100%')
+        .width(CommonConstants.FULL_PARENT)
         .layoutWeight(1)
-        .backgroundColor('#F1F0F0')
+        .backgroundColor($r('app.color.background_gray1'))
     }
   }
-  .height('100%') 
-  .width('100%') 
+  .height(CommonConstants.FULL_PARENT)
+  .width(CommonConstants.FULL_PARENT)
 }
 }

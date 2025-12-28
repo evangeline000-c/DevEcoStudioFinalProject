@@ -2,6 +2,7 @@
 
 import { HealthResourcesItemType } from '../viewmodel/MainViewModel';
 import { ListDataSource } from '../viewmodel/HealthListData';
+import CommonConstants from '../common/CommonContants'
 
 @Component
 export default struct HealthResourceList {
@@ -27,34 +28,34 @@ export default struct HealthResourceList {
               Button() {
                 Column() {
                   Image(item?.ResourcePhoto)
-                    .width('100%')
+                    .width(CommonConstants.FULL_PARENT)
                     .objectFit(ImageFit.Contain)
-                    //.height('150vp')
-                    .borderRadius({ topLeft: '10vp', topRight: '10vp' })
-                    .margin({ top: '0vp' })
+                    //.height($r('app.float.bottom_150'))
+                    .borderRadius({ topLeft: $r('app.float.distance_10'), topRight: $r('app.float.distance_10') })
+                    .margin({ top: $r('app.float.distance_0') })
                   Row() {
                     Row() {
                       Image($r('app.media.health_resource_title'))
-                        .height('24vp')
+                        .height($r('app.float.distance_24'))
                         .objectFit(ImageFit.Contain)
 
                       Text(item?.ResourceName)
-                        .fontSize('18vp')
-                        .margin({ left: '8vp' })
-                    }.margin({ top: '10vp' })
+                        .fontSize($r('app.float.health_font_size'))
+                        .margin({ left: $r('app.float.distance_8') })
+                    }.margin({ top: $r('app.float.distance_10') })
                     .alignItems(VerticalAlign.Center)
-                    .width('100%')
-                  }.backgroundColor('#FFFFFF')
+                    .width(CommonConstants.FULL_PARENT)
+                  }.backgroundColor($r('app.color.gray2'))
                   .flexGrow(1)
 
-                }.width('100%')
-                .height('100%')
+                }.width(CommonConstants.FULL_PARENT)
+                .height(CommonConstants.FULL_PARENT)
               }
-              .width('95%')
-              .height('258vp')
-              .backgroundColor('#00f1f0f0')
-              .borderRadius('10vp')
-              .margin({ left: '10vp' })
+              .width(CommonConstants.PARENT_NINETY_FIVE)
+              .height($r('app.float.height_258'))
+              .backgroundColor($r('app.color.gray3'))
+              .borderRadius($r('app.float.distance_10'))
+              .margin({ left: $r('app.float.distance_10') })
               .onClick(() => {
                 //this.HealthListDetail(true)
                 this.HealthListDetail(item)
@@ -81,10 +82,10 @@ export default struct HealthResourceList {
             })
           })
         }
-        .width('100%')
+        .width(CommonConstants.FULL_PARENT)
       }
       .justifyContent(FlexAlign.Center)
-      .width('100%')
+      .width(CommonConstants.FULL_PARENT)
     }
 
 }

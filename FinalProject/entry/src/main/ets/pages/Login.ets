@@ -1,8 +1,9 @@
 import { AuthUser, verifyAccountPassword, findByPhone, setCurrentUser } from '../view/UserStore';
-import { CaptchaState, requestCaptchaCore } from '../common/captcha';
-import { InputRow } from '../common/InputRow';
-import { validatePasswordLogin, validatePhoneLogin, checkPhoneCaptcha } from '../common/authLogin';
-import { LoginFormState, newLoginFormState, newCaptchaState } from '../common/authState';
+import { CaptchaState, requestCaptchaCore } from '../viewmodel/captcha';
+import { InputRow } from '../viewmodel/InputRow';
+import { validatePasswordLogin, validatePhoneLogin, checkPhoneCaptcha } from '../viewmodel/authLogin';
+import { LoginFormState, newLoginFormState, newCaptchaState } from '../viewmodel/authState';
+import CommonConstants from '../common/CommonContants'
 
 @Entry
 @Component
@@ -65,104 +66,104 @@ struct Login {
   build() {
     Navigation(this.pathStack) { 
       Column() {
-        Text('登录')
-          .height('60vp')
-          .width('100%')
-          .fontWeight(220)
-          .fontSize('20fp')
-          .fontColor('#FFFFFF')
+        Text($r('app.string.login'))
+          .height($r('app.float.height_text'))
+          .width(CommonConstants.FULL_PARENT)
+          .fontWeight($r('app.float.font_weight_220'))
+          .fontSize($r('app.float.font_size'))
+          .fontColor($r('app.color.white'))
           .textAlign(TextAlign.Center)
 
         Column() {
-          Text('互联网机构 家属端')
-            .fontColor('#1F2328')
-            .fontSize('24fp')
+          Text($r('app.string.login_subtitle'))
+            .fontColor($r('app.color.font_black'))
+            .fontSize($r('app.float.font_size_24'))
             .fontWeight(FontWeight.Bold)
-            .margin({ top: '80vp', bottom: '50vp'})
+            .margin({ top: $r('app.float.distance_80'), bottom: $r('app.float.distance_50')})
             .textAlign(TextAlign.Start)
-            .width('90%');
+            .width(CommonConstants.NINETY_PARENT);
 
           // 登录模式切换标签
           Row() {
-            Text('密码登录')
-              .fontColor(this.form.mode === 'password' ? '#1F2328' : '#9CA3AF')
-              .fontSize('16fp')
+            Text($r('app.string.password_login'))
+              .fontColor(this.form.mode === 'password' ? $r('app.color.font_black') : $r('app.color.login_gray'))
+              .fontSize($r('app.float.font_size_16'))
               .onClick(() => {
                 this.form.mode = 'password';
               })
-              .margin({ right: '24vp' });
-            Text('手机号登录')
-              .fontColor(this.form.mode === 'phone' ? '#1F2328' : '#9CA3AF')
-              .fontSize('16fp')
+              .margin({ right: $r('app.float.distance_24') });
+            Text($r('app.string.phone_login'))
+              .fontColor(this.form.mode === 'phone' ? $r('app.color.font_black') : $r('app.color.login_gray'))
+              .fontSize($r('app.float.font_size_16'))
               .onClick(() => {
                 this.form.mode = 'phone';
               });
           }
-          .width('90%')
+          .width(CommonConstants.NINETY_PARENT)
           .alignItems(VerticalAlign.Center)
-          .margin({ bottom: '10vp' })
+          .margin({ bottom: $r('app.float.distance_10') })
 
           // 分隔线
           Row() {
             Row() {
               if (this.form.mode === 'password') {
-                Row().width('100%').height('2vp').backgroundColor('#00C8A2');
+                Row().width(CommonConstants.FULL_PARENT).height($r('app.float.distance_2')).backgroundColor($r('app.color.green'));
               }
             }
             .width('25%')
-            .margin({left: '5vp'})
+            .margin({left: $r('app.float.distance_5')})
             .alignItems(VerticalAlign.Center)
 
             Row() {
               if (this.form.mode === 'phone') {
-                Row().width('100%').height('2vp').backgroundColor('#00C8A2');
+                Row().width(CommonConstants.FULL_PARENT).height($r('app.float.distance_2')).backgroundColor($r('app.color.green'));
               }
             }
             .width('25%')
             .alignItems(VerticalAlign.Center);
           }
-          .width('100%')
+          .width(CommonConstants.FULL_PARENT)
           .alignItems(VerticalAlign.Center)
-          .margin({left: '5vp', bottom: '30vp' })
+          .margin({left: $r('app.float.distance_5'), bottom: $r('app.float.distance_30') })
 
           // 表单区域
           if (this.form.mode === 'password') {
             // 账号
             InputRow({
-              placeholder: '请输入账号',
+              placeholder: $r('app.string.input_account'),
               icon: $r('app.media.human'),
               onChange: (v: string) => {
                 this.form.account = v;
               }
             })
-              .margin({ bottom: '12vp' })
+              .margin({ bottom: $r('app.float.distance_12') })
 
             // 密码
             InputRow({
-              placeholder: '请输入密码',
+              placeholder: $r('app.string.input_password'),
               icon: $r('app.media.lock'),
               inputType: InputType.Password,
               onChange: (v: string) => {
                 this.form.password = v;
               }
             })
-              .margin({ bottom: '12vp' })
+              .margin({ bottom: $r('app.float.distance_12') })
           } else {
             // 手机号
             InputRow({
-              placeholder: '请输入手机号',
+              placeholder: $r('app.string.input_phone'),
               icon: $r('app.media.human'),
               inputType: InputType.Number,
               onChange: (v: string) => {
                 this.form.phone = v;
               }
             })
-              .margin({ bottom: '12vp' })
+              .margin({ bottom: $r('app.float.distance_12') })
 
             // 验证码 + 获取验证码
             Row() {
               InputRow({
-                placeholder: '请输入验证码',
+                placeholder: $r('app.string.input_captcha'),
                 icon: $r('app.media.phone'),
                 inputType: InputType.Number,
                 onChange: (v: string) => {
@@ -170,72 +171,72 @@ struct Login {
                 }
               })
                 .layoutWeight(1)
-              Text('获取验证码')
-                .fontColor('#00C8A2')
-                .fontSize('15fp')
+              Text($r('app.string.get_captcha'))
+                .fontColor($r('app.color.green'))
+                .fontSize($r('app.float.font_size_15'))
                 .onClick(() => this.requestCaptcha())
-                .margin({ left: '12vp' });
+                .margin({ left: $r('app.float.distance_12') });
             }
-            .width('90%')
+            .width(CommonConstants.NINETY_PARENT)
             .alignSelf(ItemAlign.Center)
-            .margin({ bottom: '12vp' })
+            .margin({ bottom: $r('app.float.distance_12') })
           }
           // 错误提示
           if (this.errorMsg) {
             Text(this.errorMsg)
-              .fontColor('#D92D20')
-              .fontSize('14fp')
+              .fontColor($r('app.color.login_red'))
+              .fontSize($r('app.float.font_size_14'))
               .alignSelf(ItemAlign.Center)
-              .margin({ bottom: '12vp' });
+              .margin({ bottom: $r('app.float.distance_12') });
           }
 
           // 登录按钮
-          Button('登录')
-            .width('90%')
-            .height('40vp')
-            .fontSize('16fp')
-            .backgroundColor('#d821deb4')
+          Button($r('app.string.login'))
+            .width(CommonConstants.NINETY_PARENT)
+            .height($r('app.float.distance_40'))
+            .fontSize($r('app.float.font_size_16'))
+            .backgroundColor($r('app.color.main_green'))
             .onClick(() => {
               this.login(true);
             })
-            .margin({bottom: '20vp'})
+            .margin({bottom: $r('app.float.distance_20')})
 
           Row() {
-            Text('还没有账号? ')
-              .fontColor('#1F2328')
-              .fontSize('14fp');
-            Text('立即注册')
-              .fontColor('#00C8A2')
-              .fontSize('14fp')
-              .margin({ right: '24vp' })
+            Text($r('app.string.no_account'))
+              .fontColor($r('app.color.font_black'))
+              .fontSize($r('app.float.font_size_14'));
+            Text($r('app.string.register_now'))
+              .fontColor($r('app.color.green'))
+              .fontSize($r('app.float.font_size_14'))
+              .margin({ right: $r('app.float.distance_24') })
               .onClick(() => {
                 this.Register(true)
               });
             Blank();
-            Text('忘记密码?')
-              .fontColor('#00C8A2')
-              .fontSize('14fp')
+            Text($r('app.string.forget_password_tip'))
+              .fontColor($r('app.color.green'))
+              .fontSize($r('app.float.font_size_14'))
               .onClick(() => {
                 this.ForgetPassword(true)
               });
           }
-          .width('90%')
+          .width(CommonConstants.NINETY_PARENT)
           .alignSelf(ItemAlign.Center)
           .justifyContent(FlexAlign.SpaceBetween)
-          .margin({ top: '16vp' })
+          .margin({ top: $r('app.float.distance_16') })
         }
-        .backgroundColor('#fff1f0f0')
-        .width('100%')
-        .height('150%')
+        .backgroundColor($r('app.color.gray'))
+        .width(CommonConstants.FULL_PARENT)
+        .height(CommonConstants.FULL_PARENT_HALF)
         .layoutWeight(1)
       }
-      .width('100%')
-      .height('200%')
+      .width(CommonConstants.FULL_PARENT)
+      .height(CommonConstants.DOUBLE_PARENT)
       .backgroundColor(Color.Transparent)
     }
-    .backgroundColor('#d821deb4')
-    .width('100%')
-    .height('100%')
+    .backgroundColor($r('app.color.main_green'))
+    .width(CommonConstants.FULL_PARENT)
+    .height(CommonConstants.FULL_PARENT)
     .hideTitleBar(true)
     .hideToolBar(true)
   }

@@ -6,7 +6,6 @@ export const relationOptions: SelectOption[] = [
   { value: '本人' },
   { value: '父母' },
   { value: '子女' },
-  { value: '未成年子女' },
   { value: '配偶' },
   { value: '其他' }
 ];
@@ -47,12 +46,12 @@ export function validateForm(formData: Partial<UserInfo>): string {
   const idOk = !!formData.idCard && formData.idCard.trim().length > 0;
 
   if (!nameOk || !relationOk || !genderOk || !birthdayOk || !idOk) {
-    return '请完整填写带星号的必填项';
+    return 'form_incomplete';
   }
   const id = formData.idCard!.trim();
   const idReg = /^(\d{15}|\d{17}[\dXx])$/;
   if (!idReg.test(id)) {
-    return '身份证号格式不正确';
+    return 'idcard_invalid';
   }
   return '';
 }

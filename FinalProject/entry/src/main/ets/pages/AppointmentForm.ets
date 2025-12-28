@@ -4,7 +4,7 @@ import ServiceItemCard from '../view/ServiceItemCard';
 import { PatientInfo, getPatientList } from '../viewmodel/PatientData';
 import { CaregiverInfo, getCaregiverList } from '../viewmodel/CaregiverData';
 import promptAction from '@ohos.promptAction';
-
+import CommonConstants from '../common/CommonContants'
 // Select组件选项类型
 interface SelectOption {
   value: string;
@@ -89,31 +89,31 @@ struct AppointmentForm {
     try {
       // 验证必填字段
       if (!this.formData.patientName) {
-        promptAction.showToast({ message: '请选择康养用户' });
+        promptAction.showToast({ message: $r('app.string.select_patient') });
         return;
       }
       if (!this.formData.caregiverId) {
-        promptAction.showToast({ message: '请选择看护人员' });
+        promptAction.showToast({ message: $r('app.string.select_caregiver') });
         return;
       }
       if (!this.formData.appointmentTime) {
-        promptAction.showToast({ message: '请选择预约时间' });
+        promptAction.showToast({ message: $r('app.string.select_appointment_time') });
         return;
       }
       if (!this.formData.contactPerson) {
-        promptAction.showToast({ message: '请输入联系人' });
+        promptAction.showToast({ message: $r('app.string.input_contact_person') });
         return;
       }
       if (!this.formData.contactPhone) {
-        promptAction.showToast({ message: '请输入联系电话' });
+        promptAction.showToast({ message: $r('app.string.input_contact_phone') });
         return;
       }
       if (!this.validatePhone(this.formData.contactPhone)) {
-        promptAction.showToast({ message: '请输入正确的手机号码' });
+        promptAction.showToast({ message: $r('app.string.input_valid_phone') });
         return;
       }
       if (!this.formData.address) {
-        promptAction.showToast({ message: '请输入地址' });
+        promptAction.showToast({ message: $r('app.string.input_address') });
         return;
       }
 
@@ -136,7 +136,7 @@ struct AppointmentForm {
       AppStorage.setOrCreate('serviceOrderList', [newOrder, ...currentList]);
 
       // 提交成功提示
-      promptAction.showToast({ message: '预约成功！' });
+      promptAction.showToast({ message: $r('app.string.appointment_success') });
 
       // 返回到服务订单页面
       setTimeout(() => {
@@ -154,62 +154,62 @@ struct AppointmentForm {
         // 标题栏
         Row() {
          Image($r('app.media.ic_back'))
-           .width('24vp')
-           .height('24vp')
-           .margin({ left: '16vp' })
+           .width($r('app.float.distance_24'))
+           .height($r('app.float.distance_24'))
+           .margin({ left: $r('app.float.distance_16') })
            .onClick(() => {
              this.pathStack.pop();
            })
-         Text('预约信息填写')
-           .fontSize('18fp')
+         Text($r('app.string.appointment_form_title'))
+           .fontSize($r('app.float.font_size_18'))
            .fontColor(Color.White)
            .fontWeight(FontWeight.Medium)
            .layoutWeight(1)
            .textAlign(TextAlign.Center)
-         Blank().width('40vp')
+         Blank().width($r('app.float.distance_40'))
         }
-        .width('100%')
-        .height('50vp')
-        .backgroundColor('#21deb4')
+        .width(CommonConstants.FULL_PARENT)
+        .height($r('app.float.distance_50'))
+        .backgroundColor($r('app.color.green1'))
 
         // 滚动容器
         Scroll() {
           Column() {
             // 使用完整的服务项目卡片（与服务列表页相同）
             ServiceItemCard({ serviceItem: this.serviceItem })
-              .margin({ top: '12vp' })
+              .margin({ top: $r('app.float.distance_12') })
 
             // 预约信息表单
             Column() {
               // 康养用户选择
               Column() {
-                Text('康养用户')
-                  .fontSize('15fp')
-                  .fontColor('#333333')
-                  .width('100%')
-                  .margin({ bottom: '8vp' })
+                Text($r('app.string.patient'))
+                  .fontSize($r('app.float.font_size_15'))
+                  .fontColor($r('app.color.font_color1'))
+                  .width(CommonConstants.FULL_PARENT)
+                  .margin({ bottom: $r('app.float.distance_8') })
 
                 Select(this.patientList.map((p: PatientInfo): SelectOption => ({ value: p.name })))
                   .selected(-1)
-                  .value(this.formData.patientName || '请选择康养用户')
-                  .font({ size: '16fp' })
-                  .optionFont({ size: '16fp' })
+                  .value(this.formData.patientName || $r('app.string.select_patient'))
+                  .font({ size: $r('app.float.font_size_16') })
+                  .optionFont({ size: $r('app.float.font_size_16') })
                   .onSelect((index: number) => {
                     this.formData.patientId = this.patientList[index].id;
                     this.formData.patientName = this.patientList[index].name;
                   })
-                  .width('100%')
+                  .width(CommonConstants.FULL_PARENT)
               }
-              .width('100%')
-              .margin({ bottom: '16vp' })
+              .width(CommonConstants.FULL_PARENT)
+              .margin({ bottom: $r('app.float.distance_16') })
 
               // 看护人员选择
               Column() {
-                Text('看护人员')
-                  .fontSize('15fp')
-                  .fontColor('#333333')
-                  .width('100%')
-                  .margin({ bottom: '8vp' })
+                Text($r('app.string.caregiver'))
+                  .fontSize($r('app.float.font_size_15'))
+                  .fontColor($r('app.color.font_color1'))
+                  .width(CommonConstants.FULL_PARENT)
+                  .margin({ bottom: $r('app.float.distance_8') })
 
                 Select(this.caregiverList.map((c: CaregiverInfo): SelectOption => ({ 
                   value: `${c.name} - ${c.title}` 
@@ -218,149 +218,149 @@ struct AppointmentForm {
                   .value(this.formData.caregiverId ? 
                     (() => {
                       const caregiver = this.caregiverList.find(c => c.id === this.formData.caregiverId);
-                      return caregiver ? `${caregiver.name} - ${caregiver.title}` : '请选择看护人员';
+                      return caregiver ? `${caregiver.name} - ${caregiver.title}` : $r('app.string.select_caregiver');
                     })() : 
-                    '请选择看护人员')
-                  .font({ size: '16fp' })
-                  .optionFont({ size: '16fp' })
+                    $r('app.string.select_caregiver'))
+                  .font({ size: $r('app.float.font_size_16') })
+                  .optionFont({ size: $r('app.float.font_size_16') })
                   .onSelect((index: number) => {
                     this.formData.caregiverId = this.caregiverList[index].id;
                   })
-                  .width('100%')
+                  .width(CommonConstants.FULL_PARENT)
               }
-              .width('100%')
-              .margin({ bottom: '16vp' })
+              .width(CommonConstants.FULL_PARENT)
+              .margin({ bottom: $r('app.float.distance_16') })
 
               // 预约时间选择
               Column() {
-                Text('预约时间')
-                  .fontSize('15fp')
-                  .fontColor('#333333')
-                  .width('100%')
-                  .margin({ bottom: '8vp' })
+                Text($r('app.string.appointment_time'))
+                  .fontSize($r('app.float.font_size_15'))
+                  .fontColor($r('app.color.font_color1'))
+                  .width(CommonConstants.FULL_PARENT)
+                  .margin({ bottom: $r('app.float.distance_8') })
 
                 Select(this.timeSlotList.map((t: string): SelectOption => ({ value: t })))
                   .selected(-1)
-                  .value(this.formData.appointmentTime || '请选择预约时间')
-                  .font({ size: '16fp' })
-                  .optionFont({ size: '16fp' })
+                  .value(this.formData.appointmentTime || $r('app.string.select_appointment_time'))
+                  .font({ size: $r('app.float.font_size_16') })
+                  .optionFont({ size: $r('app.float.font_size_16') })
                   .onSelect((index: number) => {
                     this.formData.appointmentTime = this.timeSlotList[index];
                   })
-                  .width('100%')
+                  .width(CommonConstants.FULL_PARENT)
               }
-              .width('100%')
-              .margin({ bottom: '16vp' })
+              .width(CommonConstants.FULL_PARENT)
+              .margin({ bottom: $r('app.float.distance_16') })
 
               // 联系人输入
               Column() {
-                Text('联系人')
-                  .fontSize('15fp')
-                  .fontColor('#333333')
-                  .width('100%')
-                  .margin({ bottom: '8vp' })
+                Text($r('app.string.contact_person'))
+                  .fontSize($r('app.float.font_size_15'))
+                  .fontColor($r('app.color.font_color1'))
+                  .width(CommonConstants.FULL_PARENT)
+                  .margin({ bottom: $r('app.float.distance_8') })
 
-                TextInput({ placeholder: '请输入联系人' })
-                  .fontSize('16fp')
+                TextInput({ placeholder: $r('app.string.input_contact_person') })
+                  .fontSize($r('app.float.font_size_16'))
                   .onChange((value: string) => {
                     this.formData.contactPerson = value;
                   })
-                  .width('100%')
+                  .width(CommonConstants.FULL_PARENT)
               }
-              .width('100%')
-              .margin({ bottom: '16vp' })
+              .width(CommonConstants.FULL_PARENT)
+              .margin({ bottom: $r('app.float.distance_16') })
 
               // 联系电话输入
               Column() {
-                Text('联系电话')
-                  .fontSize('15fp')
-                  .fontColor('#333333')
-                  .width('100%')
-                  .margin({ bottom: '8vp' })
+                Text($r('app.string.contact_phone'))
+                  .fontSize($r('app.float.font_size_15'))
+                  .fontColor($r('app.color.font_color1'))
+                  .width(CommonConstants.FULL_PARENT)
+                  .margin({ bottom: $r('app.float.distance_8') })
 
-                TextInput({ placeholder: '请输入11位手机号码' })
-                  .fontSize('16fp')
+                TextInput({ placeholder: $r('app.string.input_contact_phone') })
+                  .fontSize($r('app.float.font_size_16'))
                   .type(InputType.PhoneNumber)
                   .maxLength(11)
                   .onChange((value: string) => {
                     this.formData.contactPhone = value;
                   })
-                  .width('100%')
+                  .width(CommonConstants.FULL_PARENT)
               }
-              .width('100%')
-              .margin({ bottom: '16vp' })
+              .width(CommonConstants.FULL_PARENT)
+              .margin({ bottom: $r('app.float.distance_16') })
 
               // 地址输入
               Column() {
-                Text('地址')
-                  .fontSize('15fp')
-                  .fontColor('#333333')
-                  .width('100%')
-                  .margin({ bottom: '8vp' })
+                Text($r('app.string.address'))
+                  .fontSize($r('app.float.font_size_15'))
+                  .fontColor($r('app.color.font_color1'))
+                  .width(CommonConstants.FULL_PARENT)
+                  .margin({ bottom: $r('app.float.distance_8') })
 
-                TextInput({ placeholder: '请输入地址' })
-                  .fontSize('16fp')
+                TextInput({ placeholder: $r('app.string.input_address') })
+                  .fontSize($r('app.float.font_size_16'))
                   .onChange((value: string) => {
                     this.formData.address = value;
                   })
-                  .width('100%')
+                  .width(CommonConstants.FULL_PARENT)
               }
-              .width('100%')
-              .margin({ bottom: '16vp' })
+              .width(CommonConstants.FULL_PARENT)
+              .margin({ bottom: $r('app.float.distance_16') })
 
               // 备注输入
               Column() {
-                Text('备注')
-                  .fontSize('15fp')
-                  .fontColor('#333333')
-                  .width('100%')
-                  .margin({ bottom: '8vp' })
+                Text($r('app.string.remarks'))
+                  .fontSize($r('app.float.font_size_15'))
+                  .fontColor($r('app.color.font_color1'))
+                  .width(CommonConstants.FULL_PARENT)
+                  .margin({ bottom: $r('app.float.distance_8') })
 
-                TextArea({ placeholder: '请输入备注（选填）' })
-                  .fontSize('16fp')
-                  .height('80vp')
+                TextArea({ placeholder: $r('app.string.input_remarks') })
+                  .fontSize($r('app.float.font_size_16'))
+                  .height($r('app.float.distance_80'))
                   .onChange((value: string) => {
                     this.formData.remarks = value;
                   })
-                  .width('100%')
+                  .width(CommonConstants.FULL_PARENT)
               }
-              .width('100%')
+              .width(CommonConstants.FULL_PARENT)
             }
-            .padding('16vp')
-            .width('100%')
-            .backgroundColor('#FFFFFF')
-            .borderRadius('12vp')
-            .margin({ top: '12vp' })
+            .padding($r('app.float.distance_16'))
+            .width(CommonConstants.FULL_PARENT)
+            .backgroundColor($r('app.color.white'))
+            .borderRadius($r('app.float.distance_12'))
+            .margin({ top: $r('app.float.distance_12') })
           }
-          .padding({ left: '12vp', right: '12vp', bottom: '12vp' })
+          .padding({ left: $r('app.float.distance_12'), right: $r('app.float.distance_12'), bottom: $r('app.float.distance_12')})
         }
         .layoutWeight(1)
-        .width('100%')
+        .width(CommonConstants.FULL_PARENT)
 
         // 底部提交按钮
         Column() {
-          Button('提交预约')
-            .width('100%')
-            .height('48vp')
-            .fontSize('18fp')
+          Button($r('app.string.submit_appointment'))
+            .width(CommonConstants.FULL_PARENT)
+            .height($r('app.float.height_48'))
+            .fontSize($r('app.float.font_size_18'))
             .fontWeight(600)
-            .backgroundColor('#21deb4')
-            .borderRadius('24vp')
+            .backgroundColor($r('app.color.green1'))
+            .borderRadius($r('app.float.distance_24'))
             .onClick(() => {
               this.handleSubmit();
             })
         }
-        .padding('12vp')
-        .width('100%')
-        .backgroundColor('#FFFFFF')
-        .shadow({ radius: 8, color: '#1F000000', offsetX: 0, offsetY: -2 })
+        .padding($r('app.float.distance_12'))
+        .width(CommonConstants.FULL_PARENT)
+        .backgroundColor($r('app.color.white'))
+        .shadow({ radius: 8, color: $r('app.color.black1'), offsetX: 0, offsetY: -2 })
       }
-      .width('100%')
-      .height('100%')
-      .backgroundColor('#F1F3F5')
+      .width(CommonConstants.FULL_PARENT)
+      .height(CommonConstants.FULL_PARENT)
+      .backgroundColor($r('app.color.background_color'))
       .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.BOTTOM])
     }
     .hideTitleBar(true)
-    .backgroundColor('#d821deb4')
+    .backgroundColor($r('app.color.main_green'))
   }
 }

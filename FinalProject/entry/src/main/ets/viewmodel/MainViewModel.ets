@@ -15,10 +15,10 @@ export class MainViewModel{
   //宫格导航数据源配置
   getFirstGridData():Array<ItemData>{
     let FirstGridData:ItemData[]=[
-      new ItemData(0,'问诊记录',$r('app.media.home4')),
-      new ItemData(1,'服务订单',$r('app.media.home5')),
-      new ItemData(2,'服务采购',$r('app.media.home6')),
-      new ItemData(3,'入住申请',$r('app.media.home7'))
+      new ItemData(0,$r('app.string.consultation'),$r('app.media.home4')),
+      new ItemData(1,$r('app.string.service_order'),$r('app.media.home5')),
+      new ItemData(2,$r('app.string.service_procurement_title'),$r('app.media.home6')),
+      new ItemData(3,$r('app.string.admission_title'),$r('app.media.home7'))
     ]
     return FirstGridData;
   }

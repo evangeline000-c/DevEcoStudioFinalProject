@@ -1,71 +1,72 @@
+import CommonConstants from '../common/CommonContants'
 export interface SelectOption {
   value: string;
 }
 
 // 文本输入行
 @Builder
-export function TextInputField(label: string, required: boolean, placeholder: string, onChange: (value: string) => void) {
+export function TextInputField(label: Resource|string, required: boolean, placeholder: Resource|string, onChange: (value: string) => void) {
   Row() {
     Row() {
       Text(label)
-        .fontSize(16)
-        .fontColor('#1F2328')
-        .margin({ left: 2 });
+        .fontSize($r('app.float.font_size_15'))
+        .fontColor($r('app.color.font_black'))
+        .margin({ left: $r('app.float.distance_2') });
       if (required) {
         Text('*')
-          .fontSize(16)
-          .fontColor('#FF5252')
-          .margin({ left: 4 });
+          .fontSize($r('app.float.font_size_15'))
+          .fontColor($r('app.color.font_red1'))
+          .margin({ left: $r('app.float.layout_4') });
       }
     }
-    .margin({ left: 10 })
+    .margin({ left: $r('app.float.distance_10') })
     .alignItems(VerticalAlign.Center);
 
     Blank();
 
     TextInput({ placeholder })
-      .backgroundColor('#FFFFFF')
-      .placeholderColor('#1F2328')
-      .placeholderFont({size: '15vp'})
+      .backgroundColor($r('app.color.white'))
+      .placeholderColor($r('app.color.font_black'))
+      .placeholderFont({size: $r('app.float.layout_15')})
       .onChange(onChange)
-      .padding({ left: 10 })
-      .height('38vp')
-      .width('50%');
+      .padding({ left: $r('app.float.distance_10') })
+      .height($r('app.float.height_38'))
+      .width(CommonConstants.HALF_PARENT);
   }
   .alignItems(VerticalAlign.Center)
   .backgroundColor(Color.Transparent)
   .justifyContent(FlexAlign.SpaceBetween)
-  .margin({ top: 10, bottom: 10 })
-  .width('100%');
+  .margin({ top: $r('app.float.distance_10'), bottom: $r('app.float.distance_10') })
+  .width(CommonConstants.FULL_PARENT);
 }
 
 // 关系选择行
 @Builder
-export function RelationSelectField(options: SelectOption[], selectedIndex: number, value: string, onSelect: (idx: number, text: string) => void, placeholder: string = '请选择关系') {
+export function RelationSelectField(options: SelectOption[], selectedIndex: number, value: string, onSelect: (idx: number, text: string) => void, placeholder: Resource|string = '请选择关系') {
   Row() {
     Row() {
-      Text('关系')
-        .fontSize(16)
-        .fontColor('#1F2328')
-        .margin({ left: 2 });
+      Text($r('app.string.relation'))
+        .fontSize($r('app.float.font_size_15'))
+        .fontColor($r('app.color.font_black'))
+        .margin({ left: $r('app.float.distance_2') });
       Text('*')
-        .fontSize(16)
-        .fontColor('#FF5252')
-        .margin({ left: 4 });
+        .fontSize($r('app.float.font_size_15'))
+        .fontColor($r('app.color.font_red1'))
+        .margin({ left: $r('app.float.layout_4') });
     }
-    .margin({ left: 10 })
+    .margin({ left: $r('app.float.distance_10') })
     .alignItems(VerticalAlign.Center);
     Blank();
     Row() {
       Select(options)
         .selected(selectedIndex)
-        .font({ size: 15 })
-        .fontColor( '#1F2328' )
+        .font({ size: $r('app.float.font_size_15') })
+        .fontColor( $r('app.color.font_black') )
         .value(value && value.length > 0? value : placeholder)
-        .optionWidth(200)
-        .backgroundColor('#FFFFFF')
-        .borderRadius(19)
-        .padding({ left: 5, right: 12 })
+        .optionWidth($r('app.float.height_200'))
+        .backgroundColor($r('app.color.white'))
+        .borderRadius($r('app.float.radius_19'))
+        .padding({ left: $r('app.float.distance_5'), right: $r('app.float.distance_12') })
         .onSelect((idx: number, text?: string) => {
           if (text) {
             onSelect(idx, text)
@@ -74,13 +75,13 @@ export function RelationSelectField(options: SelectOption[], selectedIndex: numb
     }
     .backgroundColor(Color.Transparent)
     .alignItems(VerticalAlign.Center)
-    .width('51%')
-    .height('38vp');
+    .width(CommonConstants.PARENT_FIFTY_ONE)
+    .height($r('app.float.height_38'));
   }
   .alignItems(VerticalAlign.Center)
-  .backgroundColor('#FFFFFF')
-  .margin({ top: 10, bottom: 18 })
-  .width('100%');
+  .backgroundColor($r('app.color.white'))
+  .margin({ top: $r('app.float.distance_10'), bottom: $r('app.float.distance_18') })
+  .width(CommonConstants.FULL_PARENT);
 }
 
 // 性别单选行
@@ -88,16 +89,16 @@ export function RelationSelectField(options: SelectOption[], selectedIndex: numb
 export function GenderField(current: '男性' | '女性' | undefined, onChange: (gender: '男性' | '女性') => void) {
   Row() {
     Row() {
-      Text('性别')
-        .fontSize(16)
-        .fontColor('#1F2328')
-        .margin({ left: 2 });
+      Text($r('app.string.gender'))
+        .fontSize($r('app.float.font_size_15'))
+        .fontColor($r('app.color.font_black'))
+        .margin({ left: $r('app.float.distance_2') });
       Text('*')
-        .fontSize(16)
-        .fontColor('#FF5252')
-        .margin({ left: 4 });
+        .fontSize($r('app.float.font_size_15'))
+        .fontColor($r('app.color.font_red1'))
+        .margin({ left: $r('app.float.layout_4') });
     }
-    .margin({ left: 10 })
+    .margin({ left: $r('app.float.distance_10') })
     .alignItems(VerticalAlign.Center);
 
     Blank();
@@ -107,7 +108,7 @@ export function GenderField(current: '男性' | '女性' | undefined, onChange: 
         Radio({ value: '男性', group: 'radioGroup' })
           .checked(current === '男性')
           .onChange(() => onChange('男性'));
-        Text('男性').margin({ left: 8 });
+        Text($r('app.string.male')).margin({ left: $r('app.float.distance_8') });
       }
       .alignItems(VerticalAlign.Center);
 
@@ -115,17 +116,17 @@ export function GenderField(current: '男性' | '女性' | undefined, onChange: 
         Radio({ value: '女性', group: 'radioGroup' })
           .checked(current === '女性')
           .onChange(() => onChange('女性'));
-        Text('女性').margin({ left: 8 });
+        Text($r('app.string.female')).margin({ left: $r('app.float.distance_8') });
       }
       .alignItems(VerticalAlign.Center)
-      .margin({ left: 20 });
+      .margin({ left: $r('app.float.distance_20') });
     }
-    .width('50%')
+    .width(CommonConstants.HALF_PARENT)
     .alignItems(VerticalAlign.Center);
   }
   .alignItems(VerticalAlign.Center)
   .backgroundColor(Color.Transparent)
-  .margin({ top: 10, bottom: 18 })
-  .width('100%');
+  .margin({ top: $r('app.float.distance_10'), bottom: $r('app.float.distance_18') })
+  .width(CommonConstants.FULL_PARENT);
 }
 

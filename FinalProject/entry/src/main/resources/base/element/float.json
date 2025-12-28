@@ -3,6 +3,242 @@
     {
       "name": "page_text_font_size",
       "value": "50fp"
+    },
+    {
+      "name": "font_size",
+      "value": "20fp"
+    },
+    {
+      "name": "font_size_12",
+      "value": "12fp"
+    },
+    {
+      "name": "font_size_13",
+      "value": "13fp"
+    },
+    {
+      "name": "font_size_14",
+      "value": "14fp"
+    },
+    {
+      "name": "font_size_15",
+      "value": "15fp"
+    },
+    {
+      "name": "font_size_16",
+      "value": "16fp"
+    },
+    {
+      "name": "font_size_18",
+      "value": "18fp"
+    },
+    {
+      "name": "font_size_20",
+      "value": "20fp"
+    },
+    {
+      "name": "font_size_24",
+      "value": "24fp"
+    },
+    {
+      "name": "font_size_25",
+      "value": "25fp"
+    },
+    {
+      "name": "font_size_30",
+      "value": "30fp"
+    },
+    {
+      "name": "health_height",
+      "value": "100vp"
+    },
+    {
+      "name": "bottom_4",
+      "value": "4vp"
+    },
+    {
+      "name": "height_text",
+      "value": "60vp"
+    },
+    {
+      "name": "distance_0",
+      "value": "0vp"
+    },
+    {
+      "name": "distance_12",
+      "value": "12vp"
+    },
+    {
+      "name": "distance_3",
+      "value": "3vp"
+    },
+    {
+      "name": "distance_2",
+      "value": "2vp"
+    },
+    {
+      "name": "distance_5",
+      "value": "5vp"
+    },
+    {
+      "name": "distance_6",
+      "value": "6vp"
+    },
+    {
+      "name": "distance_8",
+      "value": "8vp"
+    },
+    {
+      "name": "distance_10",
+      "value": "10vp"
+    },
+    {
+      "name": "distance_16",
+      "value": "16vp"
+    },
+    {
+      "name": "distance_18",
+      "value": "18vp"
+    },
+    {
+      "name": "distance_20",
+      "value": "20vp"
+    },
+    {
+      "name": "distance_24",
+      "value": "24vp"
+    },
+    {
+      "name": "distance_30",
+      "value": "30vp"
+    },
+    {
+      "name": "distance_40",
+      "value": "40vp"
+    },
+    {
+      "name": "distance_50",
+      "value": "50vp"
+    },
+    {
+      "name": "distance_64",
+      "value": "64vp"
+    },
+    {
+      "name": "distance_65",
+      "value": "65vp"
+    },
+    {
+      "name": "distance_80",
+      "value": "80vp"
+    },
+    {
+      "name": "distance_110",
+      "value": "110vp"
+    },
+    {
+      "name": "distance_120",
+      "value": "120vp"
+    },
+    {
+      "name": "distance_130",
+      "value": "130vp"
+    },
+    {
+      "name": "service_picture_height",
+      "value": "140vp"
+    },
+    {
+      "name": "layout_4",
+      "value": "4vp"
+    },
+    {
+      "name": "layout_15",
+      "value": "15vp"
+    },
+    {
+      "name": "layout_25",
+      "value": "25vp"
+    },
+    {
+      "name": "height_36",
+      "value": "36vp"
+    },
+    {
+      "name": "height_38",
+      "value": "38vp"
+    },
+    {
+      "name": "height_45",
+      "value": "45vp"
+    },
+    {
+      "name": "height_48",
+      "value": "48vp"
+    },
+    {
+      "name": "height_68",
+      "value": "68vp"
+    },
+    {
+      "name": "height_200",
+      "value": "200vp"
+    },
+    {
+      "name": "height_240",
+      "value": "240vp"
+    },
+    {
+      "name": "height_258",
+      "value": "258vp"
+    },
+    {
+      "name": "height_318",
+      "value": "318vp"
+    },
+    {
+      "name": "height_630",
+      "value": "630vp"
+    },
+    {
+      "name": "height_800",
+      "value": "800vp"
+    },
+    {
+      "name": "width_60",
+      "value": "60vp"
+    },
+    {
+      "name": "bottom_7",
+      "value": "7vp"
+    },
+    {
+      "name": "bottom_150",
+      "value": "150vp"
+    },
+    {
+      "name": "health_font_size",
+      "value": "18vp"
+    },
+    {
+      "name": "line_height_22",
+      "value": "22vp"
+    },
+    {
+      "name": "radius_19",
+      "value": "19vp"
+    },
+    {
+      "name": "font_weight_220",
+      "value": "220"
+    },
+    {
+      "name": "font_weight_500",
+      "value": "500"
+    },
+    {
+      "name": "font_weight_700",
+      "value": "700"
     }
   ]
 }

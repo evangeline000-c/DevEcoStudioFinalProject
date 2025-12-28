@@ -1,5 +1,6 @@
 // 入住申请卡片组件
 import { AdmissionItemType } from '../viewmodel/AdmissionData';
+import CommonConstants from '../common/CommonContants'
 
 @Component
 export default struct AdmissionItemCard {
@@ -23,86 +24,86 @@ export default struct AdmissionItemCard {
     Column() {
       // 第1行:康养用户姓名
       Row() {
-        Text('康养用户：')
-          .fontSize('14fp')
-          .fontColor('#999999')
+        Text($r('app.string.patient_label'))
+          .fontSize($r('app.float.font_size_14'))
+          .fontColor($r('app.color.font_color'))
         Text(this.admissionItem.patientName)
-          .fontSize('16fp')
-          .fontWeight(700)
-          .fontColor('#333333')
+          .fontSize($r('app.float.font_size_16'))
+          .fontWeight($r('app.float.font_weight_700'))
+          .fontColor($r('app.color.font_color1'))
           .layoutWeight(1)
       }
-      .width('100%')
-      .margin({ bottom: '8vp' })
+      .width(CommonConstants.FULL_PARENT)
+      .margin({ bottom: $r('app.float.distance_8') })
 
       // 第2行:机构名称
       Row() {
-        Text('机构：')
-          .fontSize('13fp')
-          .fontColor('#999999')
+        Text($r('app.string.organization_label'))
+          .fontSize($r('app.float.font_size_13'))
+          .fontColor($r('app.color.font_color'))
         Text(this.admissionItem.organizationName)
-          .fontSize('13fp')
-          .fontColor('#666666')
+          .fontSize($r('app.float.font_size_13'))
+          .fontColor($r('app.color.font_gray'))
           .layoutWeight(1)
           .maxLines(1)
           .textOverflow({ overflow: TextOverflow.Ellipsis })
       }
-      .width('100%')
-      .margin({ bottom: '6vp' })
+      .width(CommonConstants.FULL_PARENT)
+      .margin({ bottom: $r('app.float.distance_6') })
 
       // 第3行:部门名称
       Row() {
-        Text('部门：')
-          .fontSize('13fp')
-          .fontColor('#999999')
+        Text($r('app.string.department_label'))
+          .fontSize($r('app.float.font_size_13'))
+          .fontColor($r('app.color.font_color'))
         Text(this.admissionItem.departmentName)
-          .fontSize('13fp')
-          .fontColor('#666666')
+          .fontSize($r('app.float.font_size_13'))
+          .fontColor($r('app.color.font_gray'))
       }
-      .width('100%')
-      .margin({ bottom: '6vp' })
+      .width(CommonConstants.FULL_PARENT)
+      .margin({ bottom: $r('app.float.distance_6') })
 
       // 第4行:房间名称
       Row() {
-        Text('房间：')
-          .fontSize('13fp')
-          .fontColor('#999999')
+        Text($r('app.string.room_label'))
+          .fontSize($r('app.float.font_size_13'))
+          .fontColor($r('app.color.font_color'))
         Text(this.admissionItem.roomName)
-          .fontSize('13fp')
-          .fontColor('#666666')
+          .fontSize($r('app.float.font_size_13'))
+          .fontColor($r('app.color.font_gray'))
       }
-      .width('100%')
-      .margin({ bottom: '6vp' })
+      .width(CommonConstants.FULL_PARENT)
+      .margin({ bottom: $r('app.float.distance_6') })
 
       // 第5行:申请时间
       Row() {
-        Text('申请时间：')
-          .fontSize('13fp')
-          .fontColor('#999999')
+        Text($r('app.string.application_time_label'))
+          .fontSize($r('app.float.font_size_13'))
+          .fontColor($r('app.color.font_color'))
         Text(this.admissionItem.applicationTime)
-          .fontSize('13fp')
-          .fontColor('#666666')
+          .fontSize($r('app.float.font_size_13'))
+          .fontColor($r('app.color.font_gray'))
       }
-      .width('100%')
-      .margin({ bottom: '8vp' })
+      .width(CommonConstants.FULL_PARENT)
+      .margin({ bottom: $r('app.float.distance_8') })
 
       // 第6行:审核状态
       Row() {
-        Text('状态：')
-          .fontSize('13fp')
-          .fontColor('#999999')
+        Text($r('app.string.status_label'))
+          .fontSize($r('app.float.font_size_13'))
+          .fontColor($r('app.color.font_color'))
         Text(this.admissionItem.status)
-          .fontSize('14fp')
+          .fontSize($r('app.float.font_size_14'))
           .fontWeight(600)
           .fontColor(this.getStatusColor(this.admissionItem.status))
       }
-      .width('100%')
+      .width(CommonConstants.FULL_PARENT)
     }
-    .padding('16vp')
-    .width('100%')
-    .backgroundColor('#FFFFFF')
-    .borderRadius('12vp')
-    .shadow({ radius: 8, color: '#1F000000', offsetX: 0, offsetY: 2 })
+    .padding($r('app.float.distance_16'))
+    .width(CommonConstants.FULL_PARENT)
+    .backgroundColor($r('app.color.white'))
+    .borderRadius($r('app.float.distance_12'))
+    .shadow({ radius: $r('app.float.distance_8'), color: $r('app.color.black1'), offsetX: 0, offsetY: 2 })
     .onClick(() => {
       if (this.onItemClick) {
         this.onItemClick(this.admissionItem);

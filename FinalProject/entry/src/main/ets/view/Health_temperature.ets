@@ -3,6 +3,7 @@ import {getLineChartOptions} from '../viewmodel/Charts';
 import { McLineChart} from '@mcui/mccharts';
 import {healthDataList, type HealthData} from '../viewmodel/HealthNumData';
 import HealthForm from '../viewmodel/HealthForm'
+import CommonConstants from '../common/CommonContants'
 
 @Component
 export default struct Health_temperature {
@@ -15,8 +16,8 @@ export default struct Health_temperature {
       McLineChart({
         options: getLineChartOptions(this.data, "temperature")
       })
-        .width('90%')
-        .height('100vp')
+        .width(CommonConstants.NINETY_PARENT)
+        .height($r('app.float.health_height'))
     }
   }
 
@@ -25,38 +26,38 @@ export default struct Health_temperature {
       Column() {
         Column() {
           Column() {
-            Text("体温")
-              .width('100%')
-              .fontSize('16fp')
-              .fontColor('#99000000')
+            Text($r('app.string.temperature'))
+              .width(CommonConstants.FULL_PARENT)
+              .fontSize($r('app.float.font_size_16'))
+              .fontColor($r('app.color.health_font_black'))
 
             // 数值和单位
             Row({ space: 2 }) {
               Text(this.data.value)
-                .fontSize('20fp')
-                .fontWeight(700)
-                .fontColor('#000000')
+                .fontSize($r('app.float.font_size'))
+                .fontWeight($r('app.float.font_weight_700'))
+                .fontColor($r('app.color.health_font_black1'))
               Text(this.data.unit)
-                .fontSize('12fp')
-                .fontColor('#66000000')
+                .fontSize($r('app.float.font_size_12'))
+                .fontColor($r('app.color.health_font_black2'))
             }
-            .width('100%')
+            .width(CommonConstants.FULL_PARENT)
             .alignItems(VerticalAlign.Bottom)
 
           }
           .margin({
-            top: '12vp',
-            bottom: '12vp',
-            left: '12vp'
+            top: $r('app.float.distance_12'),
+            bottom: $r('app.float.distance_12'),
+            left: $r('app.float.distance_12')
           })
 
           this.lineChart();
         }
-        .width('100%')
+        .width(CommonConstants.FULL_PARENT)
         .margin({
-          left: '12vp',
-          right:'12vp',
-          bottom: '24vp'
+          left: $r('app.float.distance_12'),
+          right:$r('app.float.distance_12'),
+          bottom: $r('app.float.distance_24')
         })
         .linearGradient({
           direction: GradientDirection.Bottom, // 渐变方向
@@ -71,9 +72,9 @@ export default struct Health_temperature {
         .borderRadius('6')
         .clip(true)
       }
-      .width('100%')
-      .height('100%')
-      .backgroundColor('#F1F3F5')
+      .width(CommonConstants.FULL_PARENT)
+      .height(CommonConstants.FULL_PARENT)
+      .backgroundColor($r('app.color.background_color'))
     }
   }
 }

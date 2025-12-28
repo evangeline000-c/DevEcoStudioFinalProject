@@ -1,6 +1,7 @@
 // 入住申请列表视图组件
 import { AdmissionItemType, AdmissionItemList } from '../viewmodel/AdmissionData';
 import AdmissionItemCard from './AdmissionItemCard';
+import CommonConstants from '../common/CommonContants'
 
 @Component
 export default struct AdmissionListView {
@@ -22,23 +23,23 @@ export default struct AdmissionListView {
             }
           }, (item: AdmissionItemType) => item.id.toString())
         }
-        .width('100%')
+        .width(CommonConstants.FULL_PARENT)
         .layoutWeight(1)
-        .padding({ left: '12vp', right: '12vp', top: '12vp' })
+        .padding({ left: $r('app.float.distance_12'), right: $r('app.float.distance_12'), top: $r('app.float.distance_12') })
       } else {
         // 空状态提示
         Column() {
-          Text('暂无入住申请记录')
-            .fontSize('14fp')
-            .fontColor('#999999')
-            .margin({ top: '40vp' })
+          Text(String($r('app.string.no_admission_records')))
+            .fontSize($r('app.float.font_size_14'))
+            .fontColor($r('app.color.font_color'))
+            .margin({ top: $r('app.float.distance_40') })
         }
-        .width('100%')
+        .width(CommonConstants.FULL_PARENT)
         .layoutWeight(1)
         .justifyContent(FlexAlign.Start)
       }
     }
-    .width('100%')
+    .width(CommonConstants.FULL_PARENT)
     .layoutWeight(1)
   }
 }

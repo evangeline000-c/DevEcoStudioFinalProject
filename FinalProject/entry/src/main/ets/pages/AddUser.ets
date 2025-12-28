@@ -3,6 +3,7 @@ import { Prompt } from '@kit.ArkUI';
 import { TextInputField, RelationSelectField, GenderField } from './AddUserFormFields';
 import { DatePickerModal } from './AddUserDatePickerModal';
 import { relationOptions, formatDateFromDate, parseDate, validateForm, withBirthday } from './AddUserLogic';
+import CommonConstants from '../common/CommonContants'
 
 @Builder
 export function AddUserBuilder() {
@@ -16,7 +17,7 @@ export default struct AddUser {
     gender: '男性'
   };
   @State submitting: boolean = false;
-  @State errorMsg: string = '';
+  @State errorMsg: Resource|string = '';
   @State relationIndex: number = -1;
   @State showRelationDropdown: boolean = false;
   @State showGenderDropdown: boolean = false;
@@ -28,8 +29,9 @@ export default struct AddUser {
     if (this.submitting) return;
     const validationMsg = validateForm(this.formData);
     if (validationMsg) {
-      this.errorMsg = validationMsg;
-      Prompt.showToast({ message: this.errorMsg });
+      // 资源化映射
+      this.errorMsg = $r('app.string.' + validationMsg);
+      Prompt.showToast({ message: String(this.errorMsg) });
       return;
     }
     this.submitting = true;
@@ -52,19 +54,20 @@ export default struct AddUser {
   build() {
     NavDestination() {
       Column() {
-        Text('添加康养用户')
-          .height('60vp')
-          .width('100%')
-          .fontWeight(220)//字体粗细
-          .fontSize('20fp')//字体大小
-          .fontColor('#FFFFFF')
+        Text($r('app.string.AddUser'))
+          .height($r('app.float.height_text'))
+          .width(CommonConstants.FULL_PARENT)
+          .fontWeight($r('app.float.font_weight_220'))//字体粗细
+          .fontSize($r('app.float.font_size'))//字体大小
+          .fontColor($r('app.color.white'))
           .textAlign(TextAlign.Center)
-      }.margin({bottom: '150vp'})
+      }.margin({bottom: $r('app.float.bottom_150')})
       Stack() {
         Column() {
         // 表单
           Column() {
-            TextInputField('用户名称', true, '请输入用户名称', (v: string) => { this.formData.name = v; });
+
+            TextInputField($r('app.string.user_name'), true, $r('app.string.input_user_name'), (v: string) => { this.formData.name = v; });
 
             RelationSelectField(
               relationOptions,
@@ -74,36 +77,37 @@ export default struct AddUser {
                 this.relationIndex = index;
                 this.formData.relation = text;
               },
-              '请选择关系'
+              $r('app.string.select_relation')
             );
 
             GenderField(this.formData.gender as '男性' | '女性' | undefined, (g: '男性' | '女性') => {
               this.formData.gender = g;
             });
 
+
             // 出生日期，点击后展示 DatePicker
             Row() {
               Row() {
-                Text('出生日期').fontSize(16).fontColor('#1F2328').margin({ left: 2 });
-                Text('*').fontSize(16).fontColor('#FF5252').margin({ left: 4 });
+                Text($r('app.string.birthday')).fontSize($r('app.float.font_size_16')).fontColor($r('app.color.font_black')).margin({ left: 2 });
+                Text('*').fontSize($r('app.float.font_size_16')).fontColor($r('app.color.font_red1')).margin({ left: 4 });
               }
-              .margin({ left: 10 })
+              .margin({ left: $r('app.float.distance_10') })
               .alignItems(VerticalAlign.Center);
 
               Blank();
 
               Row() {
-                Text(this.formData.birthday ?? '请选择日期')
-                  .fontColor( '#1F2328' )
-                  .fontSize(15)
+                Text(this.formData.birthday ?? $r('app.string.select_date'))
+                  .fontColor( $r('app.color.font_black') )
+                  .fontSize($r('app.float.font_size_15'))
                Image($r('app.media.arrow_add'))
-                 .height(50)
+                 .height($r('app.float.distance_50'))
               }
-              .width('50%')
-              .height('38vp')
-              .backgroundColor('#FFFFFF')
-              .borderRadius(6)
-              .padding({ left: 10, right: 10 })
+              .width(CommonConstants.HALF_PARENT)
+              .height($r('app.float.height_38'))
+              .backgroundColor($r('app.color.white'))
+              .borderRadius($r('app.float.distance_6'))
+              .padding({ left: $r('app.float.distance_10'), right: $r('app.float.distance_10') })
               .alignItems(VerticalAlign.Center)
               .onClick(() => {
                 // 点击弹出日期选择器
@@ -115,41 +119,41 @@ export default struct AddUser {
             }
             .alignItems(VerticalAlign.Center)
             .backgroundColor(Color.Transparent)
-            .margin({ top: 10, bottom: 18 })
-            .width('100%');
+            .margin({ top: $r('app.float.distance_10'), bottom: $r('app.float.distance_18') })
+            .width(CommonConstants.FULL_PARENT);
 
-            TextInputField('身份证号', true, '请输入身份证号', (v: string) => { this.formData.idCard = v; });
-            TextInputField('地址', false, '请输入地址', (v: string) => { this.formData.address = v; });
-            TextInputField('职业', false, '请输入职业', (v: string) => { this.formData.job = v; });
+            TextInputField($r('app.string.ID_number'), true, $r('app.string.input_id_number'), (v: string) => { this.formData.idCard = v; });
+            TextInputField($r('app.string.address'), false, $r('app.string.input_address'), (v: string) => { this.formData.address = v; });
+            TextInputField($r('app.string.job'), false, $r('app.string.input_job'), (v: string) => { this.formData.job = v; });
 
             // 错误提示信息
             if (this.errorMsg) {
               Text(this.errorMsg)
-                .fontSize(14)
-                .fontColor('#D92D20')
-                .margin({ top: 8 });
+                .fontSize($r('app.float.font_size_14'))
+                .fontColor($r('app.color.login_red'))
+                .margin({ top: $r('app.float.distance_8') });
             }
           }
-          .width('90%')
-          .backgroundColor('#FFFFFF')
-          .borderRadius(16)
-          .padding({ top: 10, bottom: 20 })
+          .width(CommonConstants.NINETY_PARENT)
+          .backgroundColor($r('app.color.white'))
+          .borderRadius($r('app.float.distance_16'))
+          .padding({ top: $r('app.float.distance_10'), bottom: $r('app.float.distance_20') })
           // 提交按钮
         Button(this.submitting ? '提交中...' : '添加')
-          .width('90%')
-          .backgroundColor('#d821deb4')
-          .fontColor('#FFFFFF')
+          .width(CommonConstants.NINETY_PARENT)
+          .backgroundColor($r('app.color.main_green'))
+          .fontColor($r('app.color.white'))
           .borderRadius(22.5)
-          .margin({ top: 20 })
+          .margin({ top: $r('app.float.distance_20') })
           .onClick(() => this.handleSubmit());
         }
-        .width('100%')
+        .width(CommonConstants.FULL_PARENT)
         .height('130%')
         .linearGradient({
           colors: [
-            ['#21deb4',0],
-            ['#1121deb4',0.2],
-            ['#F1F3F5',0.3]
+            [$r('app.color.green1'),0],
+            [$r('app.color.gray7'),0.2],
+            [$r('app.color.background_color'),0.3]
           ]
         });
 
@@ -173,9 +177,9 @@ export default struct AddUser {
           );
         }
       }
-    }.backgroundColor('#d821deb4')
-    .width('100%')
-    .height('100%')
+    }.backgroundColor($r('app.color.main_green'))
+    .width(CommonConstants.FULL_PARENT)
+    .height(CommonConstants.FULL_PARENT)
     .hideTitleBar(true)
   }
 }

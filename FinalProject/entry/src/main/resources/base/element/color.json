@@ -3,6 +3,154 @@
     {
       "name": "start_window_background",
       "value": "#FFFFFF"
+    },
+    {
+      "name": "white",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "font_black",
+      "value": "#1F2328"
+    },
+    {
+      "name": "login_gray",
+      "value": "#9CA3AF"
+    },
+    {
+      "name": "green",
+      "value": "#00C8A2"
+    },
+    {
+      "name": "green1",
+      "value": "#21deb4"
+    },
+    {
+      "name": "green3",
+      "value": "#ff21deb4"
+    },
+    {
+      "name": "green4",
+      "value": "#41E3BF"
+    },
+    {
+      "name": "login_red",
+      "value": "#D92D20"
+    },
+    {
+      "name": "main_green",
+      "value": "#d821deb4"
+    },
+    {
+      "name": "gray",
+      "value": "#fff1f0f0"
+    },
+    {
+      "name": "gray1",
+      "value": "#E8E8E8"
+    },
+    {
+      "name": "gray2",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "gray3",
+      "value": "#00f1f0f0"
+    },
+    {
+      "name": "gray4",
+      "value": "#E5E5E5"
+    },
+    {
+      "name": "gray5",
+      "value": "#F5F5F5"
+    },
+    {
+      "name": "gray6",
+      "value": "#FFFFFFff"
+    },
+    {
+      "name": "gray7",
+      "value": "#1121deb4"
+    },
+    {
+      "name": "health_font_black",
+      "value": "#99000000"
+    },
+    {
+      "name": "health_font_black1",
+      "value": "#000000"
+    },
+    {
+      "name": "health_font_black2",
+      "value": "#66000000"
+    },
+    {
+      "name": "background_color",
+      "value": "#F1F3F5"
+    },
+    {
+      "name": "font_color",
+      "value": "#999999"
+    },
+    {
+      "name": "font_color1",
+      "value": "#333333"
+    },
+    {
+      "name": "font_gray",
+      "value": "#666666"
+    },
+    {
+      "name": "font_gray1",
+      "value": "#888888"
+    },
+    {
+      "name": "font_red",
+      "value": "#FF6B6B"
+    },
+    {
+      "name": "font_red1",
+      "value": "#FF5252"
+    },
+    {
+      "name": "font_red2",
+      "value": "#FF6B00"
+    },
+    {
+      "name": "red",
+      "value": "#FF0000"
+    },
+    {
+      "name": "black",
+      "value": "#FF000000"
+    },
+    {
+      "name": "black1",
+      "value": "#1F000000"
+    },
+    {
+      "name": "black2",
+      "value": "#0021deb4"
+    },
+    {
+      "name": "black3",
+      "value": "#000000bc"
+    },
+    {
+      "name": "background_gray",
+      "value": "#e7e4e4"
+    },
+    {
+      "name": "background_gray1",
+      "value": "#F1F0F0"
+    },
+    {
+      "name": "background_green1",
+      "value": "#40E0D0"
+    },
+    {
+      "name": "pick",
+      "value": "#FF80AB"
     }
   ]
 }

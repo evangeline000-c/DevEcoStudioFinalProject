@@ -1,6 +1,7 @@
 //资讯组件
 import HealthResourceList from '../viewmodel/HealthListcomponent';
 import PutDownRefresh from '../viewmodel/PutDownRefreshLayout';
+import CommonConstants from '../common/CommonContants'
 
 @Component
 export default struct News {
@@ -41,13 +42,13 @@ export default struct News {
   build() {
     Column() {
       //标题部分
-      Text('健康资讯列表')
-        .height('60vp')
-        .width('100%')
-        .fontWeight(220)//字体粗细
-        .fontSize('20fp')//字体大小
-        .backgroundColor('#0021deb4')
-        .fontColor('#FFFFFF')
+      Text($r('app.string.news_list_title'))
+        .height($r('app.float.height_text'))
+        .width(CommonConstants.FULL_PARENT)
+        .fontWeight($r('app.float.font_weight_220'))//字体粗细
+        .fontSize($r('app.float.font_size'))//字体大小
+        .backgroundColor($r('app.color.green1'))
+        .fontColor($r('app.color.white'))
         .textAlign(TextAlign.Center)
 
       //纵向列表
@@ -55,34 +56,33 @@ export default struct News {
         //"健康宣教"标题
         Row() {
           Column(){
-            Text("健康资讯")
-              .fontSize(30)
-              .fontWeight(700)
+            Text($r('app.string.news_title'))
+              .fontSize($r('app.float.font_size_30'))
+              .fontWeight($r('app.float.font_weight_700'))
 
 
             Divider()
               .vertical(false)
               .strokeWidth(3)
-              .height(5)
-              .color('#ff000000')  // 横条颜色
-              .width('30vp')
+              .height($r('app.float.distance_5'))
+              .color($r('app.color.black'))  // 横条颜色
+              .width($r('app.float.distance_30'))
 
           }
-          .width('40%')
-          .margin({left:'12vp',top:'5vp'})
+          .width(CommonConstants.FORTY_PERCENT)
+          .margin({left:$r('app.float.distance_12'),top:$r('app.float.distance_5')})
           .alignItems(HorizontalAlign.Start)
 
           Row(){
             Image($r('app.media.news_photo'))
-              .width('130vp')
+              .width($r('app.float.distance_130'))
               .objectFit(ImageFit.Contain)
 
-          }.margin({left:'65vp'})
-          //.backgroundColor('#00FFFFFFF')
+          }.margin({left:$r('app.float.distance_65')})
 
 
-        }.margin({top:'12vp'})
-        .width('100%')
+        }.margin({top:$r('app.float.distance_12')})
+        .width(CommonConstants.FULL_PARENT)
 
         Scroll(){
           Column(){
@@ -90,23 +90,23 @@ export default struct News {
               PutDownRefresh({ refreshText: $refreshText })
             }
             HealthResourceList()
-            Text('--到底了--').fontSize('12vp').fontColor(Color.Gray)
+            Text($r('app.string.end_of_list')).fontSize($r('app.float.distance_12')).fontColor(Color.Gray)
           }
-        }//.margin({top:'3vp'})
+        }//.margin({top:$r('app.float.distance_3')})
         .layoutWeight(1)
         .onTouch((event?: TouchEvent) => {
           this.putDownRefresh(event);
         })
 
 
-      }.backgroundColor('#fff1f0f0')
-      .width('100%')
+      }.backgroundColor($r('app.color.gray'))
+      .width(CommonConstants.FULL_PARENT)
       //.height('500vp')
       .layoutWeight(1)
 
     }
-    .width('100%')
-    .height('100%')
-    .backgroundColor('#d821deb4')
+    .width(CommonConstants.FULL_PARENT)
+    .height(CommonConstants.FULL_PARENT)
+    .backgroundColor($r('app.color.main_green'))
   }
 }

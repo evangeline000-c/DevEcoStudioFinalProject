@@ -11,6 +11,535 @@
     {
       "name": "EntryAbility_label",
       "value": "label"
-    }
+    },
+    {
+      "name": "login",
+      "value": "登录"
+    },
+    {
+      "name": "AddUser",
+      "value": "添加康养用户"
+    },
+    {
+      "name": "user_name",
+      "value": "用户名称"
+    },
+    {
+      "name": "input_user_name",
+      "value": "请输入用户名称"
+    },
+    {
+      "name": "ID_number",
+      "value": "身份证号"
+    },
+    {
+      "name": "input_id_number",
+      "value": "请输入身份证号"
+    },
+    {
+      "name": "address",
+      "value": "地址"
+    },
+    {
+      "name": "input_address",
+      "value": "请输入地址"
+    },
+    {
+      "name": "job",
+      "value": "职业"
+    },
+    {
+      "name": "input_job",
+      "value": "请输入职业"
+    },
+    {
+      "name": "select_relation",
+      "value": "请选择关系"
+    },
+    {
+      "name": "birthday",
+      "value": "出生日期"
+    },
+    {
+      "name": "select_date",
+      "value": "请选择日期"
+    },
+    {
+      "name": "select_birthday",
+      "value": "选择出生日期"
+    },
+    {
+      "name": "cancel",
+      "value": "取消"
+    },
+    {
+      "name": "confirm",
+      "value": "确定"
+    },
+    {
+      "name": "relation",
+      "value": "关系"
+    },
+    {
+      "name": "gender",
+      "value": "性别"
+    },
+    {
+      "name": "male",
+      "value": "男性"
+    },
+    {
+      "name": "female",
+      "value": "女性"
+    },
+    {
+      "name": "form_incomplete",
+      "value": "请完整填写带星号的必填项"
+    },
+    {
+      "name": "idcard_invalid",
+      "value": "身份证号格式不正确"
+    },
+    {
+      "name": "admission_title",
+      "value": "入住申请"
+    },
+    {
+      "name": "admission_apply",
+      "value": "申请入住"
+    },
+    {
+      "name": "admission_form_title",
+      "value": "入住申请填写"
+    },
+    {
+      "name": "patient",
+      "value": "康养用户"
+    },
+    {
+      "name": "select_patient",
+      "value": "请选择康养用户"
+    },
+    {
+      "name": "organization",
+      "value": "机构名称"
+    },
+    {
+      "name": "select_organization",
+      "value": "请选择机构名称"
+    },
+    {
+      "name": "department",
+      "value": "部门名称"
+    },
+    {
+      "name": "select_department",
+      "value": "请选择部门名称"
+    },
+    {
+      "name": "room",
+      "value": "房间名称"
+    },
+    {
+      "name": "select_room",
+      "value": "请选择房间名称"
+    },
+    {
+      "name": "remarks",
+      "value": "备注"
+    },
+    {
+      "name": "input_remarks",
+      "value": "请输入备注(选填)"
+    },
+    {
+      "name": "submit_apply",
+      "value": "提交申请"
+    },
+    {
+      "name": "apply_success",
+      "value": "申请成功!"
+    },
+    {
+      "name": "appointment_form_title",
+      "value": "预约信息填写"
+    },
+    {
+      "name": "caregiver",
+      "value": "看护人员"
+    },
+    {
+      "name": "select_caregiver",
+      "value": "请选择看护人员"
+    },
+    {
+      "name": "appointment_time",
+      "value": "预约时间"
+    },
+    {
+      "name": "select_appointment_time",
+      "value": "请选择预约时间"
+    },
+    {
+      "name": "contact_person",
+      "value": "联系人"
+    },
+    {
+      "name": "input_contact_person",
+      "value": "请输入联系人"
+    },
+    {
+      "name": "contact_phone",
+      "value": "联系电话"
+    },
+    {
+      "name": "input_contact_phone",
+      "value": "请输入11位手机号码"
+    },
+    {
+      "name": "input_valid_phone",
+      "value": "请输入正确的手机号码"
+    },
+    {
+      "name": "submit_appointment",
+      "value": "提交预约"
+    },
+    {
+      "name": "appointment_success",
+      "value": "预约成功！"
+    },
+    {
+      "name": "doctor_name",
+      "value": "医护名称"
+    },
+    {
+      "name": "consultation_time",
+      "value": "问诊时间"
+    },
+    {
+      "name": "amount",
+      "value": "金额"
+    },
+    {
+      "name": "consultation_list_title",
+      "value": "问诊订单列表"
+    },
+    {
+      "name": "no_more",
+      "value": "没有更多"
+    },
+    {
+      "name": "no_consultation",
+      "value": "暂无问诊记录"
+    },
+    {
+      "name": "input_recipient",
+      "value": "请输入收件人姓名"
+    },
+    {
+      "name": "pay_success",
+      "value": "支付成功"
+    },
+    {
+      "name": "unpaid",
+      "value": "未支付"
+    },
+    {
+      "name": "prescription_info",
+      "value": "处方信息"
+    },
+    {
+      "name": "chief_complaint",
+      "value": "主诉"
+    },
+    {
+      "name": "medical_history",
+      "value": "病史"
+    },
+    {
+      "name": "allergy_history",
+      "value": "过敏史"
+    },
+    {
+      "name": "diagnosis",
+      "value": "诊断"
+    },
+    {
+      "name": "medication_days",
+      "value": "用药天数"
+    },
+    {
+      "name": "medicine_info",
+      "value": "处方药信息"
+    },
+    {
+      "name": "medicine_type",
+      "value": "类型"
+    },
+    {
+      "name": "medicine_spec",
+      "value": "规格"
+    },
+    {
+      "name": "medicine_dosage",
+      "value": "剂量"
+    },
+    {
+      "name": "medicine_frequency",
+      "value": "频次"
+    },
+    {
+      "name": "medicine_quantity",
+      "value": "数量"
+    },
+    {
+      "name": "medicine_unit_price",
+      "value": "单价"
+    },
+    {
+      "name": "medicine_total_price",
+      "value": "总价"
+    },
+    {
+      "name": "medicine_usage",
+      "value": "用法"
+    },
+    {
+      "name": "delivery_info",
+      "value": "收件信息"
+    },
+    {
+      "name": "recipient",
+      "value": "收件人"
+    },
+    {
+      "name": "phone",
+      "value": "手机号码"
+    },
+    {
+      "name": "consultation_pay_title",
+      "value": "问诊订单支付"
+    },
+    {
+      "name": "consultation_detail_title",
+      "value": "问诊订单信息"
+    },
+    {
+      "name": "pay",
+      "value": "支付"
+    },
+    {
+      "name": "go_pay",
+      "value": "去支付"
+    },
+    {
+      "name": "forget_password",
+      "value": "忘记密码"
+    },
+    {
+      "name": "input_phone",
+      "value": "请输入手机号"
+    },
+    {
+      "name": "input_captcha",
+      "value": "请输入验证码"
+    },
+    {
+      "name": "get_captcha",
+      "value": "获取验证码"
+    },
+    {
+      "name": "input_password",
+      "value": "请输入密码"
+    },
+    {
+      "name": "input_confirm_password",
+      "value": "请再次确认密码"
+    },
+    {
+      "name": "password_reset_success",
+      "value": "密码已重置，请用新密码登录"
+    },
+    {
+      "name": "phone_not_found",
+      "value": "未找到该手机号对应的账号"
+    },
+    {
+      "name": "login_subtitle",
+      "value": "互联网机构 家属端"
+    },
+    {
+      "name": "password_login",
+      "value": "密码登录"
+    },
+    {
+      "name": "phone_login",
+      "value": "手机号登录"
+    },
+    {
+      "name": "input_account",
+      "value": "请输入账号"
+    },
+    {
+      "name": "no_account",
+      "value": "还没有账号? "
+    },
+    {
+      "name": "register_now",
+      "value": "立即注册"
+    },
+    {
+      "name": "forget_password_tip",
+      "value": "忘记密码?"
+    },
+    {
+      "name": "health_detail_title",
+      "value": "健康资讯详情"
+    },
+    {
+      "name": "health_info",
+      "value": "体征信息"
+    },
+    {
+      "name": "heart_rate",
+      "value": "心率"
+    },
+    {
+      "name": "oxygen",
+      "value": "血氧饱和度"
+    },
+    {
+      "name": "blood_oxygen",
+      "value": "血氧"
+    },
+    {
+      "name": "temperature",
+      "value": "体温"
+    },
+    {
+      "name": "sugar",
+      "value": "血糖"
+    },
+    {
+      "name": "pressure",
+      "value": "血压"
+    },
+    {
+      "name": "stress",
+      "value": "压力"
+    },
+    {
+      "name": "sleep",
+      "value": "睡眠"
+    },
+    {
+      "name": "tab_home",
+      "value": "首页"
+    },
+    {
+      "name": "tab_health",
+      "value": "健康"
+    },
+    {
+      "name": "tab_news",
+      "value": "资讯"
+    },
+    {
+      "name": "tab_user_profile",
+      "value": "用户档案"
+    },
+    {
+      "name": "tab_my",
+      "value": "我的"
+    },
+    {
+      "name": "register_success",
+      "value": "注册成功，请使用账号或手机号登录"
+    },
+    {
+      "name": "register",
+      "value": "注册"
+    },
+    {
+      "name": "user_register",
+      "value": "用户注册"
+    },
+    {
+      "name": "service_detail_title",
+      "value": "服务详情"
+    },
+    {
+      "name": "service_organization",
+      "value": "服务机构："
+    },
+    {
+      "name": "service_type",
+      "value": "服务类型："
+    },
+    {
+      "name": "service_introduction",
+      "value": "服务介绍"
+    },
+    {
+      "name": "service_appointment_notice",
+      "value": "预约须知"
+    },
+    {
+      "name": "service_fee_notice",
+      "value": "费用须知"
+    },
+    {
+      "name": "fee",
+      "value": "费用"
+    },
+    {
+      "name": "total_amount",
+      "value": "总金额"
+    },
+    {
+      "name": "appointment_service",
+      "value": "预约服务"
+    },
+    { "name": "service_procurement_title", "value": "服务采购" },
+    { "name": "service_order", "value": "服务订单" },
+    { "name": "service_order_detail_title", "value": "服务订单详情" },
+    { "name": "care_person", "value": "被看护人" },
+    { "name": "service_number", "value": "服务单号" },
+    { "name": "contact_address", "value": "联系地址" },
+    { "name": "caregiver_info", "value": "看护信息" },
+    { "name": "service_record", "value": "服务记录" },
+    { "name": "assessment", "value": "康复评估" },
+    { "name": "consultation_fee", "value": "出诊费" },
+    { "name": "tech_fee", "value": "技术费" },
+    { "name": "material_fee", "value": "耗材费" },
+    { "name": "not_assigned", "value": "未分配" },
+    { "name": "title", "value": "职称" },
+    { "name": "belong_organization", "value": "所属机构" },
+    { "name": "specialties", "value": "专业领域" },
+    { "name": "no_service_record", "value": "未上传服务记录" },
+    { "name": "no_service_orders", "value": "暂无服务订单" },
+    { "name": "service_order_list_title", "value": "服务订单列表" },
+    { "name": "service_price", "value": "服务价格" },
+    { "name": "patient_label", "value": "康养用户：" },
+    { "name": "organization_label", "value": "机构：" },
+    { "name": "department_label", "value": "部门：" },
+    { "name": "room_label", "value": "房间：" },
+    { "name": "application_time_label", "value": "申请时间：" },
+    { "name": "status_label", "value": "状态：" },
+    { "name": "no_admission_records", "value": "暂无入住申请记录" },
+    { "name": "user_health", "value": "用户健康" },
+    { "name": "health_education", "value": "健康宣教" },
+    { "name": "end_of_list", "value": "--到底了--" },
+    { "name": "not_logged_in", "value": "未登录" },
+    { "name": "logout", "value": "退出登陆" },
+    { "name": "news_list_title", "value": "健康资讯列表" },
+    { "name": "news_title", "value": "健康资讯" },
+    { "name": "price_yuan_unit", "value": "¥" },
+    { "name": "id_card", "value": "身份证" },
+    { "name": "user_list_title", "value": "康养用户列表" },
+    { "name": "delete_user", "value": "删除用户" },
+    { "name": "confirm_delete", "value": "确认删除" },
+    { "name": "already_at_end", "value": "已经到底了" },
+    {"name": "consultation", "value": "问诊记录"}
   ]
 }

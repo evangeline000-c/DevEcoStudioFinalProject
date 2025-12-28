@@ -1,6 +1,6 @@
 //服务订单详情页面
 import { getCaregiverById, CaregiverInfo } from '../viewmodel/CaregiverData';
-
+import CommonConstants from '../common/CommonContants'
 // 费用信息接口
 interface FeeInfo {
   consultationFee: number;  // 出诊费
@@ -68,9 +68,9 @@ struct ServiceOrderDetail {
 
   // 获取状态颜色
   getStatusColor(status: string): string {
-    if (status === '待服务') return '#21deb4';
+    if (status === '待服务') return '21deb4';
     if (status === '待评价') return '#FF9800';
-    if (status === '已支付') return '#21deb4';
+    if (status === '已支付') return '21deb4';
     return '#999999';
   }
 
@@ -78,23 +78,23 @@ struct ServiceOrderDetail {
   @Builder
   TabBar() {
     Row() {
-      ForEach(['服务介绍', '看护信息', '服务记录', '康复评估'], (tab: string, index: number) => {
+      ForEach([$r('app.string.service_introduction'), $r('app.string.caregiver_info'), $r('app.string.service_record'), $r('app.string.assessment')], (tab: Resource, index: number) => {
         Text(tab)
-          .fontSize('14fp')
-          .fontColor(this.currentTab === index ? '#21deb4' : '#666666')
+          .fontSize($r('app.float.font_size_14'))
+          .fontColor(this.currentTab === index ? $r('app.color.green1') : $r('app.color.font_gray'))
           .layoutWeight(1)
           .textAlign(TextAlign.Center)
-          .padding({ top: '12vp', bottom: '12vp' })
+          .padding({ top: $r('app.float.distance_12'), bottom: $r('app.float.distance_12') })
           .border({
             width: { bottom: this.currentTab === index ? 2 : 0 },
-            color: '#21deb4'
+            color: $r('app.color.green1')
           })
           .onClick(() => {
             this.currentTab = index;
           })
       })
     }
-    .width('100%')
+    .width(CommonConstants.FULL_PARENT)
     .backgroundColor(Color.White)
   }
 
@@ -104,52 +104,52 @@ struct ServiceOrderDetail {
     Column() {
       Row() {
         Text(this.orderData.serviceType as string)
-          .fontSize('16fp')
+          .fontSize($r('app.float.font_size_16'))
           .fontWeight(FontWeight.Bold)
-          .fontColor('#333333')
+          .fontColor($r('app.color.font_color1'))
         Blank()
         Text(this.orderData.status as string)
-          .fontSize('12fp')
+          .fontSize($r('app.float.font_size_12'))
           .fontColor(this.getStatusColor(this.orderData.status as string))
-          .padding({ left: '12vp', right: '12vp', top: '4vp', bottom: '4vp' })
+          .padding({ left: $r('app.float.distance_12'), right: $r('app.float.distance_12'), top: $r('app.float.layout_4'), bottom: $r('app.float.bottom_4')})
           .border({
             width: 1,
             color: this.getStatusColor(this.orderData.status as string),
-            radius: '4vp'
+            radius: $r('app.float.layout_4')
           })
       }
-      .width('100%')
-      .margin({ bottom: '12vp' })
+      .width(CommonConstants.FULL_PARENT)
+      .margin({ bottom: $r('app.float.distance_12') })
 
-      this.InfoRow('被看护人', this.orderData.carePersonName as string)
-      this.InfoRow('服务单号', this.orderData.serviceNumber as string)
-      this.InfoRow('预约时间', this.orderData.appointmentTime as string)
-      this.InfoRow('联系电话', '18862492805')
-      this.InfoRow('联系地址', '上海')
-      this.InfoRow('服务机构', '中山大学展示中心')
-      this.InfoRow('服务类型', '')
+      this.InfoRow($r('app.string.care_person'), this.orderData.carePersonName as string)
+      this.InfoRow($r('app.string.service_number'), this.orderData.serviceNumber as string)
+      this.InfoRow($r('app.string.appointment_time'), this.orderData.appointmentTime as string)
+      this.InfoRow($r('app.string.contact_phone'), '18862492805')
+      this.InfoRow($r('app.string.contact_address'), '上海')
+      this.InfoRow($r('app.string.service_organization'), '中山大学展示中心')
+      this.InfoRow($r('app.string.service_type'), '')
     }
-    .width('100%')
-    .padding('16vp')
+    .width(CommonConstants.FULL_PARENT)
+    .padding($r('app.float.distance_16'))
     .backgroundColor(Color.White)
-    .borderRadius('8vp')
-    .border({ width: 1, color: '#E8E8E8', radius: '8vp' })
+    .borderRadius($r('app.float.distance_8'))
+    .border({ width: 1, color: $r('app.color.gray1'), radius: $r('app.float.distance_8') })
   }
 
   // 信息行组件
   @Builder
-  InfoRow(label: string, value: string) {
+  InfoRow(label: Resource|string, value: string) {
     Row() {
       Text(label)
-        .fontSize('14fp')
-        .fontColor('#999999')
+        .fontSize($r('app.float.font_size_14'))
+        .fontColor($r('app.color.font_color'))
       Blank()
       Text(value || '-')
-        .fontSize('14fp')
-        .fontColor('#333333')
+        .fontSize($r('app.float.font_size_14'))
+        .fontColor($r('app.color.font_color1'))
     }
-    .width('100%')
-    .margin({ bottom: '8vp' })
+    .width(CommonConstants.FULL_PARENT)
+    .margin({ bottom: $r('app.float.distance_8') })
   }
 
   // 服务介绍视图
@@ -164,29 +164,29 @@ struct ServiceOrderDetail {
           Divider()
             .vertical(true)
             .strokeWidth(3)
-            .height('16vp')
-            .color('#21deb4')
-            .margin({ right: '8vp' })
-          Text('服务介绍')
-            .fontSize('14fp')
+            .height($r('app.float.distance_16'))
+            .color($r('app.color.green1'))
+            .margin({ right: $r('app.float.distance_8') })
+          Text($r('app.string.service_introduction'))
+            .fontSize($r('app.float.font_size_14'))
             .fontWeight(FontWeight.Bold)
-            .fontColor('#333333')
+            .fontColor($r('app.color.font_color1'))
         }
-        .width('100%')
-        .margin({ bottom: '8vp' })
+        .width(CommonConstants.FULL_PARENT)
+        .margin({ bottom: $r('app.float.distance_8') })
 
         Text(this.serviceIntro)
-          .fontSize('14fp')
-          .fontColor('#333333')
+          .fontSize($r('app.float.font_size_14'))
+          .fontColor($r('app.color.font_color1'))
           .lineHeight(22)
-          .width('100%')
+          .width(CommonConstants.FULL_PARENT)
       }
-      .width('100%')
-      .padding('16vp')
+      .width(CommonConstants.FULL_PARENT)
+      .padding($r('app.float.distance_16'))
       .backgroundColor(Color.White)
-      .borderRadius('8vp')
-      .border({ width: 1, color: '#E8E8E8', radius: '8vp' })
-      .margin({ top: '12vp' })
+      .borderRadius($r('app.float.distance_8'))
+      .border({ width: 1, color: $r('app.color.gray1'), radius: $r('app.float.distance_8') })
+      .margin({ top: $r('app.float.distance_12') })
 
       // 预约须知
       Column() {
@@ -194,28 +194,28 @@ struct ServiceOrderDetail {
           Divider()
             .vertical(true)
             .strokeWidth(3)
-            .height('16vp')
-            .color('#21deb4')
-            .margin({ right: '8vp' })
-          Text('预约须知')
-            .fontSize('14fp')
+            .height($r('app.float.distance_16'))
+            .color($r('app.color.green1'))
+            .margin({ right: $r('app.float.distance_8') })
+          Text($r('app.string.service_appointment_notice'))
+            .fontSize($r('app.float.font_size_14'))
             .fontWeight(FontWeight.Bold)
-            .fontColor('#333333')
+            .fontColor($r('app.color.font_color1'))
         }
-        .width('100%')
-        .margin({ bottom: '8vp' })
+        .width(CommonConstants.FULL_PARENT)
+        .margin({ bottom: $r('app.float.distance_8') })
 
         Text(this.appointmentNotice)
-          .fontSize('14fp')
-          .fontColor('#333333')
-          .width('100%')
+          .fontSize($r('app.float.font_size_14'))
+          .fontColor($r('app.color.font_color1'))
+          .width(CommonConstants.FULL_PARENT)
       }
-      .width('100%')
-      .padding('16vp')
+      .width(CommonConstants.FULL_PARENT)
+      .padding($r('app.float.distance_16'))
       .backgroundColor(Color.White)
-      .borderRadius('8vp')
-      .border({ width: 1, color: '#E8E8E8', radius: '8vp' })
-      .margin({ top: '12vp' })
+      .borderRadius($r('app.float.distance_8'))
+      .border({ width: 1, color: $r('app.color.gray1'), radius: $r('app.float.distance_8') })
+      .margin({ top: $r('app.float.distance_12') })
 
       // 费用须知
       Column() {
@@ -223,28 +223,28 @@ struct ServiceOrderDetail {
           Divider()
             .vertical(true)
             .strokeWidth(3)
-            .height('16vp')
-            .color('#21deb4')
-            .margin({ right: '8vp' })
-          Text('费用须知')
-            .fontSize('14fp')
+            .height($r('app.float.distance_16'))
+            .color($r('app.color.green1'))
+            .margin({ right: $r('app.float.distance_8') })
+          Text($r('app.string.service_fee_notice'))
+            .fontSize($r('app.float.font_size_14'))
             .fontWeight(FontWeight.Bold)
-            .fontColor('#333333')
+            .fontColor($r('app.color.font_color1'))
         }
-        .width('100%')
-        .margin({ bottom: '8vp' })
+        .width(CommonConstants.FULL_PARENT)
+        .margin({ bottom: $r('app.float.distance_8') })
 
         Text(this.feeNotice)
-          .fontSize('14fp')
-          .fontColor('#333333')
-          .width('100%')
+          .fontSize($r('app.float.font_size_14'))
+          .fontColor($r('app.color.font_color1'))
+          .width(CommonConstants.FULL_PARENT)
       }
-      .width('100%')
-      .padding('16vp')
+      .width(CommonConstants.FULL_PARENT)
+      .padding($r('app.float.distance_16'))
       .backgroundColor(Color.White)
-      .borderRadius('8vp')
-      .border({ width: 1, color: '#E8E8E8', radius: '8vp' })
-      .margin({ top: '12vp' })
+      .borderRadius($r('app.float.distance_8'))
+      .border({ width: 1, color: $r('app.color.gray1'), radius: $r('app.float.distance_8') })
+      .margin({ top: $r('app.float.distance_12') })
 
       // 费用
       Column() {
@@ -252,100 +252,100 @@ struct ServiceOrderDetail {
           Divider()
             .vertical(true)
             .strokeWidth(3)
-            .height('16vp')
-            .color('#21deb4')
-            .margin({ right: '8vp' })
-          Text('费用')
-            .fontSize('14fp')
+            .height($r('app.float.distance_16'))
+            .color($r('app.color.green1'))
+            .margin({ right: $r('app.float.distance_8') })
+          Text($r('app.string.fee'))
+            .fontSize($r('app.float.font_size_14'))
             .fontWeight(FontWeight.Bold)
-            .fontColor('#333333')
+            .fontColor($r('app.color.font_color1'))
         }
-        .width('100%')
-        .margin({ bottom: '12vp' })
+        .width(CommonConstants.FULL_PARENT)
+        .margin({ bottom: $r('app.float.distance_12') })
 
-        this.FeeRow('出诊费', this.feeInfo.consultationFee)
-        this.FeeRow('技术费', this.feeInfo.techFee)
-        this.FeeRow('耗材费', this.feeInfo.materialFee)
+        this.FeeRow($r('app.string.consultation_fee'), this.feeInfo.consultationFee)
+        this.FeeRow($r('app.string.tech_fee'), this.feeInfo.techFee)
+        this.FeeRow($r('app.string.material_fee'), this.feeInfo.materialFee)
 
         Row() {
-          Text('总金额')
-            .fontSize('14fp')
-            .fontColor('#333333')
+          Text($r('app.string.total_amount'))
+            .fontSize($r('app.float.font_size_14'))
+            .fontColor($r('app.color.font_color1'))
           Blank()
           Text(`¥${this.feeInfo.totalAmount}`)
-            .fontSize('18fp')
-            .fontColor('#FF6B00')
+            .fontSize($r('app.float.font_size_18'))
+            .fontColor($r('app.color.font_red2'))
             .fontWeight(FontWeight.Bold)
         }
-        .width('100%')
-        .margin({ top: '8vp' })
+        .width(CommonConstants.FULL_PARENT)
+        .margin({ top: $r('app.float.distance_8') })
       }
-      .width('100%')
-      .padding('16vp')
+      .width(CommonConstants.FULL_PARENT)
+      .padding($r('app.float.distance_16'))
       .backgroundColor(Color.White)
-      .borderRadius('8vp')
-      .border({ width: 1, color: '#E8E8E8', radius: '8vp' })
-      .margin({ top: '12vp' })
+      .borderRadius($r('app.float.distance_8'))
+      .border({ width: 1, color: $r('app.color.gray1'), radius: $r('app.float.distance_8') })
+      .margin({ top: $r('app.float.distance_12') })
     }
-    .width('100%')
+    .width(CommonConstants.FULL_PARENT)
   }
 
   // 费用行组件
   @Builder
-  FeeRow(label: string, amount: number) {
+  FeeRow(label: Resource|string, amount: number) {
     Row() {
       Text(label)
-        .fontSize('14fp')
-        .fontColor('#999999')
+        .fontSize($r('app.float.font_size_14'))
+        .fontColor($r('app.color.font_color'))
       Text(' ------------------------------------ ')
-        .fontSize('12fp')
-        .fontColor('#E8E8E8')
+        .fontSize($r('app.float.font_size_12'))
+        .fontColor($r('app.color.gray1'))
         .layoutWeight(1)
       Text(`¥ ${amount}`)
-        .fontSize('14fp')
-        .fontColor('#333333')
+        .fontSize($r('app.float.font_size_14'))
+        .fontColor($r('app.color.font_color1'))
     }
-    .width('100%')
-    .margin({ bottom: '8vp' })
+    .width(CommonConstants.FULL_PARENT)
+    .margin({ bottom: $r('app.float.distance_8') })
   }
 
   // 看护信息视图
   @Builder
   CaregiverInfoView() {
     Column() {
-      Text(this.caregiverInfo?.name || '未分配')
-        .fontSize('16fp')
+      Text(this.caregiverInfo?.name || String($r('app.string.not_assigned')))
+        .fontSize($r('app.float.font_size_16'))
         .fontWeight(FontWeight.Bold)
-        .fontColor('#333333')
-        .width('100%')
-        .margin({ bottom: '16vp' })
+        .fontColor($r('app.color.font_color1'))
+        .width(CommonConstants.FULL_PARENT)
+        .margin({ bottom: $r('app.float.distance_16') })
 
-      this.InfoRow('职称', this.caregiverInfo?.title || '-')
-      this.InfoRow('联系电话', this.caregiverInfo?.phone || '-')
-      this.InfoRow('所属机构', this.caregiverInfo?.organization || '-')
-      this.InfoRow('专业领域', this.caregiverInfo?.specialties.join('、') || '-')
+      this.InfoRow($r('app.string.title'), this.caregiverInfo?.title || '-')
+      this.InfoRow($r('app.string.contact_phone'), this.caregiverInfo?.phone || '-')
+      this.InfoRow($r('app.string.belong_organization'), this.caregiverInfo?.organization || '-')
+      this.InfoRow($r('app.string.specialties'), this.caregiverInfo?.specialties.join('、') || '-')
     }
-    .width('100%')
-    .padding('16vp')
+    .width(CommonConstants.FULL_PARENT)
+    .padding($r('app.float.distance_16'))
     .backgroundColor(Color.White)
-    .borderRadius('8vp')
-    .border({ width: 1, color: '#E8E8E8', radius: '8vp' })
+    .borderRadius($r('app.float.distance_8'))
+    .border({ width: 1, color: $r('app.color.gray1'), radius: $r('app.float.distance_8') })
   }
 
   // 服务记录视图
   @Builder
   ServiceRecordView() {
     Column() {
-      Text('未上传服务记录')
-        .fontSize('14fp')
-        .fontColor('#999999')
+      Text($r('app.string.no_service_record'))
+        .fontSize($r('app.float.font_size_14'))
+        .fontColor($r('app.color.font_color'))
         .textAlign(TextAlign.Center)
     }
-    .width('100%')
-    .padding('40vp')
+    .width(CommonConstants.FULL_PARENT)
+    .padding($r('app.float.distance_40'))
     .backgroundColor(Color.White)
-    .borderRadius('8vp')
-    .border({ width: 1, color: '#E8E8E8', radius: '8vp' })
+    .borderRadius($r('app.float.distance_8'))
+    .border({ width: 1, color: $r('app.color.gray1'), radius: $r('app.float.distance_8') })
     .justifyContent(FlexAlign.Center)
   }
 
@@ -356,25 +356,25 @@ struct ServiceOrderDetail {
       ForEach(this.assessmentQuestions, (item: AssessmentQuestion) => {
         Column() {
           Text(item.question)
-            .fontSize('14fp')
-            .fontColor('#333333')
-            .width('100%')
-            .margin({ bottom: '8vp' })
+            .fontSize($r('app.float.font_size_14'))
+            .fontColor($r('app.color.font_color1'))
+            .width(CommonConstants.FULL_PARENT)
+            .margin({ bottom: $r('app.float.distance_8') })
           Text(item.answer || '-')
-            .fontSize('14fp')
-            .fontColor('#666666')
-            .width('100%')
-            .padding({ left: '12vp' })
+            .fontSize($r('app.float.font_size_14'))
+            .fontColor($r('app.color.font_gray'))
+            .width(CommonConstants.FULL_PARENT)
+            .padding({ left: $r('app.float.distance_12')})
         }
-        .width('100%')
-        .margin({ bottom: '16vp' })
+        .width(CommonConstants.FULL_PARENT)
+        .margin({ bottom: $r('app.float.distance_16') })
       })
     }
-    .width('100%')
-    .padding('16vp')
+    .width(CommonConstants.FULL_PARENT)
+    .padding($r('app.float.distance_16'))
     .backgroundColor(Color.White)
-    .borderRadius('8vp')
-    .border({ width: 1, color: '#E8E8E8', radius: '8vp' })
+    .borderRadius($r('app.float.distance_8'))
+    .border({ width: 1, color: $r('app.color.gray1'), radius: $r('app.float.distance_8') })
   }
 
   build() {
@@ -383,23 +383,23 @@ struct ServiceOrderDetail {
         // 标题栏
         Row() {
           Image($r('app.media.ic_back'))
-            .width('24vp')
-            .height('24vp')
-            .margin({ left: '16vp' })
+            .width($r('app.float.distance_24'))
+            .height($r('app.float.distance_24'))
+            .margin({ left: $r('app.float.distance_16') })
             .onClick(() => {
               this.pathStack.pop();
             })
-          Text('服务订单详情')
-            .fontSize('18fp')
+          Text($r('app.string.service_order_detail_title'))
+            .fontSize($r('app.float.font_size_18'))
             .fontColor(Color.White)
             .fontWeight(FontWeight.Medium)
             .layoutWeight(1)
             .textAlign(TextAlign.Center)
-          Blank().width('40vp')
+          Blank().width($r('app.float.distance_40'))
         }
-        .width('100%')
-        .height('50vp')
-        .backgroundColor('#21deb4')
+        .width(CommonConstants.FULL_PARENT)
+        .height($r('app.float.distance_50'))
+        .backgroundColor($r('app.color.green1'))
 
         // Tab切换
         this.TabBar()
@@ -417,20 +417,20 @@ struct ServiceOrderDetail {
               this.AssessmentView()
             }
           }
-          .width('100%')
-          .padding({ left: '12vp', right: '12vp', top: '12vp', bottom: '20vp' })
+          .width(CommonConstants.FULL_PARENT)
+          .padding({ left: $r('app.float.distance_12'), right: $r('app.float.distance_12'), top: $r('app.float.distance_12'), bottom: $r('app.float.distance_20') })
           .alignItems(HorizontalAlign.Start)
         }
         .layoutWeight(1)
-        .width('100%')
+        .width(CommonConstants.FULL_PARENT)
         .align(Alignment.Top)
       }
-      .width('100%')
-      .height('100%')
-      .backgroundColor('#F5F5F5')
+      .width(CommonConstants.FULL_PARENT)
+      .height(CommonConstants.FULL_PARENT)
+      .backgroundColor($r('app.color.gray5'))
       .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.BOTTOM])
     }
     .hideTitleBar(true)
-    .backgroundColor('#d821deb4')
+    .backgroundColor($r('app.color.main_green'))
   }
 }
