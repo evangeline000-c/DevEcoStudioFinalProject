@@ -130,6 +130,7 @@ struct AdmissionForm {
       // 返回到入住申请列表页面
       setTimeout(() => {
         this.pathStack.clear();
+        this.pathStack.pushPathByName('MainPages', null);
         this.pathStack.pushPathByName('Admission', null);
       }, 1500);
     } catch (error) {

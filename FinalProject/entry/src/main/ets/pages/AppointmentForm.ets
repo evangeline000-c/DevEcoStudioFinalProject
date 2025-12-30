@@ -141,6 +141,7 @@ struct AppointmentForm {
       // 返回到服务订单页面
       setTimeout(() => {
         this.pathStack.clear();
+        this.pathStack.pushPathByName('MainPages', null);
         this.pathStack.pushPathByName('ServiceOrders', null);
       }, 1500);
     } catch (error) {
